@@ -1,13 +1,24 @@
-Feature: My feature
+Feature: Crear Post
 
 @user1 @web
-Scenario: Como primer usuario inicio sesión
-  Given I navigate to page "http://www.google.com"
-  And I wait for 5 seconds
-  When I enter text to search 'Uniandes'
-  And I click on search button
-  And I wait for 5 seconds
+Scenario: Crear post
+  Given I navigate to page "http://localhost:2368/ghost"
+  And I wait for 1 seconds
+  When I enter the username "<EMAIL_USER1>"
+  And I enter the password "<PASSWORD_USER1>"
+  And I click on Sign in button
+  And I wait for 3 seconds
+  And I click on User settings button
+  And I click on Sign out button
+  And I wait for 3 seconds
 
 @user2 @web
-Scenario: Como segundo usuario inicio sesión
-  Given I navigate to page "http://www.google.com"
+Scenario: Crear post usuario 2
+  Given I navigate to page "http://localhost:2368/ghost"
+  And I wait for 1 seconds
+  When I enter the username "<EMAIL_USER2>"
+  And I enter the password "<PASSWORD_USER2>"
+  And I click on Sign in button
+  And I wait for 3 seconds
+  And I click on New post button
+  And I wait for 3 seconds
