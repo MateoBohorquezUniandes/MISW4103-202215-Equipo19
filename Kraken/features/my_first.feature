@@ -1,11 +1,9 @@
 Feature: My feature
 
-@user1 @mobile
-Scenario: My scenario 1
-  Given I wait
-  When I send a signal to user 2 containing "hi"
+@user1 @web
+Scenario: Como primer usuario inicio sesión
+  Given I navigate to page "http://www.google.com"
 
 @user2 @web
-Scenario: My scenario 2
-  Given I wait for a signal containing "hi"
-  When I wait
+Scenario: Como segundo usuario inicio sesión
+  Given I navigate to page "http://www.google.com"
