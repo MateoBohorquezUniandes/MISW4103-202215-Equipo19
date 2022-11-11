@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const expect = require('chai').expect;
+//Sección Login
 When('I enter the username {kraken-string}',async function(username){
     let element = await this.driver.$('#ember6');
     return await element.setValue(username);
@@ -12,16 +13,18 @@ When('I click on Sign in button', async function(){
     let element = await this.driver.$('#ember10');
     return await element.click();
 });
-When('I click on New post button', async function(){
-    let element = await this.driver.$('#ember25');
+When('I click on Sign out button', async function(){
+    let element = await this.driver.$('.user-menu-signout');
     return await element.click();
 });
+//Sección Settings
 When('I click on User settings button', async function(){
     let element = await this.driver.$('.ember-basic-dropdown-trigger');
     return await element.click();
 });
-When('I click on Sign out button', async function(){
-    let element = await this.driver.$('.user-menu-signout');
+//Sección Post
+When('I click on New post button', async function(){
+    let element = await this.driver.$('#ember25');
     return await element.click();
 });
 When('I write the title of the post {string}', async function(title){
@@ -59,4 +62,8 @@ When('I go to the post page', async function(){
 });
 Then('I see the post', async function(){
     expect(await this.driver.$('h1.article-title'));
+});
+When('I going to the post section', async function(){
+    let element = await this.driver.$('#ember9');
+    await element.click();
 });
