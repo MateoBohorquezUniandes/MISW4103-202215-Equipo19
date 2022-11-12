@@ -14,6 +14,12 @@ Scenario: Crear post
   And I publish the post
   And I wait for 2 seconds
   Then I see the confirmation of publish
+  When I going back to the post editor
+  And I wait for 1 seconds
+  And I go back from the editor to the post section
+  And I click on User settings button
+  And I click on Sign out button
+  Then I see the login screen
   And I send a signal to user 2 containing "post_published"
   
 

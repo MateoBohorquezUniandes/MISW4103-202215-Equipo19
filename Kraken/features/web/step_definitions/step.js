@@ -67,3 +67,15 @@ When('I going to the post section', async function(){
     let element = await this.driver.$('#ember9');
     await element.click();
 });
+//Temporal
+When('I going back to the post editor', async function(){
+    let element = await this.driver.$('button.gh-publish-back-button');
+    await element.click();
+});
+When('I go back from the editor to the post section', async function(){
+    let element = await this.driver.$('a.gh-editor-back-button');
+    await element.click();
+});
+Then('I see the login screen', async function(){
+    expect(await this.driver.$('button.login'));
+});
