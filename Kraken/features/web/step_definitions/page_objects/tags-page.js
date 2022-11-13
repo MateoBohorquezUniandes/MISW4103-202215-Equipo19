@@ -3,9 +3,10 @@ module.exports = class TagsPage {
         this.driver = driver;
     }
 
-    get btnTagNew() { return 'a[href="#/tags/new"]' }
+    get btnTagNew() { return 'a[href="#/tags/new/"]' }
     get inputTagName() { return 'input.gh-input' }
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
+    get btnDeleteTag() { return 'button.gh-btn.gh-btn-red.gh-btn-icon' }
     get tagName() {return 'h3.gh-tag-list-name'} 
 
 
@@ -24,11 +25,24 @@ module.exports = class TagsPage {
         await element.click();
     }
 
-    async getTagName() {
-        let element = await this.driver.$$(this.tagName);
-        return await element.setTagName();
-
+    async clickBtnDeleteTag() {
+        let element = await this.driver.$(this.btnDeleteTag);
+        await element.click();
     }
+
+    async getTagName(title){
+        var selector = '//a/h3[contains(.,"' + title + '")]';
+        let element = await this.driver.$(selector);
+        await element.click();
+    }
+
+    
+
+    // async getTagName() {
+    //     let element = await this.driver.$$(this.tagName);
+    //     return await element.setTagName();
+
+    // }
 
 
 

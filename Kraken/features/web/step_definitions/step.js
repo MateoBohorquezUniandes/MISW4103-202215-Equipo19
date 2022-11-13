@@ -195,10 +195,13 @@ When('I click on newTag button', async function () {
     return await this.tags.clickBtnSaveTag();
 });
 
-When('I go to nameTag', async function () {
+When('I see the tag title {string}', async function (text) {
+    return await this.tags.getTagName(text);
+});
 
-}
-);
+When('I go to delete tag', async function() {
+    return await this.tags.clickBtnDeleteTag();
+});
 
 //Settings
 When('I click menu settings', async function () {

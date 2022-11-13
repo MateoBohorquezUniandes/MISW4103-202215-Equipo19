@@ -13,7 +13,7 @@ module.exports = class PostsPage {
     get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
     get settingsMenu(){ return 'button.settings-menu-toggle'}
     get btnPublish(){ return 'button.gh-publish-trigger'}
-    get btnUnpublish(){ return 'Unpublish'}
+    get btnUnpublish(){ return 'gh-btn gh-btn-editor.gh-unpublish-trigger'}
     get btnContinueFinalReview(){ return 'button.gh-btn.gh-btn-black.gh-btn-large'}
     get btnPublishPostRightNow(){ return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'}
     get publishConfirmation(){return 'div.gh-post-bookmark'}
@@ -111,7 +111,7 @@ module.exports = class PostsPage {
         let element = await this.driver.$(selector);
         await element.click();
     }
-    async getPostSubTitle(title){
+    async getTagTitle(title){
         var selector = '//a/h3[contains(.,"' + title + '")]';
         let element = await this.driver.$(selector);
         await element.click();

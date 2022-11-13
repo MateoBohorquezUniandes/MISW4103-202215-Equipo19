@@ -10,7 +10,8 @@ Scenario: Crear, consultar, eliminar tag
   And I wait for 5 seconds
   And I go to tag
   And I go to create new tag
-  And I enter a new name "My new name" for tag
+  And I enter a new name "Mi Primer Tag" for tag
   And I click on newTag button
-  And I go to nameTag
-  And I wait for 10 seconds
+  And I wait for 5 seconds
+  And I go to delete tag
+  And I wait for 5 seconds
