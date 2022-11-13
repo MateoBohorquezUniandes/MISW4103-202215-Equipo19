@@ -73,4 +73,11 @@ module.exports = class PagesPage {
         return element.click();
     }
 
+    async clickSortPagesByOldest() {
+        let element = await this.driver.$('div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger');
+        await element.click();
+        element = await this.driver.$('li.ember-power-select-option:nth-child(2)');
+        return element.click();
+    }
+
 }

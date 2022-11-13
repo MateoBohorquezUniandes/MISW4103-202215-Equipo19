@@ -116,6 +116,10 @@ Then('I see first post with title {kraken-string}', async function (title) {
     const pageTitle = await this.pagesPage.findPageTitle(title);
     expect(pageTitle).to.eql(title)
 });
+
+When('I filter by oldest', async function () {
+    return await this.pagesPage.clickSortPagesByOldest();
+});
 //Fin seccion page
 
 When('I click menu post', async function () {
