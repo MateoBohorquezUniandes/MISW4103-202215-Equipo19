@@ -30,8 +30,14 @@ When('I click on New post + button', async function () {
 When('I write the title of the post {string}', async function (title) {
     return await this.postsPage.writePostTitle(title);
 });
+When('I publish the post preview', async function () {
+    return await this.postsPage.publishPostPreview();
+});
 When('I publish the post', async function () {
     return await this.postsPage.publishPost();
+});
+When('I preview the post', async function () {
+    return await this.postsPage.previewPost();
 });
 When('I go the post unpublish', async function () {
     return await this.postsPage.unpublishPost();

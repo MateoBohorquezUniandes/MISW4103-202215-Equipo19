@@ -12,8 +12,10 @@ module.exports = class PostsPage {
     get titlePostEditor() { return '.gh-editor-title'}
     get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
     get settingsMenu(){ return 'button.settings-menu-toggle'}
-    get btnPublish(){ return 'button.gh-publish-trigger'}
-    get btnUnpublish(){ return 'gh-btn gh-btn-editor.gh-unpublish-trigger'}
+    get btnPublish(){ return 'button.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger'}
+    get btnPublishPostPreview(){ return 'button.gh-btn.gh-btn-editor.gh-publish-trigger'}
+    get btnUnpublish(){ return 'button.gh-btn.gh-btn-editor.gh-unpublish-trigger'}
+    get btnPreviewPost(){ return 'button.gh-btn.gh-btn-editor.gh-editor-preview-trigger'}
     get btnContinueFinalReview(){ return 'button.gh-btn.gh-btn-black.gh-btn-large'}
     get btnPublishPostRightNow(){ return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'}
     get publishConfirmation(){return 'div.gh-post-bookmark'}
@@ -78,11 +80,22 @@ module.exports = class PostsPage {
         return await element.click();
     }
 
+
     async unpublishPost(){
         element = await this.driver.$(this.btnUnpublish);
         await element.click();
         // element = await this.driver.$(this.btnPublishPostRightNow);
         //return await element.click();
+    }
+
+    async publishPostPreview(){
+        element = await this.driver.$(this.btnPublishPostPreview);
+        await element.click();
+    }
+
+    async previewPost(){
+        element = await this.driver.$(this.btnPreviewPost);
+        await element.click();
     }
 
     async getConfirmationPublish(){ 
