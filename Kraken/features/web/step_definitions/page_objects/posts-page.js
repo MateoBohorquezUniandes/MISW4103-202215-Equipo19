@@ -19,6 +19,9 @@ module.exports = class PostsPage {
     get btnEditor(){return 'button.gh-publish-back-button'}
     get btnBack(){return 'a.gh-editor-back-button'}
     get linkTitlePost(){return 'a[href="/mi-primer-post/"]'}
+    get btnPostSection(){return 'li.gh-nav-list-new'}
+    get btnUpdate(){return '.gh-editor-save-trigger'}
+    get updateConfirmation(){return 'button.gh-editor-save-trigger[disabled]'}
 
     async clickNewPost() {
         let element = await this.driver.$(this.btnNewPost);
@@ -92,6 +95,25 @@ module.exports = class PostsPage {
         var selector = '//header/h1[contains(.,"' + title + '")]';
         let element = await this.driver.$(selector);
         await element.click();
+    }
+    async goPostSection(){
+        let element = await this.driver.$(this.btnPostSection);
+        await element.click();
+    }
+    async openEditorPost(post){
+        var selector = '//a/h3[contains(.,"'+ post + '")]'
+        let element = await this.driver.$(selector);
+        await element.click();
+    }
+    async updatePost(){
+        let element = await this.driver.$(this.settingsMenu);
+        await element.click();
+        element = await this.driver.$(this.btnUpdate);
+        return await element.click();
+    }
+    async getConfirmationUpdate(){
+        let element = await this.driver.$(this.updateConfirmation)
+        return element
     }
 
 

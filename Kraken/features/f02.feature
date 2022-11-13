@@ -17,8 +17,8 @@ Scenario: Editar post
   Then I see the confirmation of update
   And I go back from the editor to the post section
   And I wait for 5 seconds
-  And I click on User settings button
-  And I click on Sign out button
+  And I click user profile
+  And I click sign out
   Then I see the login screen
   And I send a signal to user 2 containing "post_edited"
   
@@ -28,4 +28,4 @@ Scenario: Ver el post editado
   Given I wait for a signal containing "post_edited" for 120 seconds
   And I navigate to page "http://localhost:2368/mi-primer-post/"
   And I wait for 1 seconds
-  Then I see the post
+  Then I see the post title "Post Editado"
