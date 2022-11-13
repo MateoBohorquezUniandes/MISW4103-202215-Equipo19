@@ -116,6 +116,9 @@ Then('I see first post with title {kraken-string}', async function (title) {
     const pageTitle = await this.pagesPage.findPageTitle(title);
     expect(pageTitle).to.eql(title)
 });
+Then('I see the page {string} with the Draft', async function (page){
+    expect(await this.pagesPage.getDraftOnList(page))
+})
 //Fin seccion page
 
 When('I click menu post', async function () {

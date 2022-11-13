@@ -72,5 +72,10 @@ module.exports = class PagesPage {
         const element = await this.driver.$('button.gh-back-to-editor');
         return element.click();
     }
+    async getDraftOnList(title) {
+        let element = await this.driver.$('//a/h3[contains(.,"' + title + '")]');
+        await element.click();
+        return element = await this.driver.$('div[contains(.,"Draft - Saved")]')
+    }
 
 }
