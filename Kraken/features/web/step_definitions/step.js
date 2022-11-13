@@ -130,3 +130,59 @@ When('I publish page', async function () {
 When('I click page with title {kraken-string}', async function (title) {
     return await this.pagesPage.clickThePageWithTitle(title);
 });
+
+When('I click menu post', async function () {
+    this.dashboardPages.clickMenuPost()
+});
+
+When('I click option sort', async function () {
+    this.postsPage.clickOptionSort()
+});
+
+When('I click sort by oldest', async function () {
+    this.postsPage.clickSortPostByOldest()
+});
+
+When('I click first post', async function () {
+    this.postsPage.clickFirstPost()
+});
+
+When('I click last post', async function () {
+    this.postsPage.clickLastPost()
+});
+
+When('I get post title', async function () {
+    this.postsPage.getPostTitle()
+});
+
+When('I click back page', async function () {
+    this.postsPage.clickBackPage()
+});
+
+When('I click user profile', async function () {
+    this.dashboardPages.clickUserProfile()
+});
+
+When('I click sign out', async function () {
+    this.dashboardPages.clickSignOut()
+});
+
+When('I click menu members', async function () {
+    this.dashboardPages.clickBtnMenuMembers()
+});
+
+When('I click new member', async function () {
+    this.membersPage.clickBtnNewMember()
+});
+
+When('I enter member name {kraken-string}', async function (text) {
+    this.membersPage.setMemberName(text)
+});
+
+When('I enter member email {kraken-string}', async function (text) {
+    this.membersPage.setMemberEmail(text)
+});
+
+When('I click save member', async function () {
+    this.membersPage.clickBtnSaveMember()
+});
