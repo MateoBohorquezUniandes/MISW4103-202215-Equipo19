@@ -29,8 +29,6 @@ When('I click on New post + button', async function () {
 });
 When('I write the title of the post {string}', async function (title) {
     return await this.postsPage.writePostTitle(title);
-    //let element = await this.driver.$('.gh-editor-title');
-    //return await element.setValue(title);
 });
 When('I publish the post', async function () {
     return await this.postsPage.publishPost();
@@ -45,8 +43,7 @@ Then('I see the post title {string}', async function (title) {
     expect(await this.postsPage.getPostTitle(title));
 });
 When('I going to the post section', async function(){
-    let element = await this.driver.$('li.gh-nav-list-new');
-    await element.click();
+    return await this.postsPage.goPostSection();
 });
 //Temporal
 When('I going back to the post editor', async function () {
@@ -56,21 +53,13 @@ When('I go back from the editor to the post section', async function () {
     await this.postsPage.goBackToPostSection();
 });
 When('I open the editor of the post {string}', async function(post){
-    var selector = '//a/h3[contains(.,"'+ post + '")]'
-    let element = await this.driver.$(selector);
-    await element.click();
+    await this.postsPage.openEditorPost(post);
 });
 When('I update the post', async function(){
-    let element = await this.driver.$('.settings-menu-toggle');
-    await element.click();
-    element = await this.driver.$('.gh-editor-save-trigger');
-    return await element.click();
+    await this.postsPage.updatePost();
 });
 Then('I see the confirmation of update', async function(){
-    expect(await this.driver.$('button.gh-editor-save-trigger[disabled]'));
-});
-Then('I see the title', async function(){
-    expect(await this.driven.$(''))
+    expect(await this.postsPage.getConfirmationUpdate());
 });
 //Pages
 When('I go to pages', async function () {
