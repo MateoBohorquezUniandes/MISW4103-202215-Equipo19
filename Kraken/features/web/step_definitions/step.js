@@ -96,7 +96,7 @@ Then('I see the confirmation of update', async function(){
 Then('I see the title', async function(){
     
 });
-//Pages
+//Seccion Pages
 When('I go to pages', async function () {
     return await this.dashboardPages.goToPages();
 });
@@ -125,9 +125,31 @@ When('I publish page', async function () {
     return await this.pagesPage.publishPage();
 });
 
-When('I click page with title {kraken-string}', async function (title) {
-    return await this.pagesPage.clickThePageWithTitle(title);
+When('I filter by newest', async function () {
+    return await this.pagesPage.clickSortPagesByNewest();
 });
+
+When('I click the first page', async function () {
+    return await this.pagesPage.clickTheFirstPage();
+});
+
+When('I go back to page editor', async function () {
+    return await this.pagesPage.goToEditor();
+});
+
+When('I filter by published', async function () {
+    return await this.pagesPage.clickSortPagesByPublished();
+});
+
+When('I click the type page filter', async function () {
+    return await this.pagesPage.clickOptionTypePage();
+});
+
+Then('I see first post with title {kraken-string}', async function (title) {
+    const pageTitle = await this.pagesPage.findPageTitle(title);
+    expect(pageTitle).to.eql(title)
+});
+//Fin seccion page
 
 When('I click menu post', async function () {
     this.dashboardPages.clickMenuPost()

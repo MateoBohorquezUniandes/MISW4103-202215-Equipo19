@@ -10,10 +10,19 @@ Scenario: Editar, publicar, consultar un page
   And I wait for 1 seconds
   And I go to pages
   And I go to create new page
-  And I enter a new title "My awesome page title " for page
+  And I enter a new title "My awesome page title" for page
   And I enter a new body "My body page" for page
+  And I wait for 10 seconds
   And I go back to the pages list
-  And I go to edit a page
+  And I filter by newest
+  And I wait for 10 seconds
+  And I click the first page
   And I enter a new body "My body page update automatically" for page
   And I publish page
-  And I wait for 10 seconds
+  And I wait for 1 seconds
+  And I go back to page editor
+  And I go back to the pages list
+  And I click the type page filter
+  And I filter by published
+  And I wait for 5 seconds
+  Then I see first post with title "My awesome page title"
