@@ -45,7 +45,9 @@ Then('I see the post title {string}', async function (title) {
 When('I going to the post section', async function(){
     return await this.postsPage.goPostSection();
 });
-//Temporal
+When('I search the post {string}',async function (title) {
+    return await this.postsPage.searchPost(title);
+});
 When('I going back to the post editor', async function () {
     await this.postsPage.goBackEditor();
 });
