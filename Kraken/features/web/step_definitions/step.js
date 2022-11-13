@@ -65,7 +65,7 @@ Then('I see the confirmation of update', async function(){
 });
 //Seccion Pages
 When('I go to pages', async function () {
-    return await this.homePage.goToPages();
+    return await this.dashboardPages.goToPages();
 });
 
 When('I go to create new page', async function () {
