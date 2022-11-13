@@ -12,7 +12,7 @@ module.exports = class PostsPage {
     get titlePostEditor() { return '.gh-editor-title'}
     get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
     get settingsMenu(){ return 'button.settings-menu-toggle'}
-    get btnPublish(){ return 'button.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger'}
+    get btnPublish(){ return 'button.gh-publish-trigger'}
     get btnContinueFinalReview(){ return 'button.gh-btn.gh-btn-black.gh-btn-large'}
     get btnPublishPostRightNow(){ return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'}
     get publishConfirmation(){return 'div.gh-post-bookmark'}
@@ -114,6 +114,11 @@ module.exports = class PostsPage {
     async getConfirmationUpdate(){
         let element = await this.driver.$(this.updateConfirmation)
         return element
+    }
+    async searchPost(post){
+        var selector = '//header/h2[contains(.,"'+ post + '")]'
+        let element = await this.driver.$(selector);
+        await element.click();
     }
 
 

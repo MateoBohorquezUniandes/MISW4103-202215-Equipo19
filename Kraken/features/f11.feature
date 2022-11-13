@@ -1,7 +1,7 @@
-Feature: Feature 8
+Feature: Feature 11
 
 @user1 @web
-Scenario: Editar, publicar, consultar un page 
+Scenario: Crear 2 paginas, Filtrar por antiguos, consultar un page 
   Given I navigate to page "http://localhost:2368/ghost"
   And I wait for 1 seconds
   When I enter the username "<EMAIL_USER1>"
@@ -10,22 +10,17 @@ Scenario: Editar, publicar, consultar un page
   And I wait for 1 seconds
   And I go to pages
   And I go to create new page
-  And I enter a new title "My awesome page title" for page
-  And I enter a new body "My body page" for page
+  And I enter a new title "My Page 1" for page
+  And I enter a new body "My body page 1" for page
   And I wait for 10 seconds
   And I go back to the pages list
-  And I filter by newest
+  And I go to create new page
+  And I enter a new title "My Page 2" for page
+  And I enter a new body "My body page 2" for page
   And I wait for 10 seconds
-  And I click the first page
-  And I enter a new body "My body page update automatically" for page
-  And I publish page
-  And I wait for 1 seconds
-  And I go back to page editor
   And I go back to the pages list
-  And I click the type page filter
-  And I filter by published
-  And I wait for 5 seconds
-  Then I see first post with title "My awesome page title"
+  And I filter by oldest
+  Then I see first post with title "My Page 1"
   And I wait for 2 seconds
   And I click user profile
   And I click sign out

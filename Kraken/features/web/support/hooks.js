@@ -6,6 +6,7 @@ const PagesPage = require('../step_definitions/page_objects/pages-page')
 const MembersPage = require('../step_definitions/page_objects/members-page');
 const PostsPage = require('../step_definitions/page_objects/posts-page');
 const TagsPage = require('../step_definitions/page_objects/tags-page');
+const SettingsPage = require('../step_definitions/page_objects/settings-page');
 
 Before(async function () {
   this.deviceClient = new WebClient('chrome', {}, this.userId);
@@ -16,6 +17,7 @@ Before(async function () {
   this.postsPage = new PostsPage(this.driver);
   this.membersPage = new MembersPage(this.driver);
   this.tags = new TagsPage(this.driver);
+  this.settingsPage = new SettingsPage(this.driver);
 })
 
 After(async function () {
