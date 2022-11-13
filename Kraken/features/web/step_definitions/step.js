@@ -105,7 +105,6 @@ When('I click page with title {kraken-string}', async function (title) {
     return await this.pagesPage.clickThePageWithTitle(title);
 });
 
-<<<<<<< Updated upstream
 When('I click menu post', async function () {
     this.dashboardPages.clickMenuPost()
 });
@@ -152,7 +151,6 @@ When('I enter member email {kraken-string}', async function (text) {
 When('I click save member', async function () {
     this.membersPage.clickBtnSaveMember()
 });
-=======
 //Tag
 When('I go to tag', async function () {
     return await  this.dashboardPages.goToTags();
@@ -174,4 +172,3 @@ When('I go to nameTag', async function(){
     
 }
 );
->>>>>>> Stashed changes
