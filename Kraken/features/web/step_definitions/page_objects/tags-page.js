@@ -8,9 +8,10 @@ module.exports = class TagsPage {
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get tagName() {return 'h3.gh-tag-list-name'} 
 
-    async clickTagsNew() {
+
+    async clickBtnNewTags() {
         let element = await this.driver.$(this.btnTagNew);
-        return await element.click();
+        await element.click();
     }
 
     async setTagName(text) {
@@ -20,7 +21,7 @@ module.exports = class TagsPage {
 
     async clickBtnSaveTag() {
         let element = await this.driver.$(this.btnSaveTag);
-        return await element.click();
+        await element.click();
     }
 
     async getTagName() {

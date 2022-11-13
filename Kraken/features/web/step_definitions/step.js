@@ -157,7 +157,7 @@ When('I go to tag', async function () {
 });
 
 When('I go to create new tag', async function() {
-    return await this.tags.clickTagsNew();
+    return await this.tags.clickBtnNewTags();
 });
 
 When('I enter a new name {kraken-string} for tag', async function (tagName){

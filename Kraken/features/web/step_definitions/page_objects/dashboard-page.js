@@ -18,6 +18,7 @@ module.exports = class HomePage {
 
     async goToTags() {
         const element = await this.driver.$(this.btnTag)
+        await element.click()
     }
 
     async clickTags() {
