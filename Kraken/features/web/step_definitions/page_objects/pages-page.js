@@ -75,7 +75,7 @@ module.exports = class PagesPage {
     async getDraftOnList(title) {
         let element = await this.driver.$('//a/h3[contains(.,"' + title + '")]');
         await element.click();
-        return element = await this.driver.$('div[contains(.,"Draft - Saved")]')
+        return element = await this.driver.$('//span/div[contains(.,"Draft - Saved")]')
     }
 
 }

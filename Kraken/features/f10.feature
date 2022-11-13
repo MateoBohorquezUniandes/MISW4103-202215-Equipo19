@@ -11,7 +11,8 @@ Scenario: Crear, guardar y consultar un page en draft
   And I go to pages
   And I go to create new page
   And I enter a new title "Feature 10" for page
-  And I wait for 3 seconds
+  And I enter a new body "Feature 10" for page
+  And I wait for 5 seconds
   And I go back to the pages list
   And I filter by newest
   And I wait for 2 seconds
