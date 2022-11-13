@@ -17,3 +17,7 @@ Scenario: Crear, guardar y consultar un page en draft
   And I filter by newest
   And I wait for 2 seconds
   Then I see the page "Feature 10" with the Draft
+  And I go back to the pages list
+  And I click user profile
+  And I click sign out
+  Then I see the login screen
