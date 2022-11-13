@@ -42,10 +42,10 @@ When('I go to the post page', async function () {
 Then('I see the post title {string}', async function (title) {
     expect(await this.postsPage.getPostTitle(title));
 });
-When('I going to the post section', async function(){
+When('I going to the post section', async function () {
     return await this.postsPage.goPostSection();
 });
-When('I search the post {string}',async function (title) {
+When('I search the post {string}', async function (title) {
     return await this.postsPage.searchPost(title);
 });
 When('I going back to the post editor', async function () {
@@ -54,13 +54,13 @@ When('I going back to the post editor', async function () {
 When('I go back from the editor to the post section', async function () {
     await this.postsPage.goBackToPostSection();
 });
-When('I open the editor of the post {string}', async function(post){
+When('I open the editor of the post {string}', async function (post) {
     await this.postsPage.openEditorPost(post);
 });
-When('I update the post', async function(){
+When('I update the post', async function () {
     await this.postsPage.updatePost();
 });
-Then('I see the confirmation of update', async function(){
+Then('I see the confirmation of update', async function () {
     expect(await this.postsPage.getConfirmationUpdate());
 });
 //Seccion Pages
@@ -120,6 +120,9 @@ Then('I see first post with title {kraken-string}', async function (title) {
 When('I filter by oldest', async function () {
     return await this.pagesPage.clickSortPagesByOldest();
 });
+Then('I see the page {string} with the Draft', async function (page) {
+    expect(await this.pagesPage.getDraftOnList(page))
+})
 //Fin seccion page
 
 When('I click menu post', async function () {
@@ -170,22 +173,54 @@ When('I click save member', async function () {
 });
 //Tag
 When('I go to tag', async function () {
-    return await  this.dashboardPages.goToTags();
+    return await this.dashboardPages.goToTags();
 });
 
-When('I go to create new tag', async function() {
+When('I go to create new tag', async function () {
     return await this.tags.clickTagsNew();
 });
 
-When('I enter a new name {kraken-string} for tag', async function (tagName){
+When('I enter a new name {kraken-string} for tag', async function (tagName) {
     return await this.tags.setTagName(tagName);
 });
 
-When('I click on newTag button',async function() {
+When('I click on newTag button', async function () {
     return await this.tags.clickBtnSaveTag();
 });
 
-When('I go to nameTag', async function(){
-    
+When('I go to nameTag', async function () {
+
 }
 );
+
+//Settings
+When('I click menu settings', async function () {
+    this.settingsPage.clickSettingsButton()
+});
+
+When('I click navigation option', async function () {
+    this.settingsPage.clickNavigationOption()
+});
+
+When('I enter primary navigation name {kraken-string}', async function (text) {
+    this.settingsPage.setNavigationName(text)
+});
+
+When('I click save navigation', async function () {
+    this.settingsPage.clickSaveNavigationButton()
+});
+
+When('I click menu view site', async function () {
+    this.settingsPage.clickSiteMenu()
+});
+
+When('I click delete last navigation option', async function () {
+    this.settingsPage.clickDeleteLastNavigationOption()
+});
+
+Then('I see the primary navigation {string}', async function (name) {
+    const navigationName = await this.settingsPage.getNavigationName(name)
+    expect(navigationName).to.eql(name)
+});
+
+

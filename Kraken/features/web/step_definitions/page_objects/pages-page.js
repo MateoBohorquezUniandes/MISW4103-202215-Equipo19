@@ -72,6 +72,11 @@ module.exports = class PagesPage {
         const element = await this.driver.$('button.gh-back-to-editor');
         return element.click();
     }
+    async getDraftOnList(title) {
+        let element = await this.driver.$('//a/h3[contains(.,"' + title + '")]');
+        await element.click();
+        return element = await this.driver.$('//span/div[contains(.,"Draft - Saved")]')
+    }
 
     async clickSortPagesByOldest() {
         let element = await this.driver.$('div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger');
