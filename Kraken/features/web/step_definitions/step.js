@@ -10,95 +10,62 @@ When('I enter the password {kraken-string}', async function (password) {
 When('I click on Sign in button', async function () {
     return this.loginPage.clickSignInButton();
 });
-When('I click on Sign out button', async function () {
-    let element = await this.driver.$('.user-menu-signout');
-    return await element.click();
+When('I click sign out', async function () {
+    this.dashboardPages.clickSignOut()
 });
 When('I sign in with user {kraken-string} and password {kraken-string}', async function (username, password) {
     return await this.loginPage.signInGosht(username, password);
 });
+Then('I see the login screen', async function () {
+    expect(await this.loginPage.seeLoginScreen());
+});
 //Sección Settings
-When('I click on User settings button', async function () {
-    let element = await this.driver.$('.ember-basic-dropdown-trigger');
-    return await element.click();
+When('I click user profile', async function () {
+    this.dashboardPages.clickUserProfile()
 });
 //Sección Post
-When('I click on New post button', async function () {
-    let element = await this.driver.$('#ember25');
-    return await element.click();
+When('I click on New post + button', async function () {
+    return await this.postsPage.clickPlusNewPost();
 });
 When('I write the title of the post {string}', async function (title) {
-    let element = await this.driver.$('.gh-editor-title');
-    return await element.setValue(title);
-});
-When('I add an image', async function () {
-    let element = await this.driver.$('.gh-editor-feature-image-unsplash');
-    await element.click();
-    element = await this.driver.$('.gh-unsplash-photo-container');
-    await element.focus();
-    element = await this.driver.$('.gh-unsplash-button');
-    await element.click();
-});
-When('I add a text', async function () {
-    let element = await this.driver.$('.koenig-editor');
-    return await element.click();
+    return await this.postsPage.writePostTitle(title);
 });
 When('I publish the post', async function () {
-    let element = await this.driver.$('.settings-menu-toggle');
-    await element.click();
-    element = await this.driver.$('.gh-publish-trigger');
-    await element.click();
-    element = await this.driver.$('.gh-btn-large');
-    await element.click();
-    element = await this.driver.$('.gh-btn-pulse');
-    return await element.click();
+    return await this.postsPage.publishPost();
 });
 Then('I see the confirmation of publish', async function () {
-    expect(await this.driver.$('div.gh-post-bookmark'));
+    expect(await this.postsPage.getConfirmationPublish());
 });
 When('I go to the post page', async function () {
-    let element = await this.driver.$('a[href="/mi-primer-post/"]');
-    await element.click();
+    return await this.postsPage.goToPostPage();
 });
-Then('I see the post', async function () {
-    expect(await this.driver.$('h1.article-title'));
+Then('I see the post title {string}', async function (title) {
+    expect(await this.postsPage.getPostTitle(title));
 });
 When('I going to the post section', async function(){
-    let element = await this.driver.$('li.gh-nav-list-new');
-    await element.click();
+    return await this.postsPage.goPostSection();
 });
-//Temporal
+When('I search the post {string}',async function (title) {
+    return await this.postsPage.searchPost(title);
+});
 When('I going back to the post editor', async function () {
-    let element = await this.driver.$('button.gh-publish-back-button');
-    await element.click();
+    await this.postsPage.goBackEditor();
 });
 When('I go back from the editor to the post section', async function () {
-    let element = await this.driver.$('a.gh-editor-back-button');
-    await element.click();
-});
-Then('I see the login screen', async function () {
-    expect(await this.driver.$('button.login'));
+    await this.postsPage.goBackToPostSection();
 });
 When('I open the editor of the post {string}', async function(post){
-    var selector = '//a/h3[contains(.,"'+ post + '")]'
-    let element = await this.driver.$(selector);
-    await element.click();
+    await this.postsPage.openEditorPost(post);
 });
 When('I update the post', async function(){
-    let element = await this.driver.$('.settings-menu-toggle');
-    await element.click();
-    element = await this.driver.$('.gh-editor-save-trigger');
-    return await element.click();
+    await this.postsPage.updatePost();
 });
 Then('I see the confirmation of update', async function(){
-    expect(await this.driver.$('button.gh-editor-save-trigger[disabled]'));
-});
-Then('I see the title', async function(){
-    
+    expect(await this.postsPage.getConfirmationUpdate());
 });
 //Seccion Pages
 When('I go to pages', async function () {
-    return await this.dashboardPages.goToPages();
+    return await this.homePage.goToPages();
 });
 
 When('I go to create new page', async function () {
@@ -172,21 +139,12 @@ When('I click last post', async function () {
 });
 
 When('I get post title', async function () {
-    this.postsPage.getPostTitle()
+    this.postsPage.getPostTitleEditor()
 });
 
 When('I click back page', async function () {
     this.postsPage.clickBackPage()
 });
-
-When('I click user profile', async function () {
-    this.dashboardPages.clickUserProfile()
-});
-
-When('I click sign out', async function () {
-    this.dashboardPages.clickSignOut()
-});
-
 When('I click menu members', async function () {
     this.dashboardPages.clickBtnMenuMembers()
 });
@@ -206,3 +164,24 @@ When('I enter member email {kraken-string}', async function (text) {
 When('I click save member', async function () {
     this.membersPage.clickBtnSaveMember()
 });
+//Tag
+When('I go to tag', async function () {
+    return await  this.dashboardPages.goToTags();
+});
+
+When('I go to create new tag', async function() {
+    return await this.tags.clickTagsNew();
+});
+
+When('I enter a new name {kraken-string} for tag', async function (tagName){
+    return await this.tags.setTagName(tagName);
+});
+
+When('I click on newTag button',async function() {
+    return await this.tags.clickBtnSaveTag();
+});
+
+When('I go to nameTag', async function(){
+    
+}
+);
