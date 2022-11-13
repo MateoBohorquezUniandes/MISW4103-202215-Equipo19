@@ -17,15 +17,17 @@ When('I click on Sign out button', async function () {
 When('I sign in with user {kraken-string} and password {kraken-string}', async function (username, password) {
     return await this.loginPage.signInGosht(username, password);
 });
+Then('I see the login screen', async function () {
+    expect(await this.driver.$('button.login'));
+});
 //Sección Settings
 When('I click on User settings button', async function () {
     let element = await this.driver.$('.ember-basic-dropdown-trigger');
     return await element.click();
 });
 //Sección Post
-When('I click on New post button', async function () {
-    let element = await this.driver.$('#ember25');
-    return await element.click();
+When('I click on New post + button', async function () {
+    return await this.postsPage.clickPlusNewPost();
 });
 When('I write the title of the post {string}', async function (title) {
     let element = await this.driver.$('.gh-editor-title');
@@ -94,11 +96,11 @@ Then('I see the confirmation of update', async function(){
     expect(await this.driver.$('button.gh-editor-save-trigger[disabled]'));
 });
 Then('I see the title', async function(){
-    
+    expect(await this.driven.$(''))
 });
 //Pages
 When('I go to pages', async function () {
-    return await this.dashboardPages.goToPages();
+    return await this.homePage.goToPages();
 });
 
 When('I go to create new page', async function () {
