@@ -83,3 +83,5 @@ Kraken/reports/de2dd96fcabfd4a894c3/assets/js/sankey.js
 Kraken/reports/de2dd96fcabfd4a894c3/screenshots/1668293078.png
 Kraken/reports/de2dd96fcabfd4a894c3/screenshots/1668293107.png
 Kraken/node_modules/kraken-node/bin/kraken-node
+./node_modules
+./Kraken/reports
