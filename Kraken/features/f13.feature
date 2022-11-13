@@ -13,5 +13,4 @@ Scenario: Crear, consultar, eliminar tag
   And I enter a new name "My new name" for tag
   And I click on newTag button
   And I go to nameTag
-
   And I wait for 10 seconds
