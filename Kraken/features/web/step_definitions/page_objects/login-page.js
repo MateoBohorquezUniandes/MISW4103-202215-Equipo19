@@ -22,5 +22,9 @@ module.exports = class LoginPage {
         let element = await this.driver.$(this.signInButton);
         return await element.click();
     }
+    async seeLoginScreen() {
+        let element = await this.driver.$(this.signInButton);
+        return element;
+    }
 }
 

@@ -9,8 +9,16 @@ module.exports = class PostsPage {
     get fistPostList() { return 'section.view-container.content-list > ol.posts-list.gh-list.feature-memberAttribution > li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)' }
     get lastPostList() { return 'section.view-container.content-list > ol.posts-list.gh-list.feature-memberAttribution > li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:last-child > a:nth-child(1) > h3.gh-content-entry-title' }
     get sortPostByOdelst() { return 'li.ember-power-select-option:nth-child(2)' }
-    get titlePost() { return 'textarea.gh-editor-title.ember-text-area.gh-input.ember-view' }
+    get titlePostEditor() { return '.gh-editor-title'}
     get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
+    get settingsMenu(){ return 'button.settings-menu-toggle'}
+    get btnPublish(){ return 'button.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger'}
+    get btnContinueFinalReview(){ return 'button.gh-btn.gh-btn-black.gh-btn-large'}
+    get btnPublishPostRightNow(){ return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'}
+    get publishConfirmation(){return 'div.gh-post-bookmark'}
+    get btnEditor(){return 'button.gh-publish-back-button'}
+    get btnBack(){return 'a.gh-editor-back-button'}
+    get linkTitlePost(){return 'a[href="/mi-primer-post/"]'}
 
     async clickNewPost() {
         let element = await this.driver.$(this.btnNewPost);
@@ -41,8 +49,8 @@ module.exports = class PostsPage {
         return await element.click();
     }
 
-    async getPostTitle() {
-        let element = await this.driver.$(this.titlePost);
+    async getPostTitleEditor() {
+        let element = await this.driver.$(this.titlePostEditor);
         return await element.getValue();
     }
 
@@ -50,5 +58,41 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.linkBackPage);
         return await element.click();
     }
+    async writePostTitle(title) {
+        let element = await this.driver.$(this.titlePostEditor);
+        return await element.setValue(title);
+    }
+    async publishPost(){
+        let element = await this.driver.$(this.settingsMenu);
+        await element.click();
+        element = await this.driver.$(this.btnPublish);
+        await element.click();
+        element = await this.driver.$(this.btnContinueFinalReview);
+        await element.click();
+        element = await this.driver.$(this.btnPublishPostRightNow);
+        return await element.click();
+    }
+    async getConfirmationPublish(){ 
+        let element = await this.driver.$(this.publishConfirmation)
+        return element
+    }
+    async goBackEditor(){ 
+        let element = await this.driver.$(this.btnEditor);
+        return await element.click();
+    }
+    async goBackToPostSection(){
+        let element = await this.driver.$(this.btnBack);
+        await element.click();
+    }
+    async goToPostPage(){
+        let element = await this.driver.$(this.linkTitlePost);
+        await element.click();
+    }
+    async getPostTitle(title){
+        var selector = '//header/h1[contains(.,"' + title + '")]';
+        let element = await this.driver.$(selector);
+        await element.click();
+    }
+
 
 }
