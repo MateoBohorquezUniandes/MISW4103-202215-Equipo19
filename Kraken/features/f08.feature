@@ -26,3 +26,7 @@ Scenario: Editar, publicar, consultar un page
   And I filter by published
   And I wait for 5 seconds
   Then I see first post with title "My awesome page title"
+  And I wait for 2 seconds
+  And I click user profile
+  And I click sign out
+  Then I see the login screen
