@@ -8,10 +8,21 @@ module.exports = class HomePage {
     get btnMenuMembers() { return 'ul.gh-nav-list.gh-nav-manage > li:nth-child(4) > a:nth-child(1)' }
     get userProfile() { return 'div.ember-view.ember-basic-dropdown-trigger.outline-0.pointer' }
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
+    get btnTag() { return 'a[href="#/tags/"]' }
+
 
     async goToPages() {
         const element = await this.driver.$('a[href="#/pages/"]');
         await element.click()
+    }
+
+    async goToTags() {
+        const element = await this.driver.$(this.btnTag)
+    }
+
+    async clickTags() {
+        let element = await this.driver.$(this.btnTag);
+        return await element.click();
     }
 
     async clickMenuPost() {
