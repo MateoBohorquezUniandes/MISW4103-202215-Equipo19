@@ -4,11 +4,11 @@ Feature: Filtrar posts creados
 Scenario: Como primer usuario inicio sesion y mandó un mensaje al usuario 2
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 5 seconds
-  When I enter email "<EMAIL_USER1>"
+  When I enter the username "<EMAIL_USER1>"
   And I wait for 1 seconds
-  And I enter password "<PASSWORD_USER1>"
+  And I enter the password "<PASSWORD_USER1>"
   And I wait for 5 seconds
-  And I click next
+  And I click on Sign in button
   And I wait for 5 seconds
   And I click menu post
   And I wait for 5 seconds
