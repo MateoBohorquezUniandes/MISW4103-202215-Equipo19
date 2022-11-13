@@ -13,12 +13,14 @@ module.exports = class PostsPage {
     get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
     get settingsMenu(){ return 'button.settings-menu-toggle'}
     get btnPublish(){ return 'button.gh-publish-trigger'}
+    get btnUnpublish(){ return 'Unpublish'}
     get btnContinueFinalReview(){ return 'button.gh-btn.gh-btn-black.gh-btn-large'}
     get btnPublishPostRightNow(){ return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'}
     get publishConfirmation(){return 'div.gh-post-bookmark'}
     get btnEditor(){return 'button.gh-publish-back-button'}
     get btnBack(){return 'a.gh-editor-back-button'}
     get linkTitlePost(){return 'a[href="/mi-primer-post/"]'}
+    get linkPostTitle(){return 'a[href="#/posts/"]'}
     get btnPostSection(){return 'li.gh-nav-list-new'}
     get btnUpdate(){return '.gh-editor-save-trigger'}
     get updateConfirmation(){return 'button.gh-editor-save-trigger[disabled]'}
@@ -75,6 +77,14 @@ module.exports = class PostsPage {
         element = await this.driver.$(this.btnPublishPostRightNow);
         return await element.click();
     }
+
+    async unpublishPost(){
+        element = await this.driver.$(this.btnUnpublish);
+        await element.click();
+        // element = await this.driver.$(this.btnPublishPostRightNow);
+        //return await element.click();
+    }
+
     async getConfirmationPublish(){ 
         let element = await this.driver.$(this.publishConfirmation)
         return element
@@ -91,8 +101,18 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.linkTitlePost);
         await element.click();
     }
+
+    async goToPagePost(){
+        let element = await this.driver.$(this.linkPostTitle);
+        await element.click();
+    }
     async getPostTitle(title){
         var selector = '//header/h1[contains(.,"' + title + '")]';
+        let element = await this.driver.$(selector);
+        await element.click();
+    }
+    async getPostSubTitle(title){
+        var selector = '//a/h3[contains(.,"' + title + '")]';
         let element = await this.driver.$(selector);
         await element.click();
     }

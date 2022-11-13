@@ -33,14 +33,25 @@ When('I write the title of the post {string}', async function (title) {
 When('I publish the post', async function () {
     return await this.postsPage.publishPost();
 });
+When('I go the post unpublish', async function () {
+    return await this.postsPage.unpublishPost();
+});
 Then('I see the confirmation of publish', async function () {
     expect(await this.postsPage.getConfirmationPublish());
 });
 When('I go to the post page', async function () {
     return await this.postsPage.goToPostPage();
 });
+
+When('I go to the page post', async function () {
+    return await this.postsPage.goToPagePost();
+});
+
 Then('I see the post title {string}', async function (title) {
     expect(await this.postsPage.getPostTitle(title));
+});
+Then('I see the post sub title {string}', async function (title) {
+    expect(await this.postsPage.getPostSubTitle(title));
 });
 When('I going to the post section', async function () {
     return await this.postsPage.goPostSection();
@@ -143,10 +154,6 @@ When('I click first post', async function () {
 
 When('I click last post', async function () {
     this.postsPage.clickLastPost()
-});
-
-When('I get post title', async function () {
-    this.postsPage.getPostTitleEditor()
 });
 
 When('I click back page', async function () {
