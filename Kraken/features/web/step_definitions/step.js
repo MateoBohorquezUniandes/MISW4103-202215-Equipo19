@@ -64,7 +64,7 @@ Then('I see the post', async function(){
     expect(await this.driver.$('h1.article-title'));
 });
 When('I going to the post section', async function(){
-    let element = await this.driver.$('#ember9');
+    let element = await this.driver.$('li.gh-nav-list-new');
     await element.click();
 });
 //Temporal
@@ -78,4 +78,21 @@ When('I go back from the editor to the post section', async function(){
 });
 Then('I see the login screen', async function(){
     expect(await this.driver.$('button.login'));
+});
+When('I open the editor of the post {string}', async function(post){
+    var selector = '//a/h3[contains(.,"'+ post + '")]'
+    let element = await this.driver.$(selector);
+    await element.click();
+});
+When('I update the post', async function(){
+    let element = await this.driver.$('.settings-menu-toggle');
+    await element.click();
+    element = await this.driver.$('.gh-editor-save-trigger');
+    return await element.click();
+});
+Then('I see the confirmation of update', async function(){
+    expect(await this.driver.$('button.gh-editor-save-trigger[disabled]'));
+});
+Then('I see the title', async function(){
+    
 });
