@@ -188,3 +188,35 @@ When('I go to nameTag', async function(){
     
 }
 );
+
+//Settings
+When('I click menu settings', async function () {
+    this.settingsPage.clickSettingsButton()
+});
+
+When('I click navigation option', async function () {
+    this.settingsPage.clickNavigationOption()
+});
+
+When('I enter primary navigation name {kraken-string}', async function (text) {
+    this.settingsPage.setNavigationName(text)
+});
+
+When('I click save navigation', async function () {
+    this.settingsPage.clickSaveNavigationButton()
+});
+
+When('I click menu view site', async function () {
+    this.settingsPage.clickSiteMenu()
+});
+
+When('I click delete last navigation option', async function () {
+    this.settingsPage.clickDeleteLastNavigationOption()
+});
+
+Then('I see the primary navigation {string}', async function (name) {
+    const navigationName = await this.settingsPage.getNavigationName(name)
+    expect(navigationName).to.eql(name)
+});
+
+
