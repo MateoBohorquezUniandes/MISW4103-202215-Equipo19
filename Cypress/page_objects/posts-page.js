@@ -66,6 +66,9 @@ class PostsPage extends Page {
         let element = await this.driver.$(this.titlePostEditor);
         return await element.setValue(title);
     }
+    cleanPostTitle(){
+        cy.get(this.titlePostEditor).clear()
+    }
     publishPost() {
         cy.get(this.settingsMenu).click();
         cy.get(this.btnPublish).click();
@@ -90,25 +93,18 @@ class PostsPage extends Page {
     goPostSection() {
         cy.get(this.btnPostSection).click();
     }
-    async openEditorPost(post) {
-        var selector = '//a/h3[contains(.,"' + post + '")]'
-        let element = await this.driver.$(selector);
-        await element.click();
+    openEditorPost(post) {
+        cy.get('h3').contains(post).click();
     }
-    async updatePost() {
-        let element = await this.driver.$(this.settingsMenu);
-        await element.click();
-        element = await this.driver.$(this.btnUpdate);
-        return await element.click();
+    updatePost() {
+        cy.get(this.settingsMenu).click();
+        cy.get(this.btnUpdate).click();
     }
-    async getConfirmationUpdate() {
-        let element = await this.driver.$(this.updateConfirmation)
-        return element
+    getConfirmationUpdate() {
+        expect(cy.get(this.updateConfirmation));
     }
-    async searchPost(post) {
-        var selector = '//header/h2[contains(.,"' + post + '")]'
-        let element = await this.driver.$(selector);
-        await element.click();
+    searchPost(post) {
+        cy.get('h2').contains(post).click();;
     }
 }
 
