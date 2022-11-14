@@ -44,8 +44,12 @@
 
 ## Prerequisitos Ghost
 Como prerequisito se necesita realizar una instalación del aplicativo Ghost, teniendo en cuenta los siguientes parametros:
-1. Usar el puerto 2368 configurado para el despliegue de Ghost.
-2. Cambiar los datos del archivo `properties.json` por los datos de su usuario administrativo de Ghost.
+1. version de Ghost para ejecutar los escenarios:
+   Ghost-CLI version: 1.23.1
+   Ghost version: 5.22.10 
+   
+2. Usar el puerto 2368 configurado para el despliegue de Ghost.
+3. Cambiar los datos del archivo `properties.json` por los datos de su usuario administrativo de Ghost.
 
 * **Nota**: Si tiene dudas de como realizar la instalación de Ghost ir al siguiente link: `https://ghost.org/docs/ghost-cli/#ghost-install`
 
