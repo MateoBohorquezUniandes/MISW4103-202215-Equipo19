@@ -1,4 +1,5 @@
 const Page = require("./page");
+const Page = require("./dashboard");
 
 class TagsPage extends Page {
     constructor() {
@@ -9,6 +10,7 @@ class TagsPage extends Page {
     get inputTagName() { return 'input.gh-input' }
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get tagName() { return 'h3.gh-tag-list-name' }
+    
 
     async clickTagsNew() {
         let element = await this.driver.$(this.btnTagNew);

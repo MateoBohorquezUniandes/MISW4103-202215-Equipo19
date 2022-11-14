@@ -7,13 +7,11 @@ Scenario: Eliminar y Consultar post
   When I enter the username "<EMAIL_USER1>"
   And I enter the password "<PASSWORD_USER1>"
   And I click on Sign in button
-  And I wait for 5 seconds
-  And I going to the post section
-  And I wait for 10 seconds
-  Then I see the confirmation of update
-  And I go back from the editor to the post section
-  And I wait for 5 seconds
-  And I click on User settings button
-  And I click on Sign out button
+  And I wait for 2 seconds
+  And I go to the page post
+  And I wait for 2 seconds
+  And I see the post sub title 'Mi Primer Post'
+  And I wait for 2 seconds
   Then I see the login screen
   And I send a signal to user 2 containing "post_edited"
+  

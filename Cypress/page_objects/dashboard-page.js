@@ -12,7 +12,6 @@ class DashboardPage extends Page {
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
     get btnTag() { return 'a[href="#/tags/"]' }
 
-
     async goToPages() {
         const element = await this.driver.$('a[href="#/pages/"]');
         await element.click()
@@ -25,7 +24,7 @@ class DashboardPage extends Page {
     async clickTags() {
         let element = await this.driver.$(this.btnTag);
         return await element.click();
-    }
+    }  
 
     async clickMenuPost() {
         let element = await this.driver.$(this.btnMenuPost);

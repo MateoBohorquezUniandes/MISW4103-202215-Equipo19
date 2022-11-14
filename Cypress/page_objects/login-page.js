@@ -21,6 +21,8 @@ class LoginPage extends Page {
     clickSignInButton() {
         cy.get(this.signInButton).click()
     }
+
+
 }
 
 module.exports = new LoginPage();
