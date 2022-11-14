@@ -49,7 +49,7 @@
 
 * **Nota**:  Si al ejecutar aparece un error de permisos de escritura, debes proveerle los permisos siguiendo los pasos: 
     * Abra un terminal como administrador
-    * Navegue al la caperta que aparece en el mensaje de error 
+    * Navegue a la carpeta que aparece en el mensaje de error 
     * Ejecute `chmod -R 777 .`
     * Intente ejecutar Kraken nuevamente el paso 2.
     
@@ -60,7 +60,7 @@
 
 * **Nota**:  Si al ejecutar aparece un error de permisos de escritura, debes proveerle los permisos siguiendo los pasos: 
     * Abra un terminal como administrador
-    * Navegue al la caperta que aparece en el mensaje de error 
+    * Navegue a la carpeta que aparece en el mensaje de error 
     * Ejecute `chmod -R 777 .`
     * Intente ejecutar Kraken nuevamente el paso 2.
 
