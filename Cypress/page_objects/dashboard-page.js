@@ -35,11 +35,9 @@ class DashboardPage extends Page {
         let element = await this.driver.$(this.btnMenuMembers);
         return await element.click();
     }
-
     clickUserProfile() {
         cy.get(this.userProfile).click();
     }
-
     clickSignOut() {
         cy.get(this.linkSignout).click();
     }

@@ -16,7 +16,7 @@ module.exports = class TagsPage {
     }
 
     async setTagName(text) {
-        let element = await this.driver.$(this.inputTagName);
+        this.driver.$(this.inputTagName);
         return await element.setValue(text);
     }
 

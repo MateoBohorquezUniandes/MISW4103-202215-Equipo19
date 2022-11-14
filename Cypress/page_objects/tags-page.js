@@ -6,8 +6,8 @@ class TagsPage extends Page {
     }
     
     get btnTag() { return 'a[href="#/tags/"]'}
-    get btnTagNew() { return 'a[href="#/tags/new"]' }
-    get inputTagName() { return 'input.gh-input' }
+    get btnTagNew() { return 'a[href="#/tags/new/"]' }
+    get inputTagName() { return '#tag-name' }
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get tagName() { return 'h3.gh-tag-list-name' }
     get titleTagEditor() { return '.gh-editor-title' }
@@ -17,7 +17,7 @@ class TagsPage extends Page {
     }
     
     clickTagsNew() {
-        curry.get(this.btnTagNew).click();
+        cy.get(this.btnTagNew).click();
     }
 
     clickBtnTag() {
@@ -25,11 +25,11 @@ class TagsPage extends Page {
     }
 
     setTagName(text) {
-        cy.get(this.inputTagName).element.setValue(text);
+        cy.get(this.inputTagName).type(text);
     }
 
     clickBtnSaveTag() {
-        cy.get(this.btnSaveTag).element.click();
+        cy.get(this.btnSaveTag).click();
     }
 
     getTagName() {
