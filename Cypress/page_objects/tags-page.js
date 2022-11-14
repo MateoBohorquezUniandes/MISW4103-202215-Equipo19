@@ -1,36 +1,39 @@
 const Page = require("./page");
-const Page = require("./dashboard");
 
 class TagsPage extends Page {
     constructor() {
         super();
     }
-
+    
+    get btnTag() { return 'a[href="#/tags/"]'}
     get btnTagNew() { return 'a[href="#/tags/new"]' }
     get inputTagName() { return 'input.gh-input' }
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get tagName() { return 'h3.gh-tag-list-name' }
+    get titleTagEditor() { return '.gh-editor-title' }
+
+    writePostTitle(title) {
+        cy.get(this.titleTagEditor).type(title);
+    }
     
-
-    async clickTagsNew() {
-        let element = await this.driver.$(this.btnTagNew);
-        return await element.click();
+    clickTagsNew() {
+        curry.get(this.btnTagNew).click();
     }
 
-    async setTagName(text) {
-        let element = await this.driver.$(this.inputTagName);
-        return await element.setValue(text);
+    clickBtnTag() {
+        cy.get(this.btnTag).click();
     }
 
-    async clickBtnSaveTag() {
-        let element = await this.driver.$(this.btnSaveTag);
-        return await element.click();
+    setTagName(text) {
+        cy.get(this.inputTagName).element.setValue(text);
     }
 
-    async getTagName() {
-        let element = await this.driver.$$(this.tagName);
-        return await element.setTagName();
+    clickBtnSaveTag() {
+        cy.get(this.btnSaveTag).element.click();
+    }
 
+    getTagName() {
+        cy.get(this.tagName).element.setTagName();
     }
 }
 

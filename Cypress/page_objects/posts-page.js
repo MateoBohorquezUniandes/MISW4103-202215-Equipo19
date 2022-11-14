@@ -29,6 +29,7 @@ class PostsPage extends Page {
         let element = await this.driver.$(this.btnNewPost);
         return await element.click();
     }
+    
     clickPlusNewPost() {
         cy.get(this.btnPlusNewPost).click();
     }
@@ -62,8 +63,9 @@ class PostsPage extends Page {
         let element = await this.driver.$(this.linkBackPage);
         return await element.click();
     }
-    writePostTitle(title) {
-        cy.get(this.titlePostEditor).type(title);
+    async writePostTitle(title) {
+        let element = await this.driver.$(this.titlePostEditor);
+        return await element.setValue(title);
     }
     async publishPost() {
         let element = await this.driver.$(this.settingsMenu);
