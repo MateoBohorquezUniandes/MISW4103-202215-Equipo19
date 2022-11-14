@@ -37,14 +37,12 @@ class DashboardPage extends Page {
         return await element.click();
     }
 
-    async clickUserProfile() {
-        let element = await this.driver.$(this.userProfile);
-        return await element.click();
+    clickUserProfile() {
+        cy.get(this.userProfile).click();
     }
 
-    async clickSignOut() {
-        let element = await this.driver.$(this.linkSignout);
-        return await element.click();
+    clickSignOut() {
+        cy.get(this.linkSignout).click();
     }
 }
 

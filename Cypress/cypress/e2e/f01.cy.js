@@ -1,32 +1,36 @@
 const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
+const dashboardPages = require("../../page_objects/dashboard-page");
 
 describe('Crear Post', () => {
   beforeEach(() => {
-    //if(cy.get('input.password.ember-text-field.gh-input ember-view')){
-    //  cy.get('input[name="password"]').type("Reyarruinado!1");
-      //cy.get('//button/span[contains(.,"Log in")]').click();
-    //}
+    cy.viewport(1366, 768);
   });
-  it('I navigate to ghost sign in',() => {
+  it('Execute scenery feature 1',() => { 
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.wait(1000)
-  });
-  it('I enter the username', () => {
     loginPage.setUserName("i.bohorquezp@uniandes.edu.co");
-  });
-  it('I enter the password', () => {
     loginPage.setPassword("Reyarruinado!1");
-  })
-  it('I click on Sign in button',() =>{
     loginPage.clickSignInButton();
     cy.wait(5000);
-  })
-  it('I click on New post + button',() =>{
     postsPage.clickPlusNewPost();
     cy.wait(3000);
-  })
-  it('I write the title of the post "Mi Primer Post"',() =>{
     postsPage.writePostTitle("Mi Primer Post");
+    postsPage.publishPost();
+    cy.wait(2000);
+    postsPage.getConfirmationPublish();
+    postsPage.goBackEditor();
+    cy.wait(1000);
+    postsPage.goBackToPostSection();
+    dashboardPages.clickUserProfile();
+    dashboardPages.clickSignOut();
+    loginPage.seeLoginScreen();
+  })
+  it('Ver post creado',()=> {
+    cy.visit('http://localhost:2368/');
+    cy.wait(1000);
+    postsPage.goToPostPage();
+    cy.wait(1000);
+    postsPage.getPostTitle("Mi Primer Post");
   })
 })
