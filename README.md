@@ -42,6 +42,12 @@
 | 19        | Verifique que puede crear post, publicar programado, filtrar por scheduled y editar contenido                  |
 | 20        | Verifique que puede crear page, publicar programado, filtrar por scheduled y editar contenido                  |
 
+## Prerequisitos Ghost
+Como prerequisito se necesita realizar una instalación del aplicativo Ghost, teniendo en cuenta los siguientes parametros:
+1. Usar el puerto 2368 configurado para el despliegue de Ghost.
+2. Cambiar los datos del archivo `properties.json` por los datos de su usuario administrativo de Ghost.
+
+* **Nota**: Si tiene dudas de como realizar la instalación de Ghost ir al siguiente link: `https://ghost.org/docs/ghost-cli/#ghost-install`
 
 ## Instrucciones Kraken
 1. Abrir un terminal y navegue a la carpeta Kraken.
