@@ -12,9 +12,9 @@ class DashboardPage extends Page {
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
     get btnTag() { return 'a[href="#/tags/"]' }
 
-    async goToPages() {
-        const element = await this.driver.$('a[href="#/pages/"]');
-        await element.click()
+
+    goToPages() {
+        cy.get('a[href="#/pages/"]').click();
     }
 
     async goToTags() {
