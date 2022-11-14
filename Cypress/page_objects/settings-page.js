@@ -13,39 +13,32 @@ class SettingsPage extends Page {
     get lastNavigationOption() { return 'form#settings-navigation > div.sortable-objects.ember-view > div.js-draggableObject.draggable-object.ember-view:last-child > div > button' }
     get lastNavigationName() { return 'form#settings-navigation > div.sortable-objects.ember-view > div.js-draggableObject.draggable-object.ember-view:last-child > div > div > span:first-child > input' }
 
-    async clickSettingsButton() {
-        let element = await this.driver.$(this.btnSetting);
-        return await element.click();
+    clickSettingsButton() {
+        cy.get(this.btnSetting).click();
     }
 
-    async clickNavigationOption() {
-        let element = await this.driver.$(this.btnNavigation);
-        return await element.click();
+    clickNavigationOption() {
+        cy.get(this.btnNavigation).click();
     }
 
-    async clickSaveNavigationButton() {
-        let element = await this.driver.$(this.btnSaveNavigation);
-        return await element.click();
+    clickSaveNavigationButton() {
+        cy.get(this.btnSaveNavigation).click();
     }
 
-    async clickSiteMenu() {
-        let element = await this.driver.$(this.btnSiteMenu);
-        return await element.click();
+    clickSiteMenu() {
+        cy.get(this.btnSiteMenu).click();
     }
 
-    async getNavigationName(name) {
-        let element = await this.driver.$(this.lastNavigationName);
-        return await element.getValue();
+    getNavigationName() {
+        return cy.get(this.lastNavigationName);
     }
 
-    async setNavigationName(name) {
-        let element = await this.driver.$(this.inputNavigationName);
-        return await element.setValue(name);
+    setNavigationName(name) {
+        cy.get(this.inputNavigationName).type(name);
     }
 
-    async clickDeleteLastNavigationOption() {
-        let element = await this.driver.$(this.lastNavigationOption);
-        return await element.click();
+    clickDeleteLastNavigationOption() {
+        cy.get(this.lastNavigationOption).click();
     }
 }
 
