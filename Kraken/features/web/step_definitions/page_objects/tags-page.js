@@ -4,7 +4,7 @@ module.exports = class TagsPage {
     }
 
     get btnTagNew() { return 'a[href="#/tags/new/"]' }
-    get inputTagName() { return 'input.gh-input' }
+    get inputTagName() { return '#tag-name' }
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get btnDeleteTag() { return 'button.gh-btn.gh-btn-red.gh-btn-icon' }
     get tagName() {return 'h3.gh-tag-list-name'} 
@@ -16,7 +16,7 @@ module.exports = class TagsPage {
     }
 
     async setTagName(text) {
-        this.driver.$(this.inputTagName);
+        let element = await this.driver.$(this.inputTagName);
         return await element.setValue(text);
     }
 

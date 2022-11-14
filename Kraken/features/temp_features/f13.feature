@@ -15,3 +15,4 @@ Scenario: Crear, consultar, eliminar tag
   And I wait for 5 seconds
   And I go to delete tag
   And I wait for 5 seconds
+  Then I see not found the tag title "Mi Primer Tag"

@@ -209,6 +209,10 @@ When('I go to delete tag', async function() {
     return await this.tags.clickBtnDeleteTag();
 });
 
+When('I see not found the tag title {string}', async function(text) {
+    return await this.tags.getTagName(text);
+});
+
 //Settings
 When('I click menu settings', async function () {
     this.settingsPage.clickSettingsButton()
