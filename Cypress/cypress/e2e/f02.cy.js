@@ -1,21 +1,46 @@
 const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
+const dashboardPages = require("../../page_objects/dashboard-page");
 
-describe('Crear Post', () => {
+describe('Editar post', () => {
   beforeEach(() => {
-    //if(cy.get('input.password.ember-text-field.gh-input ember-view')){
-    //  cy.get('input[name="password"]').type("Reyarruinado!1");
-      //cy.get('//button/span[contains(.,"Log in")]').click();
-    //}
+    cy.viewport(1366, 768);
   });
-  it('I navigate to ghost sign in',() => {
-    loginPage.visit('http://localhost:2368/ghost');
+  it('Execute scenery feature 2',() => { 
+    loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.wait(1000)
     loginPage.setUserName("i.bohorquezp@uniandes.edu.co");
     loginPage.setPassword("Reyarruinado!1");
     loginPage.clickSignInButton();
-    cy.wait(5000);
+    postsPage.clickPlusNewPost();
+    cy.wait(2000);
+    postsPage.writePostTitle("Feature 2");
+    cy.wait(2000);
+    postsPage.publishPost();
+    cy.wait(1000);
+    postsPage.getConfirmationPublish();
+    postsPage.goBackEditor();
+    cy.wait(1000);
+    postsPage.goBackToPostSection();
+    cy.wait(2000);
     postsPage.goPostSection();
-    cy.wait(5000);
+    postsPage.openEditorPost("Feature 2");
+    cy.wait(1000);
+    postsPage.cleanPostTitle();
+    postsPage.writePostTitle("Post Editado");
+    postsPage.updatePost();
+    cy.wait(2000);
+    postsPage.getConfirmationUpdate()
+    postsPage.goBackToPostSection();
+    cy.wait(2000);
+    dashboardPages.clickUserProfile();
+    dashboardPages.clickSignOut();
+    loginPage.seeLoginScreen();
+  })
+  it('Ver post editado',()=> {
+    cy.visit('http://localhost:2368/');
+    postsPage.searchPost("Post Editado");
+    cy.wait(1000);
+    postsPage.getPostTitle("Post Editado");
   })
 })
