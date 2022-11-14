@@ -25,9 +25,8 @@ class PostsPage extends Page {
     get btnUpdate() { return '.gh-editor-save-trigger' }
     get updateConfirmation() { return 'button.gh-editor-save-trigger[disabled]' }
 
-    async clickNewPost() {
-        let element = await this.driver.$(this.btnNewPost);
-        return await element.click();
+    clickNewPost() {
+        cy.get(this.btnNewPost).click();
     }
     
     clickPlusNewPost() {
@@ -67,40 +66,29 @@ class PostsPage extends Page {
         let element = await this.driver.$(this.titlePostEditor);
         return await element.setValue(title);
     }
-    async publishPost() {
-        let element = await this.driver.$(this.settingsMenu);
-        await element.click();
-        element = await this.driver.$(this.btnPublish);
-        await element.click();
-        element = await this.driver.$(this.btnContinueFinalReview);
-        await element.click();
-        element = await this.driver.$(this.btnPublishPostRightNow);
-        return await element.click();
+    publishPost() {
+        cy.get(this.settingsMenu).click();
+        cy.get(this.btnPublish).click();
+        cy.get(this.btnContinueFinalReview).click();
+        cy.get(this.btnPublishPostRightNow).click();
     }
-    async getConfirmationPublish() {
-        let element = await this.driver.$(this.publishConfirmation)
-        return element
+    getConfirmationPublish() {
+        expect(cy.get(this.publishConfirmation));
     }
-    async goBackEditor() {
-        let element = await this.driver.$(this.btnEditor);
-        return await element.click();
+    goBackEditor() {
+        cy.get(this.btnEditor).click();
     }
-    async goBackToPostSection() {
-        let element = await this.driver.$(this.btnBack);
-        await element.click();
+    goBackToPostSection() {
+        cy.get(this.btnBack).click();
     }
-    async goToPostPage() {
-        let element = await this.driver.$(this.linkTitlePost);
-        await element.click();
+    goToPostPage() {
+        cy.get(this.linkTitlePost).click();
     }
-    async getPostTitle(title) {
-        var selector = '//header/h1[contains(.,"' + title + '")]';
-        let element = await this.driver.$(selector);
-        await element.click();
+    getPostTitle(title) {
+        cy.get('h1').contains(title).click();
     }
-    async goPostSection() {
-        let element = await this.driver.$(this.btnPostSection);
-        await element.click();
+    goPostSection() {
+        cy.get(this.btnPostSection).click();
     }
     async openEditorPost(post) {
         var selector = '//a/h3[contains(.,"' + post + '")]'
