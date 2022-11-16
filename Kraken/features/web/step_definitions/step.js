@@ -137,8 +137,30 @@ Then('I see first post with title {kraken-string}', async function (title) {
 When('I filter by oldest', async function () {
     return await this.pagesPage.clickSortPagesByOldest();
 });
+
 Then('I see the page {string} with the Draft', async function (page) {
     expect(await this.pagesPage.getDraftOnList(page))
+})
+
+When('I open settings page', async function () {
+    return await this.pagesPage.clickPageSettings();
+});
+
+When('I click delete option', async function () {
+    return await this.pagesPage.clickDelete();
+});
+
+When('I click delete page', async function () {
+    return await this.pagesPage.clickDelete();
+});
+
+When('I confirm delete the page', async function () {
+    return await this.pagesPage.clickDeleteConfirmation();
+});
+
+Then('I see the first page title is diferent than {string}', async function (pageTitle) {
+    const element = await this.pagesPage.getFirstPageTitle();
+    expect(element).to.not.eql(pageTitle);
 })
 //Fin seccion page
 

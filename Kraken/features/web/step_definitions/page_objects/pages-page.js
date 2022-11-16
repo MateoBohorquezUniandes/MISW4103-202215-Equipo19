@@ -85,4 +85,24 @@ module.exports = class PagesPage {
         return element.click();
     }
 
+    async clickPageSettings() {
+        let element = await this.driver.$('button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon');
+        await element.click();
+    }
+
+    async clickDelete() {
+        let element = await this.driver.$('#entry-controls > div.settings-menu.settings-menu-pane.settings-menu-pane-main > div.settings-menu-content > form > button');
+        return await element.click();
+    }
+
+    async clickDeleteConfirmation() {
+        const element = await this.driver.$('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
+        return await element.click();
+    }
+
+    async getFirstPageTitle() {
+        let element = await this.driver.$('section.view-container.content-list > div.gh-list-sticky > ol.pages-list.gh-list.feature-memberAttribution >li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)');
+        return await element.getText();
+    }
+
 }
