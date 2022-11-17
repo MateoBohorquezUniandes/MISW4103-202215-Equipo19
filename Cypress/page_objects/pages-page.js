@@ -69,6 +69,22 @@ class PagesPage extends Page {
         cy.get('li.ember-power-select-option:nth-child(2)').click();
     }
 
+    clickPageSettings() {
+        cy.get('button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon').click();
+    }
+
+    clickDelete() {
+        cy.get('#entry-controls > div.settings-menu.settings-menu-pane.settings-menu-pane-main > div.settings-menu-content > form > button').click();
+    }
+
+    clickDeleteConfirmation() {
+        cy.get('.gh-btn.gh-btn-red.gh-btn-icon.ember-view').click();
+    }
+
+    getFirstPageTitle() {
+        cy.get('section.view-container.content-list > div.gh-list-sticky > ol.pages-list.gh-list.feature-memberAttribution >li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)').click();
+    }
+
 }
 
 

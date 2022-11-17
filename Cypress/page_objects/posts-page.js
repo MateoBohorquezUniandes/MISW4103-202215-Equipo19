@@ -32,39 +32,35 @@ class PostsPage extends Page {
         cy.get(this.btnPlusNewPost).click();
     }
 
-    async clickOptionSort() {
-        let element = await this.driver.$(this.linkOptionSortPost);
-        return await element.click();
+    clickOptionSort() {
+        cy.get(this.linkOptionSortPost).click();
     }
 
-    async clickSortPostByOldest() {
-        let element = await this.driver.$(this.sortPostByOdelst);
-        return await element.click();
+    clickSortPostByOldest() {
+        cy.get(this.sortPostByOdelst).click();
     }
 
-    async clickFirstPost() {
-        let element = await this.driver.$(this.fistPostList);
-        return await element.click();
+    clickFirstPost() {
+        cy.get(this.fistPostList).click();
     }
 
-    async clickLastPost() {
-        let element = await this.driver.$(this.lastPostList);
-        return await element.click();
+    clickLastPost() {
+        cy.get(this.lastPostList).click();
     }
 
-    async getPostTitleEditor() {
-        let element = await this.driver.$(this.titlePostEditor);
-        return await element.getValue();
+    getPostTitleEditor() {
+        return cy.get(this.titlePostEditor)
     }
 
-    async clickBackPage() {
-        let element = await this.driver.$(this.linkBackPage);
-        return await element.click();
+    clickBackPage() {
+        cy.get(this.linkBackPage).click();
     }
+
     writePostTitle(title) {
         cy.get(this.titlePostEditor).type(title);
     }
-    cleanPostTitle(){
+
+    cleanPostTitle() {
         cy.get(this.titlePostEditor).clear()
     }
     publishPost() {
