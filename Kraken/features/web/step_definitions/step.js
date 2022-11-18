@@ -93,6 +93,11 @@ When('I search the post {string}', async function (title) {
 When('I going back to the post editor', async function () {
     await this.postsPage.goBackEditor();
 });
+
+When('I going to the post editor', async function () {
+    await this.postsPage.goEditor();
+});
+
 When('I go back from the editor to the post section', async function () {
     await this.postsPage.goBackToPostSection();
 });
