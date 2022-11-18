@@ -14,6 +14,7 @@ Scenario: Crear, guardar y consultar un page en draft
   And I enter a new body "Feature 10" for page
   And I wait for 5 seconds
   And I go back to the pages list
+  And I wait for 2 seconds
   And I filter by newest
   And I wait for 2 seconds
   Then I see the page "Feature 10" with the Draft
