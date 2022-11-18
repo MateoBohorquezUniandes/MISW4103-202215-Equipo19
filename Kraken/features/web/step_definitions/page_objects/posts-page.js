@@ -24,8 +24,13 @@ module.exports = class PostsPage {
     get linkTitlePost(){return 'a[href="/mi-primer-post/"]'}
     get linkPostTitle(){return 'a[href="#/posts/"]'}
     get btnPostSection(){return 'li.gh-nav-list-new'}
+    get btnPostSelection(){return 'h3.gh-content-entry-title'}
+    get btnSettings(){return 'button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon'}
     get btnUpdate(){return '.gh-editor-save-trigger'}
     get updateConfirmation(){return 'button.gh-editor-save-trigger[disabled]'}
+    get btnDeletePost() {return 'button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button'}
+    get btnConfirmDeletePost() {return '.gh-btn.gh-btn-red.gh-btn-icon.ember-view'}
+
 
     async clickNewPost() {
         let element = await this.driver.$(this.btnNewPost);
@@ -33,6 +38,11 @@ module.exports = class PostsPage {
     }
     async clickPlusNewPost() {
         let element = await this.driver.$(this.btnPlusNewPost);
+        return await element.click();
+    }
+
+    async clickDeleteConfirmationPost() {
+        const element = await this.driver.$(this.btnConfirmDeletePost);
         return await element.click();
     }
 
@@ -65,6 +75,7 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.linkBackPage);
         return await element.click();
     }
+
     async writePostTitle(title) {
         let element = await this.driver.$(this.titlePostEditor);
         return await element.setValue(title);
@@ -79,7 +90,6 @@ module.exports = class PostsPage {
         element = await this.driver.$(this.btnPublishPostRightNow);
         return await element.click();
     }
-
 
     async unpublishPost(){
         element = await this.driver.$(this.btnUnpublish);
@@ -119,6 +129,22 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.linkPostTitle);
         await element.click();
     }
+
+    async clickPostSelected() {
+        let element = await this.driver.$(this.btnPostSelection);
+        return await element.click();
+    }
+
+    async clickSettingsButton() {
+        let element = await this.driver.$(this.btnSettings);
+        return await element.click();
+    }
+
+    async clickBtnDeletePost() {
+        let element = await this.driver.$(this.btnDeletePost);
+        return await element.click();
+    }
+    
     async getPostTitle(title){
         var selector = '//header/h1[contains(.,"' + title + '")]';
         let element = await this.driver.$(selector);

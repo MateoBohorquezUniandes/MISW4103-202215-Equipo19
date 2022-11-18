@@ -23,7 +23,21 @@ Then('I see the login screen', async function () {
 When('I click user profile', async function () {
     this.dashboardPages.clickUserProfile()
 });
+
 //Sección Post
+
+When('I confirm delete the post', async function () {
+    return await this.postsPage.clickDeleteConfirmationPost();
+});
+
+When('I go to the page post', async function () {
+    return await this.postsPage.goToPagePost();
+});
+
+When('I go to delete post', async function() {
+    return await this.postsPage.clickBtnDeletePost();
+});
+
 When('I click on New post + button', async function () {
     return await this.postsPage.clickPlusNewPost();
 });
@@ -45,13 +59,24 @@ When('I go the post unpublish', async function () {
 Then('I see the confirmation of publish', async function () {
     expect(await this.postsPage.getConfirmationPublish());
 });
+
 When('I go to the post page', async function () {
     return await this.postsPage.goToPostPage();
 });
 
-When('I go to the page post', async function () {
-    return await this.postsPage.goToPagePost();
+When('I go to the post title {kraken-string}', async function (text) {
+    return await this.postsPage.goToPagePost(text);
+
 });
+
+When('I click select the post {string}', async function (title){
+    expect(await this.postsPage.clickPostSelected(title));
+});
+
+When('I click on settings', async function(){
+    expect(await this.postsPage.clickSettingsButton());
+});
+
 
 Then('I see the post title {string}', async function (title) {
     expect(await this.postsPage.getPostTitle(title));
