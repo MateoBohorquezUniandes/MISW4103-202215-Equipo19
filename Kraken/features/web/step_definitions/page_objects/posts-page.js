@@ -25,6 +25,7 @@ module.exports = class PostsPage {
     get linkTitlePost(){return 'a[href="/mi-primer-post/"]'}
     get linkPostTitle(){return 'a[href="#/posts/"]'}
     get btnPostSection(){return 'li.gh-nav-list-new'}
+    get btnPostPublished() {return 'li.gh-nav-viewname'}
     get btnPostSelection(){return 'h3.gh-content-entry-title'}
     get btnSettings(){return 'button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon'}
     get btnUpdate(){return '.gh-editor-save-trigger'}
@@ -139,6 +140,11 @@ module.exports = class PostsPage {
 
     async clickPostSelected() {
         let element = await this.driver.$(this.btnPostSelection);
+        return await element.click();
+    }
+
+    async clickPostPublished() {
+        let element = await this.driver.$(this.btnPostPublished);
         return await element.click();
     }
 

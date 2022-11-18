@@ -73,6 +73,11 @@ When('I click select the post {string}', async function (title){
     expect(await this.postsPage.clickPostSelected(title));
 });
 
+When('I click on published posts', async function (){
+    expect(await this.postsPage.clickPostPublished());
+});
+
+
 When('I click on settings', async function(){
     expect(await this.postsPage.clickSettingsButton());
 });
