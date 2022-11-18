@@ -19,11 +19,13 @@ Scenario: Crear post
   And I wait for 2 seconds
   And I publish the post preview
   And I wait for 2 seconds
+  And I publish the post
+  And I see the confirmation of publish
+  And I wait for 2 seconds
   And I going to the post editor
   And I wait for 2 seconds
   Then I see the login screen
-  And I go back from the editor to the post section
-  And I wait for 5 seconds
+  And I wait for 2 seconds
   And I click user profile
   And I click sign out
  
