@@ -5,6 +5,7 @@ class TagsPage extends Page {
         super();
     }
     
+    get mainPanel() { return 'main.gh-main ' }
     get btnTag() { return 'a[href="#/tags/"]'}
     get btnTagNew() { return 'a[href="#/tags/new/"]' }
     get inputTagName() { return '#tag-name' }
@@ -34,6 +35,14 @@ class TagsPage extends Page {
 
     getTagName() {
         cy.get(this.tagName).element.setTagName();
+    }
+
+    getTagNameFromList(tag) {
+        expect(cy.get(this.tagName).contains(tag));
+    }
+
+    scrollToFinal() {
+        cy.get(this.mainPanel).scrollTo('bottom');
     }
 }
 

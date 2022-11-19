@@ -30,6 +30,8 @@ class PostsPage extends Page {
     get btnSettings() { return 'button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon' }
     get btnDeletePost() { return 'button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button' }
     get btnConfirmDeletePost() { return '.gh-btn.gh-btn-red.gh-btn-icon.ember-view' }
+    get listTagsEditor() { return 'div#tag-input' }
+    get tagOnList(){ return 'li.ember-power-select-option'}
 
 
     clickNewPost() {
@@ -75,6 +77,9 @@ class PostsPage extends Page {
         cy.get(this.btnPublish).click();
         cy.get(this.btnContinueFinalReview).click();
         cy.get(this.btnPublishPostRightNow).click();
+    }
+    openSettingsMenu() {
+        cy.get(this.settingsMenu).click();
     }
     getConfirmationPublish() {
         expect(cy.get(this.publishConfirmation));
@@ -143,7 +148,11 @@ class PostsPage extends Page {
     clickFilterPagesBySchedule() {
         cy.get("div.gh-contentfilter-menu.gh-contentfilter-type").click();
         cy.get('li.ember-power-select-option:nth-child(4)').click();
-    }ƒ
+    }
+    asingTag(tag){
+        cy.get(this.listTagsEditor).click();
+        cy.get(this.tagOnList).contains(tag).click();
+    }
 
 }
 
