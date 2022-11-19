@@ -2,7 +2,6 @@ const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
 const dashboardPages = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
-const { it } = require("node:test");
 
 describe('Crear Post', () => {
     beforeEach(() => {

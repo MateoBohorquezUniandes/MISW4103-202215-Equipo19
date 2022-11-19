@@ -32,8 +32,10 @@ class PagesPage extends Page {
     }
 
     clickSortPagesByNewest() {
-        cy.get('div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger').click();
-        cy.get('li.ember-power-select-option:nth-child(1)').click();
+        cy.get('span').contains('Newest first').click();
+        cy.get('li').contains("Newest first").click();
+        //cy.get('div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger').click();
+        //cy.get('li.ember-power-select-option:nth-child(1)').click();
     }
 
     publishPage() {
