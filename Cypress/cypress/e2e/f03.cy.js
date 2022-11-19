@@ -1,23 +1,40 @@
 const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
-const dashboardPage = require("../../page_objects/dashboard-page");
+const screenshotFunction = require("../../page_objects/screenshot-function");
 
-
-describe('Eliminar y Consultar post', () => {
+describe('Feature 3', () => {
   beforeEach(() => {
-    loginPage.visit('http://localhost:2368/ghost/#/signin');
-    cy.wait(2000)
+    cy.viewport(1366, 768);
   });
-  it('Crear opción de navegación', () => {
-    // Login
+  it('Eliminar y Consultar post', () => {
+    loginPage.visit('http://localhost:2368/ghost/#/signin');
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
     loginPage.setUserName("i.bohorquezp@uniandes.edu.co");
-    cy.wait(1000)
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
     loginPage.setPassword("Reyarruinado!1");
-    cy.wait(1000)
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
     loginPage.clickSignInButton();
-    cy.wait(3000)
-    // Page post
-    dashboardPage.clickMenuPost();
-    cy.wait(1000)
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(3000);
+    postsPage.goToPagePost();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.clickPostSelected('Mi Primer Post');
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.clickSettingsButton();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.clickBtnDeletePost();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.clickDeleteConfirmationPost();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    loginPage.seeLoginScreen();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
   });
 })

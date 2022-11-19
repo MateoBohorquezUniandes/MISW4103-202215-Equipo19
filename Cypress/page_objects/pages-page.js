@@ -85,6 +85,21 @@ class PagesPage extends Page {
         cy.get('section.view-container.content-list > div.gh-list-sticky > ol.pages-list.gh-list.feature-memberAttribution >li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)').click();
     }
 
+    publishScheduledPage() {
+        cy.get('.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger').click();
+        cy.get('div.gh-publish-setting.last > button.gh-publish-setting-title').click();
+        cy.get('div.gh-publish-schedule > div:last-child').click();
+        cy.get('button.gh-btn.gh-btn-black.gh-btn-large').click();
+        cy.get('.gh-btn.gh-btn-large.gh-btn-pulse.ember-view').click();
+    }
+
+    btnBackEditor() {
+        cy.get("button.gh-btn-editor.gh-publish-back-button").click();
+    }
+    clickFilterPagesBySchedule() {
+        cy.get("div.gh-contentfilter-menu.gh-contentfilter-type").click();
+        cy.get('li.ember-power-select-option:nth-child(4)').click();
+    }
 }
 
 

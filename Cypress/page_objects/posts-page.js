@@ -24,6 +24,12 @@ class PostsPage extends Page {
     get btnPostSection() { return 'li.gh-nav-list-new' }
     get btnUpdate() { return '.gh-editor-save-trigger' }
     get updateConfirmation() { return 'button.gh-editor-save-trigger[disabled]' }
+    get linkPostTitle() { return 'ul.gh-nav-list.gh-nav-manage > li:nth-child(1) > a:nth-child(1)' }
+    get btnPostSelection() { return 'h3.gh-content-entry-title' }
+    get btnSettings() { return 'button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon' }
+    get btnDeletePost() { return 'button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button' }
+    get btnConfirmDeletePost() { return '.gh-btn.gh-btn-red.gh-btn-icon.ember-view' }
+
 
     clickNewPost() {
         cy.get(this.btnNewPost).click();
@@ -100,6 +106,40 @@ class PostsPage extends Page {
     searchPost(post) {
         cy.get('h2').contains(post).click();;
     }
+
+    goToPagePost() {
+        cy.get(this.linkPostTitle).click();
+    }
+
+    clickPostSelected() {
+        cy.get(this.btnPostSelection).click();
+    }
+
+    clickSettingsButton() {
+        cy.get(this.btnSettings).click();
+    }
+
+    clickBtnDeletePost() {
+        cy.get(this.btnDeletePost).click();
+    }
+
+    clickDeleteConfirmationPost() {
+        cy.get(this.btnConfirmDeletePost).click();
+    }
+
+    publishSchedulePost() {
+        cy.get('.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger').click();
+        cy.get('div.gh-publish-setting.last > button.gh-publish-setting-title').click();
+        cy.get('div.gh-publish-schedule > div:last-child').click();
+        cy.get('button.gh-btn.gh-btn-black.gh-btn-large').click();
+        cy.get('.gh-btn.gh-btn-large.gh-btn-pulse.ember-view').click();
+    }
+
+    clickFilterPagesBySchedule() {
+        cy.get("div.gh-contentfilter-menu.gh-contentfilter-type").click();
+        cy.get('li.ember-power-select-option:nth-child(4)').click();
+    }ƒ
+
 }
 
 module.exports = new PostsPage();
