@@ -23,6 +23,10 @@ class PagesPage extends Page {
         cy.get('a[href="#/pages/"]').click()
     }
 
+    goBackToPagesListFilter() {
+        cy.get('a.gh-editor-back-button').click()
+    }
+
     clickTheFirstPage() {
         cy.get('section.view-container.content-list > div.gh-list-sticky > ol.pages-list.gh-list.feature-memberAttribution >li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)').click();
     }
@@ -64,6 +68,9 @@ class PagesPage extends Page {
     getDraftOnList(title) {
         cy.get('h3').contains(title).click();
         expect(cy.get('div').contains("Draft - Saved"));
+    }
+    getBodyTextEditor(title) {
+        expect(cy.get('.koenig-editor__editor.__mobiledoc-editor').contains(title));
     }
 
     clickSortPagesByOldest() {
