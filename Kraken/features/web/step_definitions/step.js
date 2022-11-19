@@ -73,6 +73,11 @@ When('I click select the post {string}', async function (title){
     expect(await this.postsPage.clickPostSelected(title));
 });
 
+When('I click on published posts', async function (){
+    expect(await this.postsPage.clickPostPublished());
+});
+
+
 When('I click on settings', async function(){
     expect(await this.postsPage.clickSettingsButton());
 });
@@ -93,6 +98,11 @@ When('I search the post {string}', async function (title) {
 When('I going back to the post editor', async function () {
     await this.postsPage.goBackEditor();
 });
+
+When('I going to the post editor', async function () {
+    await this.postsPage.goEditor();
+});
+
 When('I go back from the editor to the post section', async function () {
     await this.postsPage.goBackToPostSection();
 });

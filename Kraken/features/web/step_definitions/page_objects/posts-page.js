@@ -15,15 +15,17 @@ module.exports = class PostsPage {
     get btnPublish(){ return 'button.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger'}
     get btnPublishPostPreview(){ return 'button.gh-btn.gh-btn-editor.gh-publish-trigger'}
     get btnUnpublish(){ return 'button.gh-btn.gh-btn-editor.gh-unpublish-trigger'}
-    get btnPreviewPost(){ return 'button.gh-btn.gh-btn-editor.gh-editor-preview-trigger'}
+    get btnPreviewPost(){ return '.gh-btn.gh-btn-editor.gh-editor-preview-trigger' }
     get btnContinueFinalReview(){ return 'button.gh-btn.gh-btn-black.gh-btn-large'}
     get btnPublishPostRightNow(){ return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view'}
     get publishConfirmation(){return 'div.gh-post-bookmark'}
     get btnEditor(){return 'button.gh-publish-back-button'}
+    get btnGoEditor() {return '.gh-btn-editor.gh-editor-back-button'}
     get btnBack(){return 'a.gh-editor-back-button'}
     get linkTitlePost(){return 'a[href="/mi-primer-post/"]'}
     get linkPostTitle(){return 'a[href="#/posts/"]'}
     get btnPostSection(){return 'li.gh-nav-list-new'}
+    get btnPostPublished() {return 'li.gh-nav-viewname'}
     get btnPostSelection(){return 'h3.gh-content-entry-title'}
     get btnSettings(){return 'button.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon'}
     get btnUpdate(){return '.gh-editor-save-trigger'}
@@ -99,12 +101,12 @@ module.exports = class PostsPage {
     }
 
     async publishPostPreview(){
-        element = await this.driver.$(this.btnPublishPostPreview);
+        let element = await this.driver.$(this.btnPublishPostPreview);
         await element.click();
     }
 
     async previewPost(){
-        element = await this.driver.$(this.btnPreviewPost);
+        let element = await this.driver.$(this.btnPreviewPost);
         await element.click();
     }
 
@@ -116,6 +118,12 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.btnEditor);
         return await element.click();
     }
+
+    async goEditor(){ 
+        let element = await this.driver.$(this.btnGoEditor);
+        return await element.click();
+    }
+
     async goBackToPostSection(){
         let element = await this.driver.$(this.btnBack);
         await element.click();
@@ -132,6 +140,11 @@ module.exports = class PostsPage {
 
     async clickPostSelected() {
         let element = await this.driver.$(this.btnPostSelection);
+        return await element.click();
+    }
+
+    async clickPostPublished() {
+        let element = await this.driver.$(this.btnPostPublished);
         return await element.click();
     }
 
