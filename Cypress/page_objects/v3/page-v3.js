@@ -1,4 +1,3 @@
-const Page = require("./page");
 
 module.exports = class Page {
 

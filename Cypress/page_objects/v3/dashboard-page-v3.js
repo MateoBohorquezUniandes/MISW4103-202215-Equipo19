@@ -1,4 +1,4 @@
-const Page = require("./page");
+const Page = require("./page-v3");
 
 class DashboardPage extends Page {
 
@@ -36,6 +36,9 @@ class DashboardPage extends Page {
 
     clickUserProfile() {
         cy.get(this.userProfile).click();
+        Cypress.on('uncaught:exception', (err, runnable) => {
+            return false
+          });
     }
     clickViewYourProfile() {
         cy.get('a').contains('Your profile').click();

@@ -1,4 +1,4 @@
-const Page = require("./page");
+const Page = require("./page-v3");
 
 class LoginPage extends Page {
 
@@ -6,9 +6,9 @@ class LoginPage extends Page {
         super();
     }
 
-    get username() { return '#identification' };
-    get password() { return '#password' }
-    get signInButton() { return 'button.login.gh-btn.gh-btn-login.gh-btn-block.gh-btn-icon.ember-view' }
+    get username() { return 'input[name="identification"]' };
+    get password() { return 'input[name="password"]' }
+    get signInButton() { return 'button.login.gh-btn.gh-btn-blue.gh-btn-block.gh-btn-icon.ember-view' }
 
     setUserName(username) {
         cy.get(this.username).type(username)

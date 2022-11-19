@@ -1,4 +1,4 @@
-const Page = require("./page");
+const Page = require("./page-v3");
 
 class PostsPage extends Page {
     constructor() {
@@ -14,14 +14,15 @@ class PostsPage extends Page {
     get titlePostEditor() { return '.gh-editor-title' }
     get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
     get settingsMenu() { return 'button.settings-menu-toggle' }
-    get btnPublish() { return 'button.gh-publish-trigger' }
+    get btnPublish() { return 'div.gh-publishmenu-trigger' }
+    get btnPublish2() { return 'button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view' }
     get btnContinueFinalReview() { return 'button.gh-btn.gh-btn-black.gh-btn-large' }
     get btnPublishPostRightNow() { return 'button.gh-btn.gh-btn-large.gh-btn-pulse.ember-view' }
-    get publishConfirmation() { return 'div.gh-post-bookmark' }
+    get publishConfirmation() { return 'span.gh-notification-title' }
     get btnEditor() { return 'button.gh-publish-back-button' }
     get btnBack() { return 'a.gh-editor-back-button' }
     get linkTitlePost() { return 'a[href="/mi-primer-post/"]' }
-    get btnPostSection() { return 'li.gh-nav-list-new' }
+    get btnPostSection() { return 'a[href="#/posts/"]' }
     get btnPostPublished() {return 'li.gh-nav-viewname'}
     get btnUpdate() { return '.gh-editor-save-trigger' }
     get updateConfirmation() { return 'button.gh-editor-save-trigger[disabled]' }
@@ -73,22 +74,21 @@ class PostsPage extends Page {
         cy.get(this.titlePostEditor).clear()
     }
     publishPost() {
-        cy.get(this.settingsMenu).click();
+        cy.get('.koenig-editor__editor.__mobiledoc-editor').click();
         cy.get(this.btnPublish).click();
-        cy.get(this.btnContinueFinalReview).click();
-        cy.get(this.btnPublishPostRightNow).click();
+        cy.get(this.btnPublish2).contains("Publish").click();
     }
     openSettingsMenu() {
         cy.get(this.settingsMenu).click();
     }
     getConfirmationPublish() {
-        expect(cy.get(this.publishConfirmation));
+        expect(cy.get(this.publishConfirmation).contains("Published"));
     }
     goBackEditor() {
         cy.get(this.btnEditor).click();
     }
     goBackToPostSection() {
-        cy.get(this.btnBack).click();
+        cy.get(this.btnPostSection).first().click();
     }
     goToPostPage() {
         cy.get(this.linkTitlePost).click();
@@ -98,6 +98,9 @@ class PostsPage extends Page {
     }
     goPostSection() {
         cy.get(this.btnPostSection).click();
+    }
+    focusPostSection(){
+        cy.get(this.btnPostSection).first().focus()
     }
     openEditorPost(post) {
         cy.get('h3').contains(post).click();

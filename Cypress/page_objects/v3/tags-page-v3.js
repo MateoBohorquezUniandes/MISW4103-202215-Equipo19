@@ -1,4 +1,4 @@
-const Page = require("./page");
+const Page = require("./page-v3");
 
 class TagsPage extends Page {
     constructor() {

@@ -1,7 +1,7 @@
-const loginPage = require("../../page_objects/login-page");
-const postsPage = require("../../page_objects/posts-page");
-const dashboardPages = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
+const loginPage = require("../../page_objects/v3/login-page-v3");
+const postsPage = require("../../page_objects/v3/posts-page-v3");
+const dashboardPages = require("../../page_objects/v3/dashboard-page-v3");
+const screenshotFunction = require("../../page_objects/v3/screenshot-function-v3");
 
 describe('Crear Post', () => {
   beforeEach(() => {
@@ -18,6 +18,7 @@ describe('Crear Post', () => {
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(5000);
+    postsPage.focusPostSection();
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
@@ -25,15 +26,16 @@ describe('Crear Post', () => {
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     postsPage.publishPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000);
+    cy.wait(1000);
     postsPage.getConfirmationPublish();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    postsPage.goBackEditor();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     postsPage.goBackToPostSection();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(10000);
     dashboardPages.clickUserProfile();
+    cy.wait(5000);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     dashboardPages.clickSignOut();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
