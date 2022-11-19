@@ -11,21 +11,21 @@ Scenario: Crear post
   And I click on New post + button
   And I wait for 3 seconds
   And I write the title of the post 'Mi Primer Post'
-  And I wait for 10 seconds
+  And I wait for 2 seconds
+  And I click on settings
+  And I wait for 2 seconds
+  And I click on settings
   And I preview the post
+  And I wait for 2 seconds
   And I publish the post preview
   And I wait for 2 seconds
+  And I publish the post
   And I see the confirmation of publish
-  And I going back to the post editor
-  And I wait for 1 seconds
-  And I go back from the editor to the post section
+  And I wait for 2 seconds
+  And I going to the post editor
+  And I wait for 2 seconds
   Then I see the login screen
-  And I send a signal to user 2 containing "post_creado"
-
-@user2 @web
-Scenario: Ver el post creado
-  And I send a signal to user 2 containing "post_published"
-  Given I wait for a signal containing "post_published" for 120 seconds
-  And I go to the post page
-  And I wait for 1 seconds
-  Then I see the post title 'Mi Primer Post'
+  And I wait for 2 seconds
+  And I click user profile
+  And I click sign out
+ 

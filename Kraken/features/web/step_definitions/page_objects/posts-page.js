@@ -31,7 +31,13 @@ module.exports = class PostsPage {
     get btnUpdate(){return '.gh-editor-save-trigger'}
     get updateConfirmation(){return 'button.gh-editor-save-trigger[disabled]'}
     get btnDeletePost() {return 'button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button'}
-    get btnConfirmDeletePost() {return '.gh-btn.gh-btn-red.gh-btn-icon.ember-view'}
+    get btnConfirmDeletePost() { return '.gh-btn.gh-btn-red.gh-btn-icon.ember-view' }
+    get tagDropdown() { return 'form > div.form-group:nth-child(3) > div.ember-basic-dropdown > div.ember-basic-dropdown-trigger' }
+    get tagOption() { return 'li.ember-power-select-option' }
+    get linkOptiontagPost() { return 'div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-tag' }
+    get sortPostByFirstTag() { return 'li.ember-power-select-option:nth-child(3)' }
+    get firstPost() { return 'section.view-container.content-list > ol.posts-list > li:nth-child(1) > a > h3' }
+
 
 
     async clickNewPost() {
@@ -193,5 +199,29 @@ module.exports = class PostsPage {
         await element.click();
     }
 
+    async assignTag() {
+        let element = await this.driver.$(this.settingsMenu);
+        await element.click();
+        element = await this.driver.$(this.tagDropdown);
+        await element.click();
+        element = await this.driver.$(this.tagOption);
+        await element.click();
+        element = await this.driver.$(this.settingsMenu);
+        await element.click();
+    }
 
+    async clickOptionTag() {
+        let element = await this.driver.$(this.linkOptiontagPost);
+        return await element.click();
+    }
+
+    async clickFilterTag() {
+        let element = await this.driver.$(this.sortPostByFirstTag);
+        return await element.click();
+    }
+
+    async getFirstPostTitle() {
+        let element = await this.driver.$(this.firstPost);
+        return await element.getText();
+    }
 }

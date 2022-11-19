@@ -115,6 +115,21 @@ When('I update the post', async function () {
 Then('I see the confirmation of update', async function () {
     expect(await this.postsPage.getConfirmationUpdate());
 });
+
+When('I click tag option', async function () {
+    await this.postsPage.clickOptionTag();
+});
+
+When('I filter by the first tag', async function () {
+    await this.postsPage.clickFilterTag();
+});
+
+Then('I see post title {kraken-string}', async function (title) {
+    const pageTitle = await this.postsPage.getFirstPostTitle(title);
+    console.log("PGETITLE", pageTitle, " title", title);
+    expect(pageTitle).to.eql(title)
+});
+
 //Seccion Pages
 When('I go to pages', async function () {
     return await this.dashboardPages.goToPages();
@@ -222,6 +237,12 @@ When('I click last post', async function () {
 When('I click back page', async function () {
     this.postsPage.clickBackPage()
 });
+
+When('I assign tag to post', async function () {
+    this.postsPage.assignTag()
+});
+
+
 When('I click menu members', async function () {
     this.dashboardPages.clickBtnMenuMembers()
 });
@@ -268,6 +289,10 @@ When('I go to delete tag', async function() {
 
 When('I see not found the tag title {string}', async function(text) {
     return await this.tags.getTagName(text);
+});
+
+When('I go back from editor to tag list', async function () {
+    return await this.tags.clickGoBackTags;
 });
 
 //Settings
