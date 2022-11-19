@@ -10,7 +10,9 @@ class DashboardPage extends Page {
     get btnMenuMembers() { return 'ul.gh-nav-list.gh-nav-manage > li:nth-child(4) > a:nth-child(1)' }
     get userProfile() { return 'div.ember-view.ember-basic-dropdown-trigger.outline-0.pointer' }
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
+    get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
     get btnTag() { return 'a[href="#/tags/"]' }
+    get dashboardTitle(){ return 'h2.gh-canvas-title'}
 
     goToPages() {
         cy.get('a[href="#/pages/"]').click();
@@ -35,9 +37,14 @@ class DashboardPage extends Page {
     clickUserProfile() {
         cy.get(this.userProfile).click();
     }
-
+    clickViewYourProfile() {
+        cy.get('a').contains('Your profile').click();
+    }
     clickSignOut() {
         cy.get(this.linkSignout).click();
+    }
+    seeDashboard() {
+        expect(cy.get(this.dashboardTitle));
     }
 }
 
