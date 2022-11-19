@@ -22,6 +22,7 @@ class PostsPage extends Page {
     get btnBack() { return 'a.gh-editor-back-button' }
     get linkTitlePost() { return 'a[href="/mi-primer-post/"]' }
     get btnPostSection() { return 'li.gh-nav-list-new' }
+    get btnPostPublished() {return 'li.gh-nav-viewname'}
     get btnUpdate() { return '.gh-editor-save-trigger' }
     get updateConfirmation() { return 'button.gh-editor-save-trigger[disabled]' }
     get linkPostTitle() { return 'ul.gh-nav-list.gh-nav-manage > li:nth-child(1) > a:nth-child(1)' }
@@ -113,6 +114,10 @@ class PostsPage extends Page {
 
     clickPostSelected() {
         cy.get(this.btnPostSelection).click();
+    }
+
+    clickPostPublished(){
+        cy.get(this.btnPostPublished).click();
     }
 
     clickSettingsButton() {
