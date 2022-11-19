@@ -1,0 +1,2 @@
+id,email,name,note,subscribed_to_emails,complimentary_plan,stripe_customer_id,created_at,deleted_at,labels,tiers
+63780bd4c43efa3d45e00397,test-miso-2022@test.com,Test,Notas test-miso-2022@test.com,true,,,2022-11-18T22:48:52.000Z,,,

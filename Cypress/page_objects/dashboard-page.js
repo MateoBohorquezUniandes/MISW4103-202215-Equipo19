@@ -12,32 +12,30 @@ class DashboardPage extends Page {
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
     get btnTag() { return 'a[href="#/tags/"]' }
 
-
     goToPages() {
         cy.get('a[href="#/pages/"]').click();
     }
 
-    async goToTags() {
-        const element = await this.driver.$(this.btnTag)
+    goToTags() {
+        cy.get(this.btnTag).click();
     }
 
-    async clickTags() {
-        let element = await this.driver.$(this.btnTag);
-        return await element.click();
-    }  
-
-    async clickMenuPost() {
-        let element = await this.driver.$(this.btnMenuPost);
-        return await element.click();
+    clickTags() {
+        cy.get(this.btnTag).click();
     }
 
-    async clickBtnMenuMembers() {
-        let element = await this.driver.$(this.btnMenuMembers);
-        return await element.click();
+    clickMenuPost() {
+        cy.get(this.btnMenuPost).click();
     }
+
+    clickBtnMenuMembers() {
+        cy.get(this.btnMenuMembers).click();
+    }
+
     clickUserProfile() {
         cy.get(this.userProfile).click();
     }
+
     clickSignOut() {
         cy.get(this.linkSignout).click();
     }
