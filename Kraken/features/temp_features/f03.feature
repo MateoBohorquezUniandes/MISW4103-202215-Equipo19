@@ -10,8 +10,12 @@ Scenario: Eliminar y Consultar post
   And I wait for 2 seconds
   And I go to the page post
   And I wait for 2 seconds
-  And I see the post sub title 'Mi Primer Post'
+  And I click select the post 'Mi Primer Post'
+  And I click on settings
   And I wait for 2 seconds
+  And I go to delete post
+  And I wait for 5 seconds
+  And I confirm delete the post
   Then I see the login screen
   And I send a signal to user 2 containing "post_edited"
   

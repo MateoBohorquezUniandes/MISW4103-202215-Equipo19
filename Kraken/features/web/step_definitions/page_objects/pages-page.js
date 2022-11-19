@@ -105,4 +105,29 @@ module.exports = class PagesPage {
         return await element.getText();
     }
 
+    async publishScheduledPage() {
+        let element = await this.driver.$('.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger');
+        await element.click();
+        element = await this.driver.$('div.gh-publish-setting.last > button.gh-publish-setting-title');
+        await element.click();
+        element = await this.driver.$('div.gh-publish-schedule > div:last-child');
+        await element.click();
+        element = await this.driver.$('button.gh-btn.gh-btn-black.gh-btn-large');
+        await element.click();
+        element = await this.driver.$('.gh-btn.gh-btn-large.gh-btn-pulse.ember-view');
+        return await element.click();
+    }
+
+    async btnBackEditor() {
+        const element = await this.driver.$("button.gh-btn-editor.gh-publish-back-button");
+        return await element.click();
+    }
+
+    async clickFilterPagesBySchedule() {
+        let element = await this.driver.$("div.gh-contentfilter-menu.gh-contentfilter-type");
+        await element.click();
+        await this.driver.$('li.ember-power-select-option:nth-child(4)');
+        return await element.click();
+    }
+
 }

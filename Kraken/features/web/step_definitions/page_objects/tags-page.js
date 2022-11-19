@@ -7,7 +7,8 @@ module.exports = class TagsPage {
     get inputTagName() { return '#tag-name' }
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get btnDeleteTag() { return 'button.gh-btn.gh-btn-red.gh-btn-icon' }
-    get tagName() {return 'h3.gh-tag-list-name'} 
+    get tagName() { return 'h3.gh-tag-list-name' }
+    get tagsLink() { return 'div.gh-canvas-breadcrumb > a[href="#/tags/"]' }
 
 
     async clickBtnNewTags() {
@@ -27,6 +28,11 @@ module.exports = class TagsPage {
 
     async clickBtnDeleteTag() {
         let element = await this.driver.$(this.btnDeleteTag);
+        await element.click();
+    }
+
+    async clickGoBackTags() {
+        let element = await this.driver.$(this.tagsLink);
         await element.click();
     }
 
