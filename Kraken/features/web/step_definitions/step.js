@@ -212,6 +212,18 @@ Then('I see the first page title is diferent than {string}', async function (pag
     const element = await this.pagesPage.getFirstPageTitle();
     expect(element).to.not.eql(pageTitle);
 })
+
+When('I publish page scheduled', async function () {
+    return await this.pagesPage.publishScheduledPage();
+});
+
+When('I click back page editor', async function () {
+    return await this.pagesPage.btnBackEditor();
+});
+
+When('I click Filter Pages By Schedule', async function () {
+    return await this.pagesPage.clickFilterPagesBySchedule();
+});
 //Fin seccion page
 
 When('I click menu post', async function () {
