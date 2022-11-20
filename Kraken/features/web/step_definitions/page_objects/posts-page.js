@@ -48,6 +48,11 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.btnPlusNewPost);
         return await element.click();
     }
+    async openEditorPost(post) {
+        var selector = '//a/h3[contains(.,"' + post + '")]'
+        let element = await this.driver.$(selector);
+        await element.click();
+    }
 
     async clickDeleteConfirmationPost() {
         const element = await this.driver.$(this.btnConfirmDeletePost);
@@ -178,11 +183,7 @@ module.exports = class PostsPage {
         let element = await this.driver.$(this.btnPostSection);
         await element.click();
     }
-    async openEditorPost(post){
-        var selector = '//a/h3[contains(.,"'+ post + '")]'
-        let element = await this.driver.$(selector);
-        await element.click();
-    }
+    
     async updatePost(){
         let element = await this.driver.$(this.settingsMenu);
         await element.click();
