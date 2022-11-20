@@ -2,26 +2,44 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 const expect = require('chai').expect;
 //Sección Login
 When('I enter the username {kraken-string}', async function (username) {
+    if (this.version == '3.42.0')
+        return this.loginPageV3.setUserName(username);
+
     return this.loginPage.setUserName(username);
 });
 When('I enter the password {kraken-string}', async function (password) {
+    if (this.version == '3.42.0')
+        return this.loginPageV3.setPassword(password);
+
     return this.loginPage.setPassword(password);
 });
 When('I click on Sign in button', async function () {
+    if (this.version == '3.42.0')
+        return this.loginPageV3.clickSignInButton();
+
     return this.loginPage.clickSignInButton();
 });
 When('I click sign out', async function () {
+    if (this.version == '3.42.0')
+        this.dashboardPagesV3.clickSignOut()
+
     this.dashboardPages.clickSignOut()
 });
 When('I sign in with user {kraken-string} and password {kraken-string}', async function (username, password) {
     return await this.loginPage.signInGosht(username, password);
 });
 Then('I see the login screen', async function () {
+    if (this.version == '3.42.0')
+        expect(await this.loginPageV3.seeLoginScreen());
+
     expect(await this.loginPage.seeLoginScreen());
 });
 //Sección Settings
 When('I click user profile', async function () {
-    this.dashboardPages.clickUserProfile()
+    if (this.version == '3.42.0')
+        this.dashboardPagesV3.clickUserProfile();
+
+    this.dashboardPages.clickUserProfile();
 });
 
 //Sección Post
@@ -39,15 +57,24 @@ When('I go to delete post', async function() {
 });
 
 When('I click on New post + button', async function () {
+    if (this.version == '3.42.0')
+        return await this.postsPageV3.clickPlusNewPost();
+
     return await this.postsPage.clickPlusNewPost();
 });
 When('I write the title of the post {string}', async function (title) {
+    if (this.version == '3.42.0')
+        return await this.postsPageV3.writePostTitle(title);
+
     return await this.postsPage.writePostTitle(title);
 });
 When('I publish the post preview', async function () {
     return await this.postsPage.publishPostPreview();
 });
 When('I publish the post', async function () {
+    if (this.version == '3.42.0')
+        return await this.postsPageV3.publishPost();
+
     return await this.postsPage.publishPost();
 });
 When('I preview the post', async function () {
@@ -57,6 +84,9 @@ When('I go the post unpublish', async function () {
     return await this.postsPage.unpublishPost();
 });
 Then('I see the confirmation of publish', async function () {
+    if (this.version == '3.42.0')
+        expect(await this.postsPageV3.getConfirmationPublish());
+
     expect(await this.postsPage.getConfirmationPublish());
 });
 
@@ -90,12 +120,18 @@ Then('I see the post sub title {string}', async function (title) {
     expect(await this.postsPage.getPostSubTitle(title));
 });
 When('I going to the post section', async function () {
+    if (this.version == '3.42.0')
+        return await this.postsPageV3.goPostSection();
+
     return await this.postsPage.goPostSection();
 });
 When('I search the post {string}', async function (title) {
     return await this.postsPage.searchPost(title);
 });
 When('I going back to the post editor', async function () {
+    if (this.version == '3.42.0')
+        await this.postsPageV3.goBackEditor();
+
     await this.postsPage.goBackEditor();
 });
 
@@ -104,16 +140,29 @@ When('I going to the post editor', async function () {
 });
 
 When('I go back from the editor to the post section', async function () {
+    if (this.version == '3.42.0')
+        await this.postsPageV3.goBackToPostSection();
     await this.postsPage.goBackToPostSection();
 });
 When('I open the editor of the post {string}', async function (post) {
+    if (this.version == '3.42.0')
+        await this.postsPageV3.openEditorPost(post);
     await this.postsPage.openEditorPost(post);
 });
 When('I update the post', async function () {
+    if (this.version == '3.42.0')
+        await this.postsPageV3.updatePost();
     await this.postsPage.updatePost();
 });
 Then('I see the confirmation of update', async function () {
+    if (this.version == '3.42.0')
+        expect(await this.postsPageV3.getConfirmationUpdate());
     expect(await this.postsPage.getConfirmationUpdate());
+});
+
+When('I click post pane', async function () {
+    if (this.version == '3.42.0')
+        await this.postsPageV3.focusEditor();
 });
 
 When('I click tag option', async function () {
@@ -337,4 +386,17 @@ Then('I see the primary navigation {string}', async function (name) {
     expect(navigationName).to.eql(name)
 });
 
+
+//------V3--------//
+
+//Sección Login
+When('I enter the username {kraken-string} v3', async function (username) {
+    return this.loginPageV3.setUserName(username);
+});
+When('I enter the password {kraken-string} v3', async function (password) {
+    return this.loginPageV3.setPassword(password);
+});
+When('I click on Sign in button v3', async function () {
+    return this.loginPageV3.clickSignInButton();
+});
 

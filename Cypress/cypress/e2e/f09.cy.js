@@ -38,8 +38,6 @@ describe('Feature 09', () => {
     pagesPages.clickSortPagesByNewest();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
-    //pagesPages.findPageTitle("page test for delete 1")
-    //cy.wait(1000)
     pagesPages.clickTheFirstPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
@@ -51,12 +49,7 @@ describe('Feature 09', () => {
     cy.wait(1000)
     pagesPages.clickDeleteConfirmation();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.goBackToPagesList();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    //pagesPages.findPageTitle("page test for delete 1")
-    //cy.wait(1000)
+    cy.wait(3000)
     dashboardPage.clickUserProfile();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)

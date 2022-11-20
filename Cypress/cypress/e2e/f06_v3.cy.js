@@ -1,7 +1,7 @@
-const loginPage = require("../../page_objects/login-page");
-const postsPage = require("../../page_objects/posts-page");
-const dashboardPage = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
+const loginPage = require("../../page_objects/v3/login-page-v3");
+const postsPage = require("../../page_objects/v3/posts-page-v3");
+const dashboardPage = require("../../page_objects/v3/dashboard-page-v3");
+const screenshotFunction = require("../../page_objects/v3/screenshot-function-v3");
 
 describe('Feature 06', () => {
   beforeEach(() => {
@@ -20,16 +20,31 @@ describe('Feature 06', () => {
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    dashboardPage.clickMenuPost();
+    postsPage.clickPlusNewPost();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    postsPage.writePostTitle("Feature 6 - Primer post");
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    postsPage.clickBackPage();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.clickPlusNewPost();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    postsPage.writePostTitle("Feature 6 - Segundo Post");
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    postsPage.clickBackPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     postsPage.clickOptionSort();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    postsPage.clickSortPostByOldest();
+    postsPage.clickSortPostByRecent();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    postsPage.clickLastPost();
+    postsPage.clickFirstPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     postsPage.getPostTitleEditor();
@@ -44,7 +59,5 @@ describe('Feature 06', () => {
     dashboardPage.clickSignOut();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    //settingsPage.getNavigationName().should('have.value', "test1")
-    //cy.wait(5000)
   });
 })
