@@ -1,7 +1,7 @@
-const loginPage = require("../../page_objects/login-page");
-const dashboardPages = require("../../page_objects/dashboard-page");
-const pagesPage = require("../../page_objects/pages-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
+const loginPage = require("../../page_objects/v3/login-page-v3");
+const pagesPage = require("../../page_objects/v3/pages-page-v3");
+const dashboardPages = require("../../page_objects/v3/dashboard-page-v3");
+const screenshotFunction = require("../../page_objects/v3/screenshot-function-v3");
 
 describe('Feature 11', () => {
   beforeEach(() => {

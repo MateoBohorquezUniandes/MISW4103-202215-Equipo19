@@ -7,7 +7,7 @@ class PagesPage extends Page {
     }
 
     goToNewPage() {
-        cy.get('a[href="#/editor/page/"]').click()
+        cy.get('a[href="#/editor/page/"]').first().click()
     }
 
     enterPageTitle(pageTitle) {
@@ -24,11 +24,11 @@ class PagesPage extends Page {
     }
 
     goBackToPagesListFilter() {
-        cy.get('a.gh-editor-back-button').click()
+        cy.get('a.blue.link.fw4.flex.items-center.ember-view').click()
     }
 
     clickTheFirstPage() {
-        cy.get('section.view-container.content-list > div.gh-list-sticky > ol.pages-list.gh-list.feature-memberAttribution >li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)').click();
+        cy.get('h3.gh-content-entry-title').first().click();
     }
 
     goToEditPage() {
@@ -74,8 +74,8 @@ class PagesPage extends Page {
     }
 
     clickSortPagesByOldest() {
-        cy.get('div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger').click();
-        cy.get('li.ember-power-select-option:nth-child(2)').click();
+        cy.get('div.gh-contentfilter-menu.gh-contentfilter-sort').click();
+        cy.get('li.ember-power-select-option').contains('Oldest').click();
     }
 
     clickPageSettings() {
