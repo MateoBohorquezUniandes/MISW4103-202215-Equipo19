@@ -130,4 +130,34 @@ module.exports = class PagesPage {
         return await element.click();
     }
 
+    //V3
+    async clickSortPagesByNewestV3() {
+        let element = await this.driver.$('div.gh-contentfilter > div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger');
+        await element.click();
+        element = await this.driver.$('li.ember-power-select-option:nth-child(1)');
+        return element.click();
+    }
+
+    async clickTheFirstPageV3() {
+        let element = await this.driver.$('section.content-list > ol.gh-list >li.gh-list-row:nth-child(2) > a:nth-child(2) > h3');
+        return element.click();
+    }
+
+    async publishPageV3() {
+        let element = await this.driver.$('div.gh-publishmenu-trigger');
+        await element.click();
+        element = await this.driver.$('button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
+        element.click();
+    }
+
+    async clickOptionTypePageV3() {
+        let element = await this.driver.$('div.gh-contentfilter > div.gh-contentfilter-menu.gh-contentfilter-type > div.ember-view.ember-basic-dropdown-trigger');
+        return element.click();
+    }
+
+    async clickSortPagesByPublishedV3() {
+        let element = await this.driver.$('li.ember-power-select-option:nth-child(3)');
+        return element.click();
+    }
+
 }

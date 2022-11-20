@@ -175,7 +175,6 @@ When('I filter by the first tag', async function () {
 
 Then('I see post title {kraken-string}', async function (title) {
     const pageTitle = await this.postsPage.getFirstPostTitle(title);
-    console.log("PGETITLE", pageTitle, " title", title);
     expect(pageTitle).to.eql(title)
 });
 
@@ -205,14 +204,21 @@ When('I go to edit a page', async function () {
 });
 
 When('I publish page', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.publishPageV3();    
     return await this.pagesPage.publishPage();
 });
 
 When('I filter by newest', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.clickSortPagesByNewestV3();
     return await this.pagesPage.clickSortPagesByNewest();
 });
 
 When('I click the first page', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.clickTheFirstPageV3();
+
     return await this.pagesPage.clickTheFirstPage();
 });
 
@@ -221,10 +227,14 @@ When('I go back to page editor', async function () {
 });
 
 When('I filter by published', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.clickSortPagesByPublishedV3();
     return await this.pagesPage.clickSortPagesByPublished();
 });
 
 When('I click the type page filter', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.clickOptionTypePageV3();
     return await this.pagesPage.clickOptionTypePage();
 });
 

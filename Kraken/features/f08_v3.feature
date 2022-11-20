@@ -16,18 +16,17 @@ Scenario: Editar, publicar, consultar un page
   And I go back to the pages list
   And I wait for 1 seconds
   And I filter by newest
-  And I wait for 10 seconds
+  And I wait for 2 seconds
   And I click the first page
   And I enter a new body "My body page update automatically" for page
   And I publish page
   And I wait for 1 seconds
-  And I go back to page editor
   And I go back to the pages list
   And I click the type page filter
   And I filter by published
   And I wait for 5 seconds
   Then I see first post with title "My awesome page title"
-  And I wait for 2 seconds
+  And I wait for 6 seconds
   And I click user profile
   And I click sign out
   Then I see the login screen
