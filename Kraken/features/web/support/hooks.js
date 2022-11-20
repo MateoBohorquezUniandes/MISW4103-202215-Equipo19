@@ -12,6 +12,10 @@ const pathDir = './screenshoots';
 let cont = 0;
 const { VERSION } = require('../../../properties.json');
 let feature;
+const featureLenght = VERSION == '5.22.10' ? 11 : 14;
+const LoginPageV3 = require('../step_definitions/page_objects/v3/login-page');
+const PostsPageV3 = require('../step_definitions/page_objects/v3/posts-page');
+const DashboardPageV3 = require('../step_definitions/page_objects/v3/dashboard-page');
 
 Before(async function (scenario) {
   this.deviceClient = new WebClient('chrome', {}, this.userId);
@@ -24,7 +28,14 @@ Before(async function (scenario) {
   this.tags = new TagsPage(this.driver);
   this.settingsPage = new SettingsPage(this.driver);
   cont = 0;
-  feature = scenario.gherkinDocument.uri.substring(scenario.gherkinDocument.uri.length - 11).split('.')[0];
+  feature = scenario.gherkinDocument.uri
+    .substring(scenario.gherkinDocument.uri.length - featureLenght)
+    .split('.')[0];
+  feature = VERSION == '5.22.10' ? feature : feature.substring(0, 3);
+  this.loginPageV3 = new LoginPageV3(this.driver);
+  this.postsPageV3 = new PostsPageV3(this.driver);
+  this.dashboardPagesV3 = new DashboardPageV3(this.driver);
+  this.version = VERSION;
 })
 
 After(async function () {
