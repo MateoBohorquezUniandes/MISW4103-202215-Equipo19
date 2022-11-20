@@ -5,14 +5,14 @@ class PostsPage extends Page {
         super();
     }
 
-    get linkOptionSortPost() { return 'div.gh-contentfilter.view-actions-bottom-row > div.gh-contentfilter-menu.gh-contentfilter-sort' }
+    get linkOptionSortPost() { return 'div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger.ember-power-select-trigger.gh-contentfilter-menu-trigger' }
     get btnNewPost() { return '#ember157' }
     get btnPlusNewPost() { return 'a[title="New post"]' }
-    get fistPostList() { return 'section.view-container.content-list > ol.posts-list.gh-list.feature-memberAttribution > li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:nth-child(1) > a:nth-child(1) > h3.gh-content-entry-title:nth-child(1)' }
-    get lastPostList() { return 'section.view-container.content-list > ol.posts-list.gh-list.feature-memberAttribution > li.gh-list-row.gh-posts-list-item.gh-post-list-plain-status:last-child > a:nth-child(1) > h3.gh-content-entry-title' }
+    get fistPostList() { return '.posts-list.gh-list li.gh-list-row.gh-posts-list-item:first' }
+    get lastPostList() { return '.posts-list.gh-list li.gh-list-row.gh-posts-list-item:last' }
     get sortPostByOdelst() { return 'li.ember-power-select-option:nth-child(2)' }
     get titlePostEditor() { return '.gh-editor-title' }
-    get linkBackPage() { return 'a.ember-view.gh-btn-editor.gh-editor-back-button' }
+    get linkBackPage() { return 'header.gh-editor-header.br2.pe-none a' }
     get settingsMenu() { return 'button.settings-menu-toggle' }
     get btnPublish() { return 'div.gh-publishmenu-trigger' }
     get btnPublish2() { return 'button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view' }
@@ -23,7 +23,7 @@ class PostsPage extends Page {
     get btnBack() { return 'a.gh-editor-back-button' }
     get linkTitlePost() { return 'a[href="/mi-primer-post/"]' }
     get btnPostSection() { return 'a[href="#/posts/"]' }
-    get btnPostPublished() {return 'li.gh-nav-viewname'}
+    get btnPostPublished() { return 'li.gh-nav-viewname' }
     get btnUpdate() { return '.gh-editor-save-trigger' }
     get updateConfirmation() { return 'button.gh-editor-save-trigger[disabled]' }
     get linkPostTitle() { return 'ul.gh-nav-list.gh-nav-manage > li:nth-child(1) > a:nth-child(1)' }
@@ -32,8 +32,8 @@ class PostsPage extends Page {
     get btnDeletePost() { return 'button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button' }
     get btnConfirmDeletePost() { return '.gh-btn.gh-btn-red.gh-btn-icon.ember-view' }
     get listTagsEditor() { return 'div#tag-input' }
-    get tagOnList(){ return 'li.ember-power-select-option'}
-
+    get tagOnList() { return 'li.ember-power-select-option' }
+    get sortPostByRecent() { return 'li.ember-power-select-option:nth-child(3)' }
 
     clickNewPost() {
         cy.get(this.btnNewPost).click();
@@ -99,7 +99,7 @@ class PostsPage extends Page {
     goPostSection() {
         cy.get(this.btnPostSection).click();
     }
-    focusPostSection(){
+    focusPostSection() {
         cy.get(this.btnPostSection).first().focus()
     }
     openEditorPost(post) {
@@ -124,7 +124,7 @@ class PostsPage extends Page {
         cy.get(this.btnPostSelection).click();
     }
 
-    clickPostPublished(){
+    clickPostPublished() {
         cy.get(this.btnPostPublished).click();
     }
 
@@ -152,11 +152,13 @@ class PostsPage extends Page {
         cy.get("div.gh-contentfilter-menu.gh-contentfilter-type").click();
         cy.get('li.ember-power-select-option:nth-child(4)').click();
     }
-    asingTag(tag){
+    asingTag(tag) {
         cy.get(this.listTagsEditor).click();
         cy.get(this.tagOnList).contains(tag).click();
     }
-
+    clickSortPostByRecent() {
+        cy.get(this.sortPostByRecent).click();
+    }
 }
 
 module.exports = new PostsPage();

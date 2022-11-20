@@ -6,6 +6,12 @@ class PagesPage extends Page {
         super();
     }
 
+    get linkOptionSortPage() { return 'div.gh-contentfilter-menu.gh-contentfilter-sort > div.ember-view.ember-basic-dropdown-trigger.ember-power-select-trigger.gh-contentfilter-menu-trigger' }
+    get fistPageList() { return 'ol.gh-list li.gh-list-row.gh-posts-list-item:first' }
+    get lastPageList() { return 'ol.gh-list li.gh-list-row.gh-posts-list-item:last' }
+    get sortPageByOdelst() { return 'li.ember-power-select-option:nth-child(2)' }
+    get sortPageByNewest() { return 'li.ember-power-select-option:nth-child(1)' }
+
     goToNewPage() {
         cy.get('a[href="#/editor/page/"]').first().click()
     }
@@ -20,7 +26,10 @@ class PagesPage extends Page {
     }
 
     goBackToPagesList() {
-        cy.get('a[href="#/pages/"]').click()
+        cy.get('header.gh-editor-header.br2.pe-none a').click()
+    }
+    goBackToPagesListAfterPublish() {
+        this.goBackToPagesList();
     }
 
     goBackToPagesListFilter() {
@@ -43,9 +52,9 @@ class PagesPage extends Page {
     }
 
     publishPage() {
-        cy.get('.gh-btn.gh-btn-editor.darkgrey.gh-publish-trigger').click();
-        cy.get('.gh-btn.gh-btn-black.gh-btn-large').click();
-        cy.get('.gh-btn.gh-btn-large.gh-btn-pulse.ember-view').click();
+        cy.get('div.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger').click();
+        cy.get('footer.gh-publishmenu-footer button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view').click();
+        cy.get('footer.gh-publishmenu-footer button.gh-btn.gh-btn-outline.gh-btn-link').click();
     }
 
     clickOptionTypePage() {
@@ -109,6 +118,27 @@ class PagesPage extends Page {
         cy.get("div.gh-contentfilter-menu.gh-contentfilter-type").click();
         cy.get('li.ember-power-select-option:nth-child(4)').click();
     }
+
+    clickOptionSort() {
+        cy.get(this.linkOptionSortPage).click();
+    }
+
+    clickSortPageByOldest() {
+        cy.get(this.sortPageByOdelst).click();
+    }
+
+    clickSortPageByNewest() {
+        cy.get(this.sortPageByNewest).click();
+    }
+
+    clickFirstPage() {
+        cy.get(this.fistPageList).click();
+    }
+
+    clickLastPage() {
+        cy.get(this.lastPageList).click();
+    }
+
 }
 
 
