@@ -1,14 +1,13 @@
-const loginPage = require("../../page_objects/login-page");
-const settingsPage = require("../../page_objects/settings-page");
-const dashboardPage = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
-const profilePage = require("../../page_objects/profile-page");
+const loginPage = require("../../page_objects/v3/login-page-v3");
+const dashboardPage = require("../../page_objects/v3/dashboard-page-v3");
+const screenshotFunction = require("../../page_objects/v3/screenshot-function-v3");
+const profilePage = require("../../page_objects/v3/profile-page-v3");
 
 describe('Feature 17', () => {
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
-  it('Execute scenery feature 1',() => { 
+  it('Execute scenery feature 17',() => { 
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
@@ -54,7 +53,6 @@ describe('Feature 17', () => {
     cy.wait(5000);
     dashboardPage.seeDashboard();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(5000);
     dashboardPage.clickUserProfile();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     dashboardPage.clickViewYourProfile();

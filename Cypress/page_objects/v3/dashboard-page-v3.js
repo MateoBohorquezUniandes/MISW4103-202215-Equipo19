@@ -12,7 +12,7 @@ class DashboardPage extends Page {
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
     get linkSignout() { return 'a.ember-view.dropdown-item.user-menu-signout' }
     get btnTag() { return 'a[href="#/tags/"]' }
-    get dashboardTitle(){ return 'h2.gh-canvas-title'}
+    get dashboardTitle(){ return 'div.gh-nav-menu-details-blog'}
 
     goToPages() {
         cy.get('a[href="#/pages/"]').click();
@@ -41,7 +41,7 @@ class DashboardPage extends Page {
           });
     }
     clickViewYourProfile() {
-        cy.get('a').contains('Your profile').click();
+        cy.get('a').contains(' Your Profile').click();
     }
     clickSignOut() {
         cy.get(this.linkSignout).click();
