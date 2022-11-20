@@ -248,7 +248,10 @@ When('I filter by oldest', async function () {
 });
 
 Then('I see the page {string} with the Draft', async function (page) {
-    expect(await this.pagesPage.getDraftOnList(page))
+    if (this.version == '3.42.0')
+        expect(await this.pagesPage.getDraftOnListV3(page))
+    else
+        expect(await this.pagesPage.getDraftOnList(page))
 })
 
 When('I open settings page', async function () {

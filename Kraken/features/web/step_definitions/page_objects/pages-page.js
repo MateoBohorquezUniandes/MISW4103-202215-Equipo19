@@ -175,4 +175,10 @@ module.exports = class PagesPage {
         let element = await this.driver.$('section.content-list > ol.gh-list >li.gh-list-row:nth-child(2) > a:nth-child(2) > h3');
         return await element.getText();
     }
+
+    async getDraftOnListV3(title) {
+        let element = await this.driver.$('//a/h3[contains(.,"' + title + '")]');
+        await element.click();
+        return element = await this.driver.$('//a/div/span[contains(.,"Draft")]')
+    }
 }
