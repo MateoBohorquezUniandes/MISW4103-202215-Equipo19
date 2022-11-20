@@ -1,5 +1,6 @@
 const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
+const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 
 describe('Feature 3', () => {
@@ -34,7 +35,14 @@ describe('Feature 3', () => {
     postsPage.clickDeleteConfirmationPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
+    dashboardPage.clickUserProfile();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    dashboardPage.clickSignOut();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(3000);
     loginPage.seeLoginScreen();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(3000);
   });
 })
