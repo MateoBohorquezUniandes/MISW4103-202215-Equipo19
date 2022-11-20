@@ -10,22 +10,11 @@ Scenario: Editar post
   And I click on New post + button
   And I wait for 2 seconds
   And I write the title of the post 'Feature 2'
+  And I click post pane
   And I wait for 2 seconds
   And I publish the post
   And I wait for 1 seconds
-  Then I see the confirmation of publish
-  When I going back to the post editor
-  And I wait for 1 seconds
-  And I go back from the editor to the post section
-  And I wait for 2 seconds
-  And I going to the post section
-  And I open the editor of the post "Feature 2"
-  And I wait for 1 seconds
-  And I write the title of the post "Post Editado"
-  And I update the post
-  And I wait for 2 seconds
-  Then I see the confirmation of update
-  And I go back from the editor to the post section
+  Then I see the confirmation of publish 
   And I wait for 2 seconds
   And I click user profile
   And I click sign out
