@@ -117,8 +117,14 @@ class PostsPage extends Page {
         cy.get(this.linkPostTitle).click();
     }
 
-    clickPostSelected() {
-        cy.get(this.btnPostSelection).click();
+    clickPostSelected(text) {
+        cy.get(this.btnPostSelection)
+            .each(($el) => {
+                if ($el.text().trim() === text) {
+                    $el.click()
+                    return false
+                }
+            })
     }
 
     clickPostPublished() {

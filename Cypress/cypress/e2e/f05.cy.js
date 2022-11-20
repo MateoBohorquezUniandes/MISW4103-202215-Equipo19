@@ -34,10 +34,10 @@ describe('Crear Post', () => {
       postsPage.goBackToPostSection();
       cy.screenshot(screenshotFunction.getStep(Cypress.spec));
       cy.wait(2000);
-      postsPage.clickPostPublished();
-      cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-      cy.wait(2000);
-      postsPage.openEditorPost("Feature 5");
+      // postsPage.clickPostPublished();
+      // cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+      // cy.wait(2000);
+      postsPage.clickPostSelected("Feature 5");
       cy.screenshot(screenshotFunction.getStep(Cypress.spec));
       cy.wait(2000);
       postsPage.getConfirmationUpdate();
