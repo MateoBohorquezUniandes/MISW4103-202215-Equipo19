@@ -17,10 +17,11 @@ Scenario: Crear, eliminar y consultar page
   And I wait for 5 seconds
   And I filter by newest
   And I wait for 1 seconds
-  And I see first post with title "page test for delete 1"
+  Then I see first post with title "page test for delete 1"
   And I click the first page
   And I open settings page
   And I click delete page
+  And I wait for 1 seconds
   And I confirm delete the page
   And I go back to the pages list
   And I wait for 1 seconds

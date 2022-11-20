@@ -96,7 +96,7 @@ module.exports = class PagesPage {
     }
 
     async clickDeleteConfirmation() {
-        const element = await this.driver.$('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
+        const element = await this.driver.$('button.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
         return await element.click();
     }
 
@@ -160,4 +160,19 @@ module.exports = class PagesPage {
         return element.click();
     }
 
+    async clickPageSettingsV3() {
+        let element = await this.driver.$('button.post-settings');
+        await element.click();
+    }
+
+    async clickDeleteV3() {
+        let element = await this.driver.$('button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button');
+        await element.scrollIntoView();
+        return await element.click();
+    }
+
+    async getFirstPageTitleV3() {
+        let element = await this.driver.$('section.content-list > ol.gh-list >li.gh-list-row:nth-child(2) > a:nth-child(2) > h3');
+        return await element.getText();
+    }
 }

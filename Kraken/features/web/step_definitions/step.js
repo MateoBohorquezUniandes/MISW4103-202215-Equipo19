@@ -252,6 +252,9 @@ Then('I see the page {string} with the Draft', async function (page) {
 })
 
 When('I open settings page', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.clickPageSettingsV3();
+
     return await this.pagesPage.clickPageSettings();
 });
 
@@ -260,6 +263,8 @@ When('I click delete option', async function () {
 });
 
 When('I click delete page', async function () {
+    if (this.version == '3.42.0')
+        return await this.pagesPage.clickDeleteV3();
     return await this.pagesPage.clickDelete();
 });
 
@@ -268,7 +273,12 @@ When('I confirm delete the page', async function () {
 });
 
 Then('I see the first page title is diferent than {string}', async function (pageTitle) {
-    const element = await this.pagesPage.getFirstPageTitle();
+    let element;
+    if (this.version == '3.42.0')
+        element = await this.pagesPage.getFirstPageTitleV3();
+    else
+        element = await this.pagesPage.getFirstPageTitle();
+
     expect(element).to.not.eql(pageTitle);
 })
 
