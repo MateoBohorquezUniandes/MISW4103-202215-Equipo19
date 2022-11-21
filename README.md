@@ -77,4 +77,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
     * Navegue a la carpeta que aparece en el mensaje de error 
     * Ejecute `chmod -R 777 .`
     * Intente ejecutar Kraken nuevamente el paso 2.
+    
+## Pros y contras de ResembleJS y BackstopJS
+https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/wiki/Pros-y-contras-Resemble-y-Backstop-JS
 
