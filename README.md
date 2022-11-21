@@ -80,4 +80,6 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
     
 ## Pros y contras de ResembleJS y BackstopJS
 https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/wiki/Pros-y-contras-Resemble-y-Backstop-JS
+## Vídeo Semana 6
+https://youtu.be/vc8LZOuOoBQ
 
