@@ -35,6 +35,28 @@ class DataPseudoAleatorio {
             }]
         });
     }
+
+    async getMemberRecord(count = 1) {
+        return await client.generate({
+            count: count,
+            fields: [{
+                name: 'id',
+                type: 'Row Number'
+            }, {
+                name: 'name',
+                type: 'Full Name'
+            }, {
+                name: 'email',
+                type: 'Email Address'
+            }, {
+                name: 'labels',
+                type: 'Words'
+            }, {
+                name: 'note',
+                type: 'Sentences'
+            }]
+        });
+    }
 }
 
 module.exports = new DataPseudoAleatorio();
