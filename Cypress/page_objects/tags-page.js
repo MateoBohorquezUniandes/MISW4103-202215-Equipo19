@@ -12,9 +12,14 @@ class TagsPage extends Page {
     get btnSaveTag() { return 'button.gh-btn.gh-btn-primary.gh-btn-icon.ember-view' }
     get tagName() { return 'h3.gh-tag-list-name' }
     get titleTagEditor() { return '.gh-editor-title' }
+    get linkBackTag() { return 'a[href="#/dashboard/"]' }
 
     writePostTitle(title) {
         cy.get(this.titleTagEditor).type(title);
+    }
+
+    clickBackPage() {
+        cy.get(this.linkBackTag).click();
     }
     
     clickTagsNew() {
