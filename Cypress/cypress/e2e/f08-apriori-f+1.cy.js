@@ -4,19 +4,19 @@ const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 
 //Apriori
-//Create Page Titulo 255 (Frontera)
+//Create Page Titulo 256 (Frontera + 1)
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-describe('Feature 08', () => {
+describe('Feature 08 - page title', () => {
   before(() => {
     cy.fixture('page-data-pool.json').then(function (records) {
       this.records = records;
       this.dataLimitArray = this.records.filter(x => x.page_title.length > 255);
       this.dataLimit = this.dataLimitArray[getRandom(0, Object.keys(this.dataLimitArray).length)]
-      this.dataLimit.page_title = this.dataLimit.page_title.slice(0, 254);
+      this.dataLimit.page_title = this.dataLimit.page_title.slice(0, 255);
       this.data = this.records[getRandom(0, Object.keys(this.records).length)];
     });
 
