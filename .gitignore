@@ -7,3 +7,8 @@ Kraken/reports
 Kraken/node_modules/kraken-node/bin/kraken-node
 ./node_modules
 ./Kraken/reports
+*.png
+node_modules/
+node_modules/\@faker-js/faker/dist/cjs/definitions/
+
+node_modules/\@faker-js/faker/dist/cjs/locale/
