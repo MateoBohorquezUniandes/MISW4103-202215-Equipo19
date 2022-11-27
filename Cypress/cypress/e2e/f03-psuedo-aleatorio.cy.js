@@ -2,8 +2,12 @@ const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-describe('Feature 3', () => {
+describe('Feature 3', function(){
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getPostRecord();
+  })
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
@@ -23,7 +27,7 @@ describe('Feature 3', () => {
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    postsPage.writePostTitle("Mi Primer Post");
+    postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     postsPage.publishPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -36,7 +40,7 @@ describe('Feature 3', () => {
     postsPage.goBackToPostSection();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    postsPage.clickPostSelected('Mi Primer Post');
+    postsPage.clickPostSelected(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     postsPage.clickSettingsButton();
