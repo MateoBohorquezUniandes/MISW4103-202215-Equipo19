@@ -5,7 +5,7 @@ const screenshotFunction = require("../../page_objects/screenshot-function");
 const tagsPage = require("../../page_objects/tags-page");
 
 //Apriori
-//Tag Titulo 255 (Frontera)
+//Tag Titulo > 191 (Frontera)
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
