@@ -4,7 +4,7 @@ const tagsPage = require("../../page_objects/tags-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 
 //Apriori
-//Tag Titulo 190 (Frontera)
+//Tag Titulo null)
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -12,10 +12,9 @@ function getRandom(min, max) {
 
 describe('Feature 13', () => {
   before(() => {
-    cy.fixture('tags-data-pool.json').then(function (records) {
+    cy.fixture('page-data-pool.json').then(function (records) {
       this.records = records;
-      this.dataLimitArray = this.records.filter(x => x.tag_title.length > 190);
-      this.data = this.dataLimitArray[getRandom(0, Object.keys(this.dataLimitArray).length)]
+      this.data = this.records.find(x => x.page_naughty?.toLowerCase() == "null");
     });
   });
 
