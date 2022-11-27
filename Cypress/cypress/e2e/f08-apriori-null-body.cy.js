@@ -15,6 +15,7 @@ describe('Feature 08', () => {
     cy.fixture('page-data-pool.json').then(function (records) {
       this.records = records;
       this.data = this.records.find(x => x.page_naughty?.toLowerCase() == "null");
+      this.data.page_title = this.data.page_title.slice(0, 10)
     });
 
   });

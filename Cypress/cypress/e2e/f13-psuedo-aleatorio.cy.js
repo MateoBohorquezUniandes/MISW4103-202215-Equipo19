@@ -4,7 +4,7 @@ const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-describe('Feature 06', function () {
+describe('Feature 13', function () {
   before(async () => {
     this.data = await dataPseudoAleatorio.getPageRecord();
   })

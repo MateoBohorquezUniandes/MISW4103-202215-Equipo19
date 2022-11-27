@@ -40,6 +40,9 @@ class DataAleatorio {
         return faker.internet.url();
     }
     //#endregion
+    getNumber(length) {
+        return faker.random.numeric(length);
+    }
 }
 
 module.exports = new DataAleatorio();
