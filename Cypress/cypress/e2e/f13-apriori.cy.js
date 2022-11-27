@@ -1,6 +1,7 @@
 const loginPage = require("../../page_objects/login-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 const tagsPage = require("../../page_objects/tags-page");
+
 const dashboardPage = require("../../page_objects/dashboard-page");
 
 function getRandom(min, max) {
@@ -17,7 +18,7 @@ describe('Feature 13', () => {
   beforeEach(() => {
     cy.viewport(1366, 768);
 
-  });gv
+  });
   it('Crear opción de navegación', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
