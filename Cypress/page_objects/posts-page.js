@@ -33,6 +33,9 @@ class PostsPage extends Page {
     get listTagsEditor() { return 'div#tag-input' }
     get tagOnList() { return 'li.ember-power-select-option' }
     get sortPostByRecent() { return 'li.ember-power-select-option:nth-child(3)' }
+    get btnPreviewEditor() { return 'button.gh-editor-preview-trigger' }
+    get previewTabs(){return 'div.tabs'}
+    get previewTitle(){return 'h1.article-title'}
 
     clickNewPost() {
         cy.get(this.btnNewPost).click();
@@ -75,6 +78,11 @@ class PostsPage extends Page {
     publishPost() {
         cy.get(this.settingsMenu).click();
         cy.get(this.btnPublish).click();
+        cy.get(this.btnContinueFinalReview).click();
+        cy.get(this.btnPublishPostRightNow).click();
+    }
+    publishPostPreview() {
+        cy.get('div.right > button.gh-publish-trigger').click();
         cy.get(this.btnContinueFinalReview).click();
         cy.get(this.btnPublishPostRightNow).click();
     }
@@ -177,6 +185,14 @@ class PostsPage extends Page {
     }
     clickSortPostByRecent() {
         cy.get(this.sortPostByRecent).click();
+    }
+    clickPreviewBtn(){
+        cy.get(this.settingsMenu).click();
+        cy.get(this.btnPreviewEditor).click();
+    }
+    getPreview(title){
+        //expect(cy.get('h1').contains(title));
+        expect(cy.get(this.previewTabs));
     }
 }
 

@@ -2,8 +2,12 @@ const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
 const dashboardPages = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-describe('Consultar y eliminar Post', () => {
+describe('Consultar y eliminar Post', function(){
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getPostRecord();
+  })
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
@@ -21,13 +25,13 @@ describe('Consultar y eliminar Post', () => {
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    postsPage.writePostTitle("Mi Primer Post");
+    postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     postsPage.clickPreviewBtn();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    postsPage.getPreview("Mi Primer Post");
+    postsPage.getPreview(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     postsPage.publishPostPreview();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
