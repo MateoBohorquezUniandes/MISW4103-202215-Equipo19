@@ -15,6 +15,9 @@ class DataAleatorio {
     getPostBody() {
         return faker.lorem.paragraph();
     }
+    getNumber(length) {
+        return faker.random.numeric(length);
+    }
 }
 
 module.exports = new DataAleatorio();
