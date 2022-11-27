@@ -3,21 +3,30 @@ const screenshotFunction = require("../../page_objects/screenshot-function");
 const tagsPage = require("../../page_objects/tags-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 
+//Apriori
+//Tag Titulo 255 (Frontera)
+
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 describe('Feature 13', () => {
   before(() => {
-    cy.fixture('ghost-tags.json').then(function (records) {
+    cy.fixture('tags-data-pool.json').then(function (records) {
       this.records = records;
+      this.dataScriptCharsArray = this.records.filter(x => x.page_naughty?.toLowerCase().includes('table'));
+      this.dataScript = this.dataScriptCharsArray[getRandom(0, Object.keys(this.dataScriptCharsArray).length)]
       this.data = this.records[getRandom(0, Object.keys(this.records).length)];
     });
   });
+
   beforeEach(() => {
     cy.viewport(1366, 768);
 
-  });gv
+  });
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    return false
+  })
   it('Crear opción de navegación', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -37,7 +46,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew()
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.setTagName(this.data.tag_title);
+    tagsPage.setTagName(this.dataScript.page_naughty);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     tagsPage.clickBtnSaveTag();
