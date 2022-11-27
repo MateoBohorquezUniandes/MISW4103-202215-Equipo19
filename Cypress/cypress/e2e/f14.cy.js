@@ -5,7 +5,6 @@ const screenshotFunction = require("../../page_objects/screenshot-function");
 
 describe('Feature 14', () => {
   beforeEach(() => {
-    //cy.viewport(1366, 780);
   });
   it('Crear opción de navegación', () => {
     loginPage.visit('http://localhost:2368/ghost/#/signin');

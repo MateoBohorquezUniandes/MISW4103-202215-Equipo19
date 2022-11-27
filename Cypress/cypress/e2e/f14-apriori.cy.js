@@ -10,8 +10,7 @@ function getRandom(min, max) {
 describe('Feature 14', () => {
   before(() => {
     cy.fixture('data-members.json').then(function (records) {
-      this.records = records;
-      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
+      this.data = records[getRandom(0, Object.keys(records).length - 1)];
     });
   })
   beforeEach(() => {
@@ -39,6 +38,9 @@ describe('Feature 14', () => {
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.setMemberEmail(this.data.email);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    members.setMemberNote(this.data.note);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.clickBtnSaveMember();

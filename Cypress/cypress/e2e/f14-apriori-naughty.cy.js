@@ -2,15 +2,21 @@ const loginPage = require("../../page_objects/login-page");
 const members = require("../../page_objects/members-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-describe('Feature 14', function () {
-  before(async () => {
-    this.data = await dataPseudoAleatorio.getMemberRecord();
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe('Feature 14', () => {
+  before(() => {
+    cy.fixture('data-members.json').then(function (records) {
+      records = records.map((record) => { return { name: record.name, email: record.email, note: record.naughty } });
+      this.data = records[getRandom(0, Object.keys(records).length - 1)];
+    });
   })
   beforeEach(() => {
   });
-  it('Crear opción de navegación', () => {
+  it('Crear opción de navegación', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);

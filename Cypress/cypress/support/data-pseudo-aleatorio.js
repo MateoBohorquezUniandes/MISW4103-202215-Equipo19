@@ -54,6 +54,10 @@ class DataPseudoAleatorio {
             }, {
                 name: 'note',
                 type: 'Sentences'
+            },
+            {
+                name: 'naughty',
+                type: 'Naughty String'
             }]
         });
     }

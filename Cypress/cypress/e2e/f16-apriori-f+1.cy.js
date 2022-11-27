@@ -3,14 +3,22 @@ const members = require("../../page_objects/members-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 
-describe('Feature 15', () => {
-  beforeEach(() => {
-  });
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe('Feature 16', () => {
+  before(() => {
+    cy.fixture('data-members.json').then(function (records) {
+      records = records.filter(x => x.note.length > 500).map((record) => { return { name: record.name, email: record.email, note: record.note.slice(0, 501) } });
+      this.data = records[getRandom(0, Object.keys(records).length - 1)];
+      this.isValid = this.data.name.length <= 191 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.data.email) && this.data.note.length <= 500;
+    });
+  })
   Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from failing the test
     return false
   })
-  it('Crear, consultar, filtrar miembro por nombre y email', () => {
+  it('Crear, consultar, editar y eliminar miembro', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
@@ -29,10 +37,10 @@ describe('Feature 15', () => {
     members.clickBtnNewMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    members.setMemberName("Test");
+    members.setMemberName(this.data.name);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    members.setMemberEmail("test-miso-2022@test.com");
+    members.setMemberEmail(this.data.email);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.clickBtnSaveMember();
@@ -41,19 +49,13 @@ describe('Feature 15', () => {
     members.clickBtnBackMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    members.clickBtnFilterMember();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    members.setInputFilterMember("Test");
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    members.clickApplyFilterMember();
+    members.clickBuscarMember(this.data.email);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     members.clickSelectFirstMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    members.setMemberNote("Notas test-miso-2022@test.com");
+    members.setMemberNote(this.data.note);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.clickBtnSaveMember();

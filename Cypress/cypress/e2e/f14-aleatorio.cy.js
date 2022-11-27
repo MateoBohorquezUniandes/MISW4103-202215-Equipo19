@@ -8,7 +8,8 @@ describe('Feature 14', function () {
   before(() => {
     this.data = {
       name: dataAleatorio.getMemberName(),
-      email: dataAleatorio.getMemberEmail()
+      email: dataAleatorio.getMemberEmail(),
+      note: dataAleatorio.getMemberNote()
     }
   })
   beforeEach(() => {
@@ -36,6 +37,9 @@ describe('Feature 14', function () {
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.setMemberEmail(this.data.email);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    members.setMemberNote(this.data.note);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.clickBtnSaveMember();
