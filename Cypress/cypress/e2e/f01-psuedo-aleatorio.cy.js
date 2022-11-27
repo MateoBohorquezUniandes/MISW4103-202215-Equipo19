@@ -2,22 +2,16 @@ const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
 const dashboardPages = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-function getRandom(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-describe('Crear Post', () => {
-  before(() => {
-    cy.fixture('post-data-pool.json').then(function (records) {
-      this.records = records;
-      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
-    });
-  });
+describe('Crear Post', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getPostRecord();
+  })
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
-  it('Execute scenery feature 1', function () { 
+  it('Execute scenery feature 1',() => { 
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
@@ -49,6 +43,8 @@ describe('Crear Post', () => {
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     loginPage.seeLoginScreen();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+  })
+  it('Ver post creado',()=> {
     cy.visit('http://localhost:2368/');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);

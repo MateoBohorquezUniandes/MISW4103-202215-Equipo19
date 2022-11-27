@@ -7,3 +7,4 @@ Kraken/reports
 Kraken/node_modules/kraken-node/bin/kraken-node
 ./node_modules
 ./Kraken/reports
+node_modules
