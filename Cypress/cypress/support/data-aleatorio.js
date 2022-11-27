@@ -31,6 +31,15 @@ class DataAleatorio {
         return faker.lorem.paragraph();
     }
     //#endregion
+
+    //#region Navigation
+    getNavigationName() {
+        return faker.name.fullName();
+    }
+    getNavigationUrl() {
+        return faker.internet.url();
+    }
+    //#endregion
 }
 
 module.exports = new DataAleatorio();

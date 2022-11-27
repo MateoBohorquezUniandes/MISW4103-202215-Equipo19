@@ -54,8 +54,26 @@ class DataPseudoAleatorio {
             }, {
                 name: 'note',
                 type: 'Sentences'
-            },
-            {
+            }, {
+                name: 'naughty',
+                type: 'Naughty String'
+            }]
+        });
+    }
+
+    async getNavigationRecord(count = 1) {
+        return await client.generate({
+            count: count,
+            fields: [{
+                name: 'id',
+                type: 'Row Number'
+            }, {
+                name: 'name',
+                type: 'App Name'
+            }, {
+                name: 'url',
+                type: 'URL'
+            }, {
                 name: 'naughty',
                 type: 'Naughty String'
             }]

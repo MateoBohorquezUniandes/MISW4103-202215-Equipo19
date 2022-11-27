@@ -2,23 +2,18 @@ const loginPage = require("../../page_objects/login-page");
 const members = require("../../page_objects/members-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-describe('Feature 16', () => {
-  before(() => {
-    cy.fixture('members-data-pool.json').then(function (records) {
-      records = records.filter(x => x.note.length > 500).map((record) => { return { name: record.name, email: record.email, note: record.note.slice(0, 501) } });
-      this.data = records[getRandom(0, Object.keys(records).length - 1)];
-      this.isValid = this.data.name.length <= 191 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.data.email) && this.data.note.length <= 500;
-    });
+describe('Feature 16', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getMemberRecord();
+    this.data = { name: this.data.name, email: this.data.email, note: this.data.naughty };
+    this.isValid = this.data.name.length <= 191 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.data.email) && this.data.note.length <= 500;
   })
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
-  it('Crear, consultar, editar y eliminar miembro', function () {
+  it('Crear, consultar, editar y eliminar miembro', () => {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);

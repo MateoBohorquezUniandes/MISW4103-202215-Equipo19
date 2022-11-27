@@ -9,7 +9,7 @@ function getRandom(min, max) {
 
 describe('Feature 15', () => {
   before(() => {
-    cy.fixture('data-members.json').then(function (records) {
+    cy.fixture('members-data-pool.json').then(function (records) {
       records = records.map((record) => { return { name: record.name, email: record.email, note: record.naughty } });
       this.data = records[getRandom(0, Object.keys(records).length - 1)];
       this.isValid = this.data.name.length <= 191 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.data.email) && this.data.note.length <= 500;

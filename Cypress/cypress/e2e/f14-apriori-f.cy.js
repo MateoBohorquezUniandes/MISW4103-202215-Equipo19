@@ -10,7 +10,7 @@ function getRandom(min, max) {
 // Prueba de frontera. Campo Note = 500 caracteres. Se ingresa texto con longitud de 500 caracteres
 describe('Feature 14', () => {
   before(() => {
-    cy.fixture('data-members.json').then(function (records) {
+    cy.fixture('members-data-pool.json').then(function (records) {
       records = records.filter(x => x.note.length >= 500).map((record) => { return { name: record.name, email: record.email, note: record.note.slice(0, 500) } });
       this.data = records[getRandom(0, Object.keys(records).length - 1)];
     });

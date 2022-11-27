@@ -2,24 +2,16 @@ const loginPage = require("../../page_objects/login-page");
 const members = require("../../page_objects/members-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-describe('Feature 14', () => {
-  before(() => {
-    cy.fixture('members-data-pool.json').then(function (records) {
-      const params = ['name', 'email', 'note'];
-      const lengthParams = params.length - 1;
-      records = records[getRandom(0, Object.keys(records).length - 1)];
-      this.data = { name: records[params[getRandom(0, lengthParams)]], email: records[params[getRandom(0, lengthParams)]], note: records[params[getRandom(0, lengthParams)]] };
-      this.isValid = this.data.name.length <= 191 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.data.email) && this.data.note.length <= 500;
-    });
+describe('Feature 14', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getMemberRecord();
+    this.data = { name: this.data.name, email: this.data.email, note: this.data.naughty };
   })
   beforeEach(() => {
   });
-  it('Crear opción de navegación', function () {
+  it('Crear opción de navegación', () => {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
@@ -50,20 +42,14 @@ describe('Feature 14', () => {
     members.clickBtnSaveMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    cy.get('body').then(($body) => {
-      if (!($body.find('.response:visible').length == 0 && this.isValid))
-        expect(false).to.to.true
-      else {
-        dashboardPage.clickBtnMenuMembers();
-        cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-        cy.wait(1000);
-        dashboardPage.clickUserProfile();
-        cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-        cy.wait(1000);
-        dashboardPage.clickSignOut();
-        cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-        cy.wait(3000);
-      }
-    })
+    dashboardPage.clickBtnMenuMembers();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    dashboardPage.clickUserProfile();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    dashboardPage.clickSignOut();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(3000);
   });
 })

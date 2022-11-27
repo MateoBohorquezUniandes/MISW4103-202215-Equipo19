@@ -9,7 +9,7 @@ function getRandom(min, max) {
 
 describe('Feature 14', () => {
   before(() => {
-    cy.fixture('data-members.json').then(function (records) {
+    cy.fixture('members-data-pool.json').then(function (records) {
       this.data = records[getRandom(0, Object.keys(records).length - 1)];
     });
   })
