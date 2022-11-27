@@ -2,25 +2,15 @@ const loginPage = require("../../page_objects/login-page");
 const pagesPage = require("../../page_objects/pages-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-//Apriori
-//Create Page Titulo 255 (Frontera)
+describe('Feature 08', function () {
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getPageRecord();
+    this.data2 = await dataPseudoAleatorio.getPageRecord();
+  })
 
-describe('Feature 08', () => {
-  before(() => {
-    cy.fixture('page-data-pool.json').then(function (records) {
-      this.records = records;
-      this.dataLimitArray = this.records.filter(x => x.page_title.length > 255);
-      this.dataLimit = this.dataLimitArray[getRandom(0, Object.keys(this.dataLimitArray).length)]
-      this.dataLimit.page_title = this.dataLimit.page_title.slice(0, 255);
-      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
-    });
-
-  });
 
   beforeEach(() => {
     cy.viewport(1366, 768);
@@ -28,7 +18,7 @@ describe('Feature 08', () => {
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
-  it('Crear,Editar, publicar, consultar un page', function () {
+  it('Editar, publicar, consultar un page', () => {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
@@ -47,10 +37,10 @@ describe('Feature 08', () => {
     pagesPage.goToNewPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    pagesPage.enterPageTitle(this.dataLimit.page_title);
+    pagesPage.enterPageTitle(this.data.page_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    pagesPage.enterPageBody(this.dataLimit.page_body);
+    pagesPage.enterPageBody(this.data.page_body);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     pagesPage.goBackToPagesList();
@@ -62,7 +52,7 @@ describe('Feature 08', () => {
     pagesPage.clickTheFirstPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
-    pagesPage.enterPageBody(this.data.page_title);
+    pagesPage.enterPageBody(this.data2.page_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
     pagesPage.publishPage()

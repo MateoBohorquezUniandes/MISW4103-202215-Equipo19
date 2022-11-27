@@ -1,34 +1,23 @@
 const loginPage = require("../../page_objects/login-page");
-const pagesPage = require("../../page_objects/pages-page");
+const postsPage = require("../../page_objects/posts-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
-
-//Apriori
-//Actualizar Page Titulo con tag script
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-describe('Feature 08', () => {
+describe('Feature 3', () => {
   before(() => {
-    cy.fixture('page-data-pool.json').then(function (records) {
+    cy.fixture('post-data-pool.json').then(function (records) {
       this.records = records;
-      this.dataScriptCharsArray = this.records.filter(x => x.page_naughty?.includes('</script>'));
-      this.dataScript = this.dataScriptCharsArray[getRandom(0, Object.keys(this.dataScriptCharsArray).length)]
       this.data = this.records[getRandom(0, Object.keys(this.records).length)];
-      this.data.page_title = this.data.page_title.slice(0, 10);
     });
-
   });
-
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
-  Cypress.on('uncaught:exception', (err, runnable) => {
-    return false
-  })
-  it('Crear,Editar, publicar, consultar un page', function () {
+  it('Eliminar y Consultar post', function() {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
@@ -41,46 +30,42 @@ describe('Feature 08', () => {
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    dashboardPage.goToPages();
+    postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    pagesPage.goToNewPage();
+    cy.wait(3000);
+    postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    pagesPage.enterPageTitle(this.data.page_title);
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000);
-    pagesPage.enterPageBody(this.data.page_body);
+    postsPage.publishPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    pagesPage.goBackToPagesList();
+    postsPage.getConfirmationPublish();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000)
-    pagesPage.clickSortPagesByNewest();
+    postsPage.goBackEditor();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPage.clickTheFirstPage();
+    cy.wait(1000);
+    postsPage.goBackToPostSection();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPage.enterPageTitle(this.dataScript.page_naughty);
+    cy.wait(1000);
+    postsPage.clickPostSelected(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000)
-    pagesPage.publishPage()
+    cy.wait(1000);
+    postsPage.clickSettingsButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPage.goToEditor()
+    cy.wait(1000);
+    postsPage.clickBtnDeletePost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPage.goBackToPagesList()
+    cy.wait(1000);
+    postsPage.clickDeleteConfirmationPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    //pagesPages.findPageTitle("My awesome page title")
-    //cy.wait(1000)
+    cy.wait(1000);
     dashboardPage.clickUserProfile();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
+    cy.wait(1000);
     dashboardPage.clickSignOut();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000)
+    cy.wait(3000);
+    loginPage.seeLoginScreen();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(3000);
   });
 })

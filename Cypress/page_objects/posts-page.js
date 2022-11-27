@@ -33,6 +33,9 @@ class PostsPage extends Page {
     get listTagsEditor() { return 'div#tag-input' }
     get tagOnList() { return 'li.ember-power-select-option' }
     get sortPostByRecent() { return 'li.ember-power-select-option:nth-child(3)' }
+    get btnPreviewEditor() { return 'button.gh-editor-preview-trigger' }
+    get previewTabs(){return 'div.tabs'}
+    get previewTitle(){return 'h1.article-title'}
 
     clickNewPost() {
         cy.get(this.btnNewPost).click();
@@ -78,6 +81,11 @@ class PostsPage extends Page {
         cy.get(this.btnContinueFinalReview).click();
         cy.get(this.btnPublishPostRightNow).click();
     }
+    publishPostPreview() {
+        cy.get('div.right > button.gh-publish-trigger').click();
+        cy.get(this.btnContinueFinalReview).click();
+        cy.get(this.btnPublishPostRightNow).click();
+    }
     openSettingsMenu() {
         cy.get(this.settingsMenu).click();
     }
@@ -92,6 +100,22 @@ class PostsPage extends Page {
     }
     goToPostPage() {
         cy.get(this.linkTitlePost).click();
+    }
+    getUrlPost(){
+        //cy.get(this.settingsMenu).click();
+        let url = "";
+        cy.get('input[name="post-setting-slug"]').invoke('val').then((text) => {
+            url = text;
+            cy.log(url);
+        });
+        cy.get(this.settingsMenu).click();
+        return url;
+    }
+    goPostFirst(){
+        cy.get('a.post-card-content-link').first().click();
+    }
+    goToPostPageWithName(name) {
+        cy.get('a[href="/'+ name +'/"]').click();
     }
     getPostTitle(title) {
         cy.get('h1').contains(title).click();
@@ -161,6 +185,14 @@ class PostsPage extends Page {
     }
     clickSortPostByRecent() {
         cy.get(this.sortPostByRecent).click();
+    }
+    clickPreviewBtn(){
+        cy.get(this.settingsMenu).click();
+        cy.get(this.btnPreviewEditor).click();
+    }
+    getPreview(title){
+        //expect(cy.get('h1').contains(title));
+        expect(cy.get(this.previewTabs));
     }
 }
 
