@@ -61,7 +61,7 @@ describe('Feature 08', () => {
     pagesPage.clickTheFirstPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
-    pagesPage.enterPageBody(this.data.page_title);
+    pagesPage.enterPageBody(this.data.page_body);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
     pagesPage.publishPage()

@@ -16,7 +16,7 @@ describe('Feature 08 - page title', () => {
       this.records = records;
       this.dataLimitArray = this.records.filter(x => x.page_title.length > 255);
       this.dataLimit = this.dataLimitArray[getRandom(0, Object.keys(this.dataLimitArray).length)]
-      this.dataLimit.page_title = this.dataLimit.page_title.slice(0, 255);
+      this.dataLimit.page_title = this.dataLimit.page_title.slice(0, 256);
       this.data = this.records[getRandom(0, Object.keys(this.records).length)];
     });
 
@@ -62,7 +62,7 @@ describe('Feature 08 - page title', () => {
     pagesPage.clickTheFirstPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
-    pagesPage.enterPageBody(this.data.page_title);
+    pagesPage.enterPageBody(this.data.page_body);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
     pagesPage.publishPage()

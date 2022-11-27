@@ -4,7 +4,7 @@ const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 
 //Apriori
-//Actualizar Page Titulo con tag script
+//Create Page Titulo con tag script
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,10 +14,7 @@ describe('Feature 08', () => {
   before(() => {
     cy.fixture('page-data-pool.json').then(function (records) {
       this.records = records;
-      this.dataScriptCharsArray = this.records.filter(x => x.page_naughty?.includes('</script>'));
-      this.dataScript = this.dataScriptCharsArray[getRandom(0, Object.keys(this.dataScriptCharsArray).length)]
-      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
-      this.data.page_title = this.data.page_title.slice(0, 10);
+      this.data = this.records.find(x => x.page_naughty === "᠎");
     });
 
   });
@@ -47,7 +44,7 @@ describe('Feature 08', () => {
     pagesPage.goToNewPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    pagesPage.enterPageTitle(this.data.page_title);
+    pagesPage.enterPageTitle(this.data.page_naughty);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     pagesPage.enterPageBody(this.data.page_body);
@@ -62,7 +59,7 @@ describe('Feature 08', () => {
     pagesPage.clickTheFirstPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
-    pagesPage.enterPageTitle(this.dataScript.page_naughty);
+    pagesPage.enterPageBody(this.data.page_body);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
     pagesPage.publishPage()
