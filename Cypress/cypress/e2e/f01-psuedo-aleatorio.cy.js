@@ -1,29 +1,31 @@
 const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
-const dashboardPage = require("../../page_objects/dashboard-page");
+const dashboardPages = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-describe('Feature 3', () => {
+describe('Crear Post', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getPostRecord();
+  })
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
-  it('Eliminar y Consultar post', () => {
+  it('Execute scenery feature 1',() => { 
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000);
+    cy.wait(1000)
     loginPage.setUserName("i.bohorquezp@uniandes.edu.co");
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
     loginPage.setPassword("Reyarruinado!1");
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000);
+    cy.wait(5000);
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    postsPage.writePostTitle("Mi Primer Post");
+    postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     postsPage.publishPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -35,27 +37,21 @@ describe('Feature 3', () => {
     cy.wait(1000);
     postsPage.goBackToPostSection();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickPostSelected('Mi Primer Post');
+    dashboardPages.clickUserProfile();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickSettingsButton();
+    dashboardPages.clickSignOut();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickBtnDeletePost();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickDeleteConfirmationPost();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    dashboardPage.clickUserProfile();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    dashboardPage.clickSignOut();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000);
     loginPage.seeLoginScreen();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000);
-  });
+  })
+  it('Ver post creado',()=> {
+    cy.visit('http://localhost:2368/');
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.goPostFirst();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    postsPage.getPostTitle(this.data.post_title);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+  })
 })

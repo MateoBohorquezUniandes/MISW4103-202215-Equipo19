@@ -93,6 +93,22 @@ class PostsPage extends Page {
     goToPostPage() {
         cy.get(this.linkTitlePost).click();
     }
+    getUrlPost(){
+        //cy.get(this.settingsMenu).click();
+        let url = "";
+        cy.get('input[name="post-setting-slug"]').invoke('val').then((text) => {
+            url = text;
+            cy.log(url);
+        });
+        cy.get(this.settingsMenu).click();
+        return url;
+    }
+    goPostFirst(){
+        cy.get('a.post-card-content-link').first().click();
+    }
+    goToPostPageWithName(name) {
+        cy.get('a[href="/'+ name +'/"]').click();
+    }
     getPostTitle(title) {
         cy.get('h1').contains(title).click();
     }
