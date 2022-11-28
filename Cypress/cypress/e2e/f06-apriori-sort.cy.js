@@ -10,8 +10,10 @@ function getRandom(min, max) {
 describe('Feature 06', () => {
   before(() => {
     cy.fixture('post-data-pool.json').then(function (records) {
-      this.records = records;
-      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
+      const params = ['id', 'post_title', 'post_body', 'post_image', 'post_money', 'post_chinese', 'post_emoji'];
+      const lengthParams = params.length - 1;
+      records = records[getRandom(0, Object.keys(records).length - 1)];
+      this.data = { post_title: records[params[getRandom(0, lengthParams)]] };
     });
   });
   beforeEach(() => {
@@ -36,10 +38,10 @@ describe('Feature 06', () => {
     cy.wait(2000);
     postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(4000);
+    cy.wait(2000);
     postsPage.clickBackPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000);
+    cy.wait(1000);
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);

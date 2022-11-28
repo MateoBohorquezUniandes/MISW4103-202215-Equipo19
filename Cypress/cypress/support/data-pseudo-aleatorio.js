@@ -16,12 +16,15 @@ class DataPseudoAleatorio {
             }, {
                 name: 'page_body',
                 type: 'Words'
-                }, {
-                    name: 'page_number',
-                    type: 'NHS Number'
-                }, {
-                    name: 'page_money',
-                    type: 'Money'
+            }, {
+                name: 'page_number',
+                type: 'NHS Number'
+            }, {
+                name: 'page_money',
+                type: 'Money'
+            }, {
+                name: 'naughty',
+                type: 'Naughty String'
             }]
         });
     }

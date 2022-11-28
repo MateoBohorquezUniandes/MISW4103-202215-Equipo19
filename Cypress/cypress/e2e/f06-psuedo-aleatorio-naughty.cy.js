@@ -2,23 +2,17 @@ const loginPage = require("../../page_objects/login-page");
 const postsPage = require("../../page_objects/posts-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-describe('Feature 06', () => {
-  before(() => {
-    cy.fixture('post-data-pool.json').then(function (records) {
-      this.records = records;
-      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
-    });
-  });
+describe('Feature 06', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getPageRecord();
+    this.data = { page_title: this.data.naughty };
+  })
   beforeEach(() => {
     cy.viewport(1366, 768);
-
   });
-  it('Crear opción de navegación', function () {
+  it('Crear opción de navegación', () => {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
@@ -34,16 +28,16 @@ describe('Feature 06', () => {
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.writePostTitle(this.data.post_title);
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(4000);
-    postsPage.clickBackPage();
+    postsPage.writePostTitle(this.data.page_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
+    postsPage.clickBackPage();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.writePostTitle(this.data.post_title);
+    postsPage.writePostTitle(this.data.page_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.clickBackPage();
@@ -72,4 +66,3 @@ describe('Feature 06', () => {
     cy.wait(3000);
   });
 })
-
