@@ -2,8 +2,13 @@ const loginPage = require("../../page_objects/login-page");
 const members = require("../../page_objects/members-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../support/data-pseudo-aleatorio');
 
-describe('Feature 14', () => {
+describe('Feature 14', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getMemberRecord();
+    this.data = { name: this.data.name, email: this.data.email, note: this.data.naughty };
+  })
   beforeEach(() => {
   });
   it('Crear opción de navegación', () => {
@@ -25,10 +30,13 @@ describe('Feature 14', () => {
     members.clickBtnNewMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    members.setMemberName("Test");
+    members.setMemberName(this.data.name);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    members.setMemberEmail("test-miso-2022@test.com");
+    members.setMemberEmail(this.data.email);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    members.setMemberNote(this.data.note);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.clickBtnSaveMember();

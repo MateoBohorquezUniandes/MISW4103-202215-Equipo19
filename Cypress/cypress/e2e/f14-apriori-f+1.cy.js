@@ -3,10 +3,21 @@ const members = require("../../page_objects/members-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Prueba de frontera. Campo Note = 500 caracteres. Se ingresa texto con longitud de 501 caracteres
 describe('Feature 14', () => {
+  before(() => {
+    cy.fixture('members-data-pool.json').then(function (records) {
+      records = records.filter(x => x.note.length > 500).map((record) => { return { name: record.name, email: record.email, note: record.note.slice(0, 501) } });
+      this.data = records[getRandom(0, Object.keys(records).length - 1)];
+    });
+  })
   beforeEach(() => {
   });
-  it('Crear opción de navegación', () => {
+  it('Crear opción de navegación', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
@@ -25,10 +36,13 @@ describe('Feature 14', () => {
     members.clickBtnNewMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    members.setMemberName("Test");
+    members.setMemberName(this.data.name);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    members.setMemberEmail("test-miso-2022@test.com");
+    members.setMemberEmail(this.data.email);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(2000);
+    members.setMemberNote(this.data.note);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     members.clickBtnSaveMember();
