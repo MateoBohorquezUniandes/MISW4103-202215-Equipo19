@@ -16,6 +16,7 @@ describe('Feature 13', () => {
     cy.fixture('page-data-pool.json').then(function (records) {
       this.records = records;
       this.data = this.records.find(x => x.page_naughty?.toLowerCase() == "null");
+      this.data.page_title = this.data.page_title.slice(0, 10)
     });
   });
 
@@ -43,7 +44,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    tagsPage.setTagName(this.data.tag_title);
+    tagsPage.setTagName(this.data.page_naughty);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     tagsPage.clickBtnSaveTag();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -54,19 +55,19 @@ describe('Feature 13', () => {
     dashboardPages.goToTags();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.getTagNameFromList(this.data.tag_title);
+    tagsPage.getTagNameFromList(this.data.page_naughty);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    postsPage.writePostTitle(this.data.tag_title);
+    postsPage.writePostTitle(this.data.page_naughty);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.openSettingsMenu();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.asingTag(this.data.tag_title);
+    postsPage.asingTag(this.data.page_naughty);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.publishPost();

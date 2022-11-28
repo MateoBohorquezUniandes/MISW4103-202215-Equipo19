@@ -43,6 +43,9 @@ class DataAleatorio {
     getNumber(length) {
         return faker.random.numeric(length);
     }
+    getUrl(){
+        return faker.internet.url();
+    }
 }
 
 module.exports = new DataAleatorio();

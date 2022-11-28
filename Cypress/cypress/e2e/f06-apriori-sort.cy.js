@@ -1,70 +1,77 @@
 const loginPage = require("../../page_objects/login-page");
-const pagesPages = require("../../page_objects/pages-page");
+const postsPage = require("../../page_objects/posts-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataAleatorio = require('../support/data-aleatorio');
 
-//Aleatorio
-describe('Feature 09', function () {
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe('Feature 06', () => {
   before(() => {
-    this.data = {
-      page_title: dataAleatorio.getPageTitle(),
-      page_body: dataAleatorio.getPageBody(),
-      page_number: dataAleatorio.getNumber(10)
-    };
+    cy.fixture('post-data-pool.json').then(function (records) {
+      const params = ['id', 'post_title', 'post_body', 'post_image', 'post_money', 'post_chinese', 'post_emoji'];
+      const lengthParams = params.length - 1;
+      records = records[getRandom(0, Object.keys(records).length - 1)];
+      this.data = { post_title: records[params[getRandom(0, lengthParams)]] };
+    });
   });
-
   beforeEach(() => {
     cy.viewport(1366, 768);
+
   });
-  it('Crear, eliminar y consultar page', () => {
+  it('Crear opción de navegación', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000)
+    cy.wait(2000);
     loginPage.setUserName("i.bohorquezp@uniandes.edu.co");
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
+    cy.wait(1000);
     loginPage.setPassword("Reyarruinado!1");
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
+    cy.wait(1000);
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000)
-    dashboardPage.goToPages();
+    cy.wait(3000);
+    postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.goToNewPage();
+    cy.wait(2000);
+    postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.enterPageTitle(this.data.page_title);
+    cy.wait(2000);
+    postsPage.clickBackPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000)
-    pagesPages.enterPageBody(this.data.page_number);
+    cy.wait(1000);
+    postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000)
-    pagesPages.goBackToPagesList();
+    cy.wait(2000);
+    postsPage.writePostTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.clickSortPagesByNewest();
+    cy.wait(2000);
+    postsPage.clickBackPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.clickTheFirstPage();
+    cy.wait(1000);
+    postsPage.clickOptionSort();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.clickPageSettings();
+    cy.wait(1000);
+    postsPage.clickSortPostByRecent();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(2000)
-    pagesPages.clickDelete();
+    cy.wait(1000);
+    postsPage.clickFirstPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
-    pagesPages.clickDeleteConfirmation();
+    cy.wait(1000);
+    postsPage.getPostTitleEditor();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000)
+    cy.wait(1000);
+    postsPage.clickBackPage();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
     dashboardPage.clickUserProfile();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000)
+    cy.wait(1000);
     dashboardPage.clickSignOut();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000)
+    cy.wait(3000);
   });
 })
+

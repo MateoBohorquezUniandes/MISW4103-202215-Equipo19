@@ -2,22 +2,25 @@ const loginPage = require("../../page_objects/login-page");
 const pagesPages = require("../../page_objects/pages-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataAleatorio = require('../support/data-aleatorio');
+//Apriori
+//F09 - Titulo y body valido
 
-//Aleatorio
-describe('Feature 09', function () {
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe('Feature 09', () => {
   before(() => {
-    this.data = {
-      page_title: dataAleatorio.getPageTitle(),
-      page_body: dataAleatorio.getPageBody(),
-      page_number: dataAleatorio.getNumber(10)
-    };
+    cy.fixture('post-data-pool.json').then(function (records) {
+      this.records = records;
+      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
+    });
   });
 
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
-  it('Crear, eliminar y consultar page', () => {
+  it('Crear, eliminar y consultar page', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
@@ -36,10 +39,10 @@ describe('Feature 09', function () {
     pagesPages.goToNewPage();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
-    pagesPages.enterPageTitle(this.data.page_title);
+    pagesPages.enterPageTitle(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
-    pagesPages.enterPageBody(this.data.page_number);
+    pagesPages.enterPageBody(this.data.post_body);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
     pagesPages.goBackToPagesList();

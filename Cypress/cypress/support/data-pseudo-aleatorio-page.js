@@ -16,6 +16,9 @@ class DataPseudoAleatorio {
             }, {
                 name: 'page_body',
                 type: 'Words'
+            }, {
+                name: 'naughty',
+                type: 'Naughty String'
             }]
         });
     }
