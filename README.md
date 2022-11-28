@@ -85,3 +85,6 @@ https://youtu.be/vc8LZOuOoBQ
 
 ## Escenarios Semana 7 data pools
 https://uniandes-my.sharepoint.com/:x:/g/personal/aa_perezm12_uniandes_edu_co/EVOACNHjfDVBofv83ftvlrEBgRNxUm_94PbencKJ2LdCfQ?e=JbVXJY
+
+## Enlace a Issues encontrados
+https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/issues
