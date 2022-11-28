@@ -4,13 +4,12 @@ const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 const dataAleatorio = require('../support/data-aleatorio');
 
-//Aleatorio
 describe('Feature 09', function () {
   before(() => {
     this.data = {
       page_title: dataAleatorio.getPageTitle(),
       page_body: dataAleatorio.getPageBody(),
-      page_number: dataAleatorio.getNumber(10)
+      page_money: dataAleatorio.getNumber(10)
     };
   });
 
@@ -39,7 +38,7 @@ describe('Feature 09', function () {
     pagesPages.enterPageTitle(this.data.page_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
-    pagesPages.enterPageBody(this.data.page_number);
+    pagesPages.enterPageBody(this.data.page_money);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000)
     pagesPages.goBackToPagesList();

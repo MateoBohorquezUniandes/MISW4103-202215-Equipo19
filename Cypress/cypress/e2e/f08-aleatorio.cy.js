@@ -4,6 +4,7 @@ const dashboardPage = require("../../page_objects/dashboard-page");
 const screenshotFunction = require("../../page_objects/screenshot-function");
 const dataAleatorio = require('../support/data-aleatorio');
 
+//Se genera F08 - Aleatorio
 describe('Feature 08', function () {
   before(() => {
     this.data = {
