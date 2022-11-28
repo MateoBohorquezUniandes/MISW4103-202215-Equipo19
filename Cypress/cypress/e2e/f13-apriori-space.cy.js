@@ -4,7 +4,7 @@ const tagsPage = require("../../page_objects/tags-page");
 const dashboardPage = require("../../page_objects/dashboard-page");
 
 //Apriori
-//Tag Titulo money)
+//Tag Titulo vacio ''
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -20,8 +20,8 @@ describe('Feature 13', () => {
 
   beforeEach(() => {
     cy.viewport(1366, 768);
-
   });
+  
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
@@ -44,7 +44,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew()
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.setTagName(this.data.post_chinese);
+    tagsPage.setTagName(this.data.post_emoji);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     tagsPage.clickBtnSaveTag();

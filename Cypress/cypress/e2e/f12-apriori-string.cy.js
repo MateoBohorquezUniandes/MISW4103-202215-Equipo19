@@ -5,7 +5,7 @@ const screenshotFunction = require("../../page_objects/screenshot-function");
 const tagsPage = require("../../page_objects/tags-page");
 
 //Apriori
-//Tag null
+//Tag Titulo money
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -13,20 +13,17 @@ function getRandom(min, max) {
 
 describe('Feature 13', () => {
   before(() => {
-    cy.fixture('page-data-pool.json').then(function (records) {
+    cy.fixture('post-data-pool.json').then(function (records) {
       this.records = records;
-      this.data = this.records.find(x => x.page_naughty?.toLowerCase() == "null");
-      this.data.page_title = this.data.page_title.slice(0, 10)
+      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
     });
   });
-
-  beforeEach(() => {
-    cy.viewport(1366, 768);
-  });
+    beforeEach(() => {
+      cy.viewport(1366, 768);
+    });
   Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
-
   it('Execute scenery feature 12', function () { 
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -44,7 +41,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    tagsPage.setTagName(this.data.page_naughty);
+    tagsPage.setTagName(this.data.post_emoji);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     tagsPage.clickBtnSaveTag();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -55,19 +52,19 @@ describe('Feature 13', () => {
     dashboardPages.goToTags();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.getTagNameFromList(this.data.page_naughty);
+    tagsPage.getTagNameFromList(this.data.post_emoji);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.clickPlusNewPost();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    postsPage.writePostTitle(this.data.page_naughty);
+    postsPage.writePostTitle(this.data.post_emoji);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.openSettingsMenu();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.asingTag(this.data.page_naughty);
+    postsPage.asingTag(this.data.post_emoji);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.publishPost();

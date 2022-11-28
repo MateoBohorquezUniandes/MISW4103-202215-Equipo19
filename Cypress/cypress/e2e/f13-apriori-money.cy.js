@@ -44,7 +44,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew()
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.setTagName(this.data.tag_title);
+    tagsPage.setTagName(this.data.post_money);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     tagsPage.clickBtnSaveTag();

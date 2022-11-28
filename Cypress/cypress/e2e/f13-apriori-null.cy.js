@@ -15,6 +15,7 @@ describe('Feature 13', () => {
     cy.fixture('page-data-pool.json').then(function (records) {
       this.records = records;
       this.data = this.records.find(x => x.page_naughty?.toLowerCase() == "null");
+      this.data.page_title = this.data.page_title.slice(0, 10)
     });
   });
 
@@ -44,7 +45,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew()
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.setTagName(this.data.tag_title);
+    tagsPage.setTagName(this.data.post_null);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     tagsPage.clickBtnSaveTag();

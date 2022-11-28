@@ -41,7 +41,7 @@ describe('Feature 13', () => {
     tagsPage.clickTagsNew();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    tagsPage.setTagName(this.data.tag_title);
+    tagsPage.setTagName(this.data.post_chinese);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     tagsPage.clickBtnSaveTag();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
@@ -52,7 +52,7 @@ describe('Feature 13', () => {
     dashboardPages.goToTags();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    tagsPage.getTagNameFromList(this.data.tag_title);
+    tagsPage.getTagNameFromList(this.data.post_chinese);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
     postsPage.clickPlusNewPost();
