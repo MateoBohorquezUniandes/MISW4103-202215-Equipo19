@@ -83,6 +83,14 @@ https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/wiki/Pros-y-c
 ## Vídeo Semana 6
 https://youtu.be/vc8LZOuOoBQ
 
+## Estrategias usadas
+
+* Apriori: para la generación del pool de datos apriori se utilizó mockaroo (https://www.mockaroo.com/). Se creo el esquema en mockaroo y se procedió a generar los datos de acuerdo a los campos especificados para la funcionalidad: Page, Posts, Tags, Member y Navigation
+
+* Pseudo aleatorios: para la generación de manera pseudo aleatoria se utilizó un cliente de node js (https://github.com/mockaroo/mockaroo-node/blob/master/README.md) para generar el registro desde la API rest que se definió en mockaroo. Se utilizó mockaroo versión 0.1.7
+
+* Aleatorios: se utilizó faker versión 7.6.0 para generar los datos de manera aleatoria.
+
 ## Escenarios Semana 7 data pools
 https://uniandes-my.sharepoint.com/:x:/g/personal/aa_perezm12_uniandes_edu_co/EVOACNHjfDVBofv83ftvlrEBgRNxUm_94PbencKJ2LdCfQ?e=JbVXJY
 
