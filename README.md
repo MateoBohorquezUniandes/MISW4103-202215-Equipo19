@@ -83,3 +83,6 @@ https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/wiki/Pros-y-c
 ## Vídeo Semana 6
 https://youtu.be/vc8LZOuOoBQ
 
+## Escenarios Semana 7 data pools
+https://uniandes-my.sharepoint.com/:f:/g/personal/aa_perezm12_uniandes_edu_co/EmW883unBg9AjUCW0bbpO2ABFy8JAtWYkm9CRa_xk5NdkA?e=YMnlcm
+
