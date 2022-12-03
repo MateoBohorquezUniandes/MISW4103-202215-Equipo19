@@ -57,6 +57,11 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 
 * **Nota**: Si tiene dudas de como realizar la instalación de Ghost ir al siguiente link: `https://ghost.org/docs/ghost-cli/#ghost-install`
 
+## Instrucciones Ghost
+1. Abrir un terminal y navegue a la carpeta Ghost
+2. Inicie Ghost con el comando ghost start
+3. Abrir en un explorador (Chrome) la url donde ha inciado Ghost para corroborar que haya iniciado correctamente. La url por default es: http://localhost:2368/ghost/
+
 ## Instrucciones Kraken
 1. Abrir un terminal y navegue a la carpeta Kraken.
 2. Abrir el archivo `properties.json` y en la variable `VERSION` escriba el numero de la version de Ghost que desea usar para la prueba. (La versión en este archivo debe corresponder a la versión de Ghost que se encuentra corriendo en su máquina)
@@ -82,11 +87,28 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 ## Documento de Estrategia de Pruebas
 [Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
 
-## Secuencia de ejecución para pruebas de reconocimiento 
+## Secuencia de ejecución para Pruebas de exploratorias
+1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
+2. Abra un terminal en modo administrador y diríjase a la carpeta Monkey
+3. Ejecute el comando `npm install`
+4. Ejecute el comando para iniciar alguno de los siguientes Monkey 
+  * `./node_modules/cypress/bin/cypress run -C monkey-config.json`
+  * `./node_modules/cypress/bin/cypress run -C smart-monkey-config.json`
+5. Espere a que el proceso finalice. Una vez finalizado, los resultados se podrán consultar en la carpeta `Monkey/results`
 
-## Secuencia de ejecución para pruebas exploratorias 
-
+## Secuencia de ejecución para Pruebas reconocimiento
+1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
+2. Abra un terminal en modo administrador y diríjase a la carpeta Ripper
+3. Ejecute el comando `npm install`
+4. Ejecute el comando `node index.js`
+5. Espere a que el proceso finalice. Una vez finalizado, los resultados se podrán consultar en el archivo `index.html` que se encuentra en la carpeta Ripper/
+ 
+* **Nota**: 
+    * En caso de requerir actualizar los parámetros de configuración, diríjase y abra el archivo Ripper/config.json. En el archivo podrá actualizar los parámetros: url, depthLevels, identificación y password.
+  
 ## Secuencia de ejecución para pruebas E2E 
+
+## Secuencia de ejecución para pruebas VRT
 
 ## Secuencia de ejecución para pruebas con datos aleatorios
 
