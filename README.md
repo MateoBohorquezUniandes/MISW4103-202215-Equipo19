@@ -111,6 +111,11 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 ## Secuencia de ejecución para pruebas VRT
 
 ## Secuencia de ejecución para pruebas con datos aleatorios
+1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
+2. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
+3. Ejecute el comando `cypress open` para abrir la consola de Cypress.
+4. Clic en la opción E2E Testing, luego elija Chrome y clic en Start E2E Testing in Chrome.
+5. Se abrirá Cypress en el navegador Chrome con los archivos de prueba (specs). En E2E Specs haga clic en la opción `datos-aleatorios`y seleccione el caso que desea revisar.
 
 ## Reporte de incidencias
 [Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
