@@ -14,6 +14,7 @@
 | Posts         | Interfaz grafica para la busqueda, creación, edición, previsualización y publicacion tanto inmediata como programada de posts. Esta opción se encuentra disponible para usuarios logueados en la sección lateral izquierda del menú principal o desde el <br>enlace <br>http://localhost:2368/ghost/#/posts                                                                                           |
 | Pages         | Interfaz gráfica para la busqueda, creación y edición de paginas. Esta opción se encuentra disponible para usuarios logueados en la sección lateral izquierda del menú principal o desde el enlace http://localhost:2368/ghost/#/pages                                                                                                                                                                |
 | Tags          | Interfaz gráfica para la busqueda, creación y edición de tags. Esta opción se encuentra disponible para usuarios logueados en la sección lateral izquierda del menú principal o desde el enlace http://localhost:2368/ghost/#/tags                                                                                                                                                                                                                                                                                     |
+| Members | |
 | Sign out      | Salir del portal de administracion                                                                                                                                                                                                                                                                                                                                                                    |
 
 
@@ -78,23 +79,19 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
     * Ejecute `chmod -R 777 .`
     * Intente ejecutar Kraken nuevamente el paso 2.
     
-## Pros y contras de ResembleJS y BackstopJS
-https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/wiki/Pros-y-contras-Resemble-y-Backstop-JS
-## Vídeo Semana 6
-https://youtu.be/vc8LZOuOoBQ
+## Documento de Estrategia de Pruebas
+[Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
 
-## Estrategias usadas
+## Secuencia de ejecución para pruebas de reconocimiento 
 
-* Apriori: para la generación del pool de datos apriori se utilizó mockaroo (https://www.mockaroo.com/). Se creo el esquema en mockaroo y se procedió a generar los datos de acuerdo a los campos especificados para la funcionalidad: Page, Posts, Tags, Member y Navigation
+## Secuencia de ejecución para pruebas exploratorias 
 
-* Pseudo aleatorios: para la generación de manera pseudo aleatoria se utilizó un cliente de node js (https://github.com/mockaroo/mockaroo-node/blob/master/README.md) para generar el registro desde la API rest que se definió en mockaroo. Se utilizó mockaroo versión 0.1.7
+## Secuencia de ejecución para pruebas E2E 
 
-* Aleatorios: se utilizó faker versión 7.6.0 para generar los datos de manera aleatoria.
+## Secuencia de ejecución para pruebas con datos aleatorios
 
-## Escenarios Semana 7 data pools
-https://uniandes-my.sharepoint.com/:x:/g/personal/aa_perezm12_uniandes_edu_co/EVOACNHjfDVBofv83ftvlrEBgRNxUm_94PbencKJ2LdCfQ?e=JbVXJY
+## Reporte de incidencias
+[Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
 
-## Enlace a Issues encontrados
-https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/issues
-
-Holi
+## Video entrega final
+[Enalce](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
