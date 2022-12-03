@@ -1,0 +1,11 @@
+{
+  "url": "http://localhost:2368/ghost/#/dashboard",
+  "headless": true,
+  "depthLevels": 10,
+  "inputValues": false,
+  "values": {
+    "identification": "i.bohorquezp@uniandes.edu.co",
+    "password": "Reyarruinado!1"
+  },
+  "browsers": ["chromium"]
+}
