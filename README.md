@@ -107,9 +107,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
     * En caso de requerir actualizar los parámetros de configuración, diríjase y abra el archivo Ripper/config.json. En el archivo podrá actualizar los parámetros: url, depthLevels, identificación y password.
   
 ## Secuencia de ejecución para pruebas E2E 
-
-## Secuencia de ejecución para pruebas VRT
-##### Versión N (versión 5.22.10)
+##### Cypress (Ghost versión 5.22.10)
 1. Diríjase a la carpeta donde se encuentra instalado Ghost versión 5.22.10 e inicie ghost.
 2. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 3. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
@@ -120,7 +118,30 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 * **Nota**: 
     * Los archivos de especificación sin sufijo corresponden a la versión 5.22.10 de Ghost. Ejemplo: fXX.cy.js
 
-##### Versión N-1 (versión 3.42.0)
+##### Kraken (Ghost versión 5.22.10)
+1. Diríjase a la carpeta donde se encuentra instalado Ghost versión 5.22.10 e inicie ghost.
+2. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
+3. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
+4. Ejecute el comando `cypress open` para abrir la consola de Cypress.
+5. Clic en la opción E2E Testing, luego elija Chrome y clic en Start E2E Testing in Chrome.
+6. Se abrirá Cypress en el navegador Chrome con los archivos de prueba (specs). En E2E Specs haga clic en la opción `datos-aleatorios`y seleccione el caso que desea revisar.
+
+* **Nota**: 
+    * Los archivos de especificación sin sufijo corresponden a la versión 5.22.10 de Ghost. Ejemplo: fXX.cy.js
+
+## Secuencia de ejecución para pruebas VRT
+##### Versión N (Ghost versión 5.22.10)
+1. Diríjase a la carpeta donde se encuentra instalado Ghost versión 5.22.10 e inicie ghost.
+2. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
+3. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
+4. Ejecute el comando `cypress open` para abrir la consola de Cypress.
+5. Clic en la opción E2E Testing, luego elija Chrome y clic en Start E2E Testing in Chrome.
+6. Se abrirá Cypress en el navegador Chrome con los archivos de prueba (specs). En E2E Specs haga clic en la opción `datos-aleatorios`y seleccione el caso que desea revisar.
+
+* **Nota**: 
+    * Los archivos de especificación sin sufijo corresponden a la versión 5.22.10 de Ghost. Ejemplo: fXX.cy.js
+
+##### Versión N-1 (Ghost versión 3.42.0)
 1. Diríjase a la carpeta donde se encuentra instalado Ghost versión 3.42.10 e inicie ghost.
 2. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 3. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
