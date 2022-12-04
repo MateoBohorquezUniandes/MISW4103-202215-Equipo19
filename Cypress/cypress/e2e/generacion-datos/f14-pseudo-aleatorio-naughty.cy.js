@@ -1,18 +1,15 @@
-const loginPage = require("../../page_objects/login-page");
-const postsPage = require("../../page_objects/posts-page");
-const dashboardPage = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataAleatorio = require('../support/data-aleatorio');
+const loginPage = require("../../../page_objects/login-page");
+const members = require("../../../page_objects/members-page");
+const dashboardPage = require("../../../page_objects/dashboard-page");
+const screenshotFunction = require("../../../page_objects/screenshot-function");
+const dataPseudoAleatorio = require('../../support/data-pseudo-aleatorio');
 
-describe('Feature 06', function () {
-  before(() => {
-    this.data = {
-      page_title: dataAleatorio.getPageTitle(),
-      page_body: dataAleatorio.getPageBody()
-    }
+describe('Feature 14', function () {
+  before(async () => {
+    this.data = await dataPseudoAleatorio.getMemberRecord();
+    this.data = { name: this.data.name, email: this.data.email, note: this.data.naughty };
   })
   beforeEach(() => {
-    cy.viewport(1366, 768);
   });
   it('Crear opción de navegación', () => {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
@@ -27,37 +24,25 @@ describe('Feature 06', function () {
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(3000);
-    postsPage.clickPlusNewPost();
+    dashboardPage.clickBtnMenuMembers();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    members.clickBtnNewMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.writePostTitle(this.data.page_title);
+    members.setMemberName(this.data.name);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.clickBackPage();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickPlusNewPost();
+    members.setMemberEmail(this.data.email);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.writePostTitle(this.data.page_title);
+    members.setMemberNote(this.data.note);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(2000);
-    postsPage.clickBackPage();
+    members.clickBtnSaveMember();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
-    postsPage.clickOptionSort();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickSortPostByRecent();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickFirstPost();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.getPostTitleEditor();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickBackPage();
+    dashboardPage.clickBtnMenuMembers();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000);
     dashboardPage.clickUserProfile();

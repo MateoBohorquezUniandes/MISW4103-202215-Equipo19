@@ -1,8 +1,8 @@
-const loginPage = require("../../page_objects/login-page");
-const postsPage = require("../../page_objects/posts-page");
-const dashboardPages = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
-const tagsPage = require("../../page_objects/tags-page");
+const loginPage = require("../../../page_objects/login-page");
+const postsPage = require("../../../page_objects/posts-page");
+const dashboardPages = require("../../../page_objects/dashboard-page");
+const screenshotFunction = require("../../../page_objects/screenshot-function");
+const tagsPage = require("../../../page_objects/tags-page");
 
 //Apriori
 //Tag Titulo sql

@@ -1,8 +1,8 @@
-const loginPage = require("../../page_objects/login-page");
-const postsPage = require("../../page_objects/posts-page");
-const dashboardPages = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataAleatorio = require('../support/data-aleatorio');
+const loginPage = require("../../../page_objects/login-page");
+const postsPage = require("../../../page_objects/posts-page");
+const dashboardPages = require("../../../page_objects/dashboard-page");
+const screenshotFunction = require("../../../page_objects/screenshot-function");
+const dataAleatorio = require('../../support/data-aleatorio');
 
 describe('Editar post', function() {
   before(() => {

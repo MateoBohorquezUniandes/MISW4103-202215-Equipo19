@@ -1,20 +1,28 @@
-const loginPage = require("../../page_objects/login-page");
-const postsPage = require("../../page_objects/posts-page");
-const dashboardPages = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataAleatorio = require('../support/data-aleatorio');
+const loginPage = require("../../../page_objects/login-page");
+const dashboardPages = require("../../../page_objects/dashboard-page");
+const pagesPage = require("../../../page_objects/pages-page");
+const screenshotFunction = require("../../../page_objects/screenshot-function");
 
-describe('Consultar y eliminar Post', function() {
+//Apriori
+//F10- Titulo y body valido
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+describe('Feature 10', () => {
+
   before(() => {
-    this.data = {
-      post_title: dataAleatorio.getPostTitle(),
-      post_body: dataAleatorio.getPostBody()
-    }
-  })
+    cy.fixture('post-data-pool.json').then(function (records) {
+      this.records = records;
+      this.data = this.records[getRandom(0, Object.keys(this.records).length)];
+    });
+  });
+
   beforeEach(() => {
     cy.viewport(1366, 768);
   });
-  it('Execute scenery feature 1',() => { 
+  it('Crear, guardar y consultar un page en draft', function () {
     loginPage.visit('http://localhost:2368/ghost/#/signin');
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(1000)
@@ -24,27 +32,24 @@ describe('Consultar y eliminar Post', function() {
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     loginPage.clickSignInButton();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    dashboardPages.goToPages();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    cy.wait(1000);
+    pagesPage.goToNewPage();
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    pagesPage.enterPageTitle(this.data.post_title);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    pagesPage.enterPageBody(this.data.post_body);
+    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     cy.wait(5000);
-    postsPage.clickPlusNewPost();
+    pagesPage.goBackToPagesList();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(3000);
-    postsPage.writePostTitle(this.data.post_title);
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.clickPreviewBtn();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.getPreview(this.data.post_title);
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    postsPage.publishPostPreview();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
+    //pagesPage.clickSortPagesByNewest();
     cy.wait(2000);
-    postsPage.getConfirmationPublish();
+    pagesPage.getDraftOnList(this.data.post_title);
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    postsPage.goBackEditor();
-    cy.screenshot(screenshotFunction.getStep(Cypress.spec));
-    cy.wait(1000);
-    postsPage.goBackToPostSection();
+    pagesPage.goBackToPagesList();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));
     dashboardPages.clickUserProfile();
     cy.screenshot(screenshotFunction.getStep(Cypress.spec));

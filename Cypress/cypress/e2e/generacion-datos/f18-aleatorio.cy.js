@@ -1,8 +1,8 @@
-const loginPage = require("../../page_objects/login-page");
-const settingsPage = require("../../page_objects/settings-page");
-const dashboardPage = require("../../page_objects/dashboard-page");
-const screenshotFunction = require("../../page_objects/screenshot-function");
-const dataAleatorio = require('../support/data-aleatorio');
+const loginPage = require("../../../page_objects/login-page");
+const settingsPage = require("../../../page_objects/settings-page");
+const dashboardPage = require("../../../page_objects/dashboard-page");
+const screenshotFunction = require("../../../page_objects/screenshot-function");
+const dataAleatorio = require('../../support/data-aleatorio');
 
 describe('Feature 18', function () {
   before(() => {
