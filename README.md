@@ -138,7 +138,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 
 * **Nota**: 
     * Los archivos de especificación sin sufijo corresponden a la versión 5.22.10 de Ghost. Ejemplo: fXX.cy.js
-
+    
 ##### Versión N-1 (Ghost versión 3.42.0)
 1. Diríjase a la carpeta donde se encuentra instalado Ghost versión 3.42.10 e inicie ghost.
 2. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
@@ -150,6 +150,18 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 * **Nota**: 
     * Los archivos de especificación con sufijo corresponden a la versión 3.24.10 de Ghost. Ejemplo: fXX_v3.cy.js
 
+## Secuencia de ejecución para la herramienta ResembleJS
+1. Diríjase a la carpeta `Resemble\screenshots`.
+2. En las carpetas `5.22.10` y `3.42.0` crear una carpeta con el nombre de la función a probar, que contenga las imagenes para la comparación, ej: `f01`.
+3. Abra un terminal en modo administrador y diríjase a la carpeta `Resemble`.
+4. Ejecute el comando `node index.js` y espere a que se cree el reporte.
+5. Dirijase a la carpeta `reports\<nombre funcionalidad>\screenshots` y peque las imagenes que utilizó para la comparación. 
+6. Abra el archivo `.html` y verifique el reporte
+
+* **Nota**: 
+    * Los archivos de imagen debe estar numerados, ej: `1...n`.
+    * Debe haber la misma cantidad de imagenes en la carpeta de la versión 3 como en la carpeta de la versión 5.
+   
 ## Secuencia de ejecución para pruebas con datos generados
 1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 2. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
