@@ -85,7 +85,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
     * Intente ejecutar Cypress nuevamente el paso 2.
     
 ## Documento de Estrategia de Pruebas
-[Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
+[Enlace](https://uniandes-my.sharepoint.com/:w:/g/personal/i_bohorquezp_uniandes_edu_co/ERr0UuvfRPFJqI9IzPnHX1MBtIKaxObLfEhEgE4Iba_c9A?e=WMCFPT)
 
 ## Secuencia de ejecución para pruebas exploratorias y de reconocimiento (Monkey)
 1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
@@ -170,7 +170,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 5. Se abrirá Cypress en el navegador Chrome con los archivos de prueba (specs). En E2E Specs haga clic en la opción `datos-aleatorios`y seleccione el caso que desea revisar.
 
 ## Reporte de incidencias
-[Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
+[Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/issues)
 
 ## Video entrega final
 [Enalce](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
