@@ -8,14 +8,14 @@
 |Ivan Mateo Bohorquez Perez|i.bohorquezp@uniandes.edu.co
 ## Funcionalidades
 
-| Funcionalidad | Descripcion                                                                                                                                                                                                                                                                                                                                                                                           |
+| Funcionalidad | Descripcion                                                                                                                                                                                                                                                                                                                                                                                      |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Sign In       | Interfaz gráfica para:  <br><br>* El ingreso de usuarios registrados a la aplicación Ghost por medio de una cuenta de correo electrónico y un password.  <br><br>* Recuperar o restablecer el password de usuarios registrados. <br><br>Esta opción es la pantalla principal, posterior a la configuración (Setup) de Ghost y puede ser accesado desde el enlace http://localhost:2368/ghost/#/signin |
+| Sign out      | Salir del portal de administracion |
 | Posts         | Interfaz grafica para la busqueda, creación, edición, previsualización y publicacion tanto inmediata como programada de posts. Esta opción se encuentra disponible para usuarios logueados en la sección lateral izquierda del menú principal o desde el <br>enlace <br>http://localhost:2368/ghost/#/posts                                                                                           |
 | Pages         | Interfaz gráfica para la busqueda, creación y edición de paginas. Esta opción se encuentra disponible para usuarios logueados en la sección lateral izquierda del menú principal o desde el enlace http://localhost:2368/ghost/#/pages                                                                                                                                                                |
 | Tags          | Interfaz gráfica para la busqueda, creación y edición de tags. Esta opción se encuentra disponible para usuarios logueados en la sección lateral izquierda del menú principal o desde el enlace http://localhost:2368/ghost/#/tags                                                                                                                                                                                                                                                                                     |
 | Members | |
-| Sign out      | Salir del portal de administracion                                                                                                                                                                                                                                                                                                                                                                    |
 
 
 ## Escenarios
@@ -87,7 +87,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 ## Documento de Estrategia de Pruebas
 [Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
 
-## Secuencia de ejecución para Pruebas de exploratorias
+## Secuencia de ejecución para pruebas exploratorias y de reconocimiento (Monkey)
 1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 2. Abra un terminal en modo administrador y diríjase a la carpeta Monkey
 3. Ejecute el comando `npm install`
@@ -96,7 +96,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
   * `./node_modules/cypress/bin/cypress run -C smart-monkey-config.json`
 5. Espere a que el proceso finalice. Una vez finalizado, los resultados se podrán consultar en la carpeta `Monkey/results`
 
-## Secuencia de ejecución para Pruebas reconocimiento
+## Secuencia de ejecución para pruebas exploratorias y de reconocimiento (Ripper)
 1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 2. Abra un terminal en modo administrador y diríjase a la carpeta Ripper
 3. Ejecute el comando `npm install`
@@ -152,7 +152,7 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 * **Nota**: 
     * Los archivos de especificación con sufijo corresponden a la versión 3.24.10 de Ghost. Ejemplo: fXX_v3.cy.js
 
-## Secuencia de ejecución para pruebas con datos aleatorios
+## Secuencia de ejecución para pruebas con datos generados
 1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 2. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
 3. Ejecute el comando `cypress open` para abrir la consola de Cypress.
