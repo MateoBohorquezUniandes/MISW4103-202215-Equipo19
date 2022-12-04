@@ -173,4 +173,4 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 [Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19/issues)
 
 ## Video entrega final
-[Enalce](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
+[Estrategia de pruebas - Semana 8](https://youtu.be/FiazVAH_E_Y)
