@@ -121,10 +121,8 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 ##### Kraken (Ghost versión 5.22.10)
 1. Diríjase a la carpeta donde se encuentra instalado Ghost versión 5.22.10 e inicie ghost.
 2. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
-3. Abra un terminal en modo administrador y diríjase a la carpeta Cypress
-4. Ejecute el comando `cypress open` para abrir la consola de Cypress.
-5. Clic en la opción E2E Testing, luego elija Chrome y clic en Start E2E Testing in Chrome.
-6. Se abrirá Cypress en el navegador Chrome con los archivos de prueba (specs). En E2E Specs haga clic en la opción `datos-aleatorios`y seleccione el caso que desea revisar.
+3. Abra un terminal en modo administrador y diríjase a la carpeta Kraken
+4. Ejecute el comando `./node_modules/kraken-node/bin/kraken-node run`
 
 * **Nota**: 
     * Los archivos de especificación sin sufijo corresponden a la versión 5.22.10 de Ghost. Ejemplo: fXX.cy.js
