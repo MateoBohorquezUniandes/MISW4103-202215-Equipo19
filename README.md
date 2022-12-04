@@ -75,14 +75,14 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
     
     
 ## Instrucciones Cypress
-1. Abrir un terminal y navegue a la carpeta Kraken.
-2. Ejecute Kraken con el comando `cypress run --headless`
+1. Abrir un terminal y navegue a la carpeta Cypress.
+2. Ejecute Cypress con el comando `cypress run --headless`
 
 * **Nota**:  Si al ejecutar aparece un error de permisos de escritura, debes proveerle los permisos siguiendo los pasos: 
     * Abra un terminal como administrador
     * Navegue a la carpeta que aparece en el mensaje de error 
     * Ejecute `chmod -R 777 .`
-    * Intente ejecutar Kraken nuevamente el paso 2.
+    * Intente ejecutar Cypress nuevamente el paso 2.
     
 ## Documento de Estrategia de Pruebas
 [Enlace](https://github.com/MateoBohorquezUniandes/MISW4103-202215-Equipo19)
