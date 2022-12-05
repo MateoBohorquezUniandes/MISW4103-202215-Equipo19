@@ -87,6 +87,9 @@ Como prerequisito se necesita realizar una instalación del aplicativo Ghost, te
 ## Documento de Estrategia de Pruebas
 [Enlace](https://uniandes-my.sharepoint.com/:w:/g/personal/i_bohorquezp_uniandes_edu_co/ERr0UuvfRPFJqI9IzPnHX1MBtIKaxObLfEhEgE4Iba_c9A?e=WMCFPT)
 
+## Inventario de pruebas exploratorias
+[Enlace](https://uniandes-my.sharepoint.com/:x:/g/personal/i_bohorquezp_uniandes_edu_co/EX7Cjh0Y0utEhDd5pX0A2iYBtrY5vVaTlHuCmby9Qc9eig?e=t8sicH)
+
 ## Secuencia de ejecución para pruebas exploratorias y de reconocimiento (Monkey)
 1. Asegurar que Ghost haya iniciado correctamente `http://localhost:2368/ghost/`
 2. Abra un terminal en modo administrador y diríjase a la carpeta Monkey
